@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>国网邮箱监控系统-系统管理</title>
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+    <div class="header">
+        <h1 class="logo fl"></h1>
+        <ul class="nav fr clearfix">
+            <li><a href=""><i class="i-nav-1"></i><span>主控台</span></a></li>
+            <li><a href=""><i class="i-nav-2"></i><span>质量监控</span></a></li>
+            <li><a href=""><i class="i-nav-3"></i><span>故障告警</span></a></li>
+            <li><a href=""><i class="i-nav-4"></i><span>业务拨测</span></a></li>
+            <li><a href=""><i class="i-nav-5"></i><span>VIP保障</span></a></li>
+            <li><a href=""><i class="i-nav-6"></i><span>安全互通</span></a></li>
+            <li class="current"><a href=""><i class="i-nav-7"></i><span>系统管理</span></a></li>
+            <li><a href="" class="show-user"><i class="i-nav-8"></i><span>用户名</span></a>
+                <ul class="edit-user hide">
+                    <li><a href="">修改密码</a></li>
+                    <li><a href="">退出</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="wrapper">
+        <div class="sidebar">
+            <ul>
+                <li>
+                    <a href="">告警配置</a>
+                    <ul class="in-side hide">
+                        <li class="current"><a href=""><span>告警配置列表</span><i class="arrow-r"></i></a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="">系统管理</a>
+                    <ul class="in-side">
+                        <li class="current"><a href=""><span>用户</span><i class="arrow-r"></i></a></li>
+                        <li><a href=""><span>登录日志</span><i class="arrow-r"></i></a></li>
+                        <li><a href=""><span>操作日志</span><i class="arrow-r"></i></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="container">
+            <div class="bread-nav mb-20">
+                <h2>用户</h2><span class="tit">分配用户账号及角色，对用户进行管理</span>
+            </div>
+
+            <div class="mod-btn">
+                <a href="" class="btn btn-blue">新建警告</a>
+            </div>
+
+            <div class="retrieval-con layout-time clearfix mb-20">
+                <ul class="clearfix">
+                    <li>
+                        <label>账号：</label>
+                        <div class="module-fill w150">
+                            <input type="text" class="module-input"/>
+                        </div>
+                    </li>
+                    <li>
+                        <label>姓名： </label>
+                        <div class="module-fill w150">
+                            <input type="text" class="module-input"/>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="clearfix">
+                    <li>
+                        <label>角色：</label>
+                        <div class="module-fill w150">
+                            <input type="text" class="module-input"/>
+                        </div>
+                    </li>
+                    <li>
+                        <label>创建时间：</label>
+                        <div class="module-time">
+                            <input type="text" class="module-input"/><span>到</span><input type="text" class="module-input"/>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="btn btn-orange ml-60">查询</a>
+                    </li>
+                </ul>
+            </div>
+
+            <table class="table-con mb-20" cellspacing="0" cellpadding="0">
+                <tr>
+                    <th width="20%">账号</th>
+                    <th width="20%">姓名</th>
+                    <th width="15%">IP地址</th>
+                    <th width="20%">创建时间</th>
+                    <th width="25%">操作</th>
+                </tr>
+                <tr>
+                    <td>shania2</td>
+                    <td>shania2</td>
+                    <td>监控员</td>
+                    <td>2016-06-03 09:24</td>
+                    <td><div class="td-nowrap td-fun"><a href="">修改</a><a href="">禁用</a></div></td>
+                </tr>
+            </table>
+
+            <div class="tr">
+                <div class="module-select page">
+                    <span>20</span><a href="javascript:;" class="btn-select"><i class="i-select"></i></a>
+                    <ul class="hide">
+                        <li class="active"><a href="">20</a></li>
+                        <li><a href="">40</a></li>
+                        <li><a href="">100</a></li>
+                    </ul>
+                </div>
+                <a href="" class="btn-page">1</a>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

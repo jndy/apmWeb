@@ -1,0 +1,37 @@
+<div class="bread-nav mb-20">
+    <h2>操作日志</h2><span class="tit">操作日志信息列表</span>
+    <a href="javascript:;" class="btn-search-hide">查询<i class="i-down"></i></a>
+</div>
+
+<div class="retrieval-con clearfix" style="display: none;">
+    <ul>
+        <li>
+            <label>操作描述： </label>
+            <div class="module-fill w150">
+                <input type="text" class="module-input" name="operDesc">
+            </div>
+        </li>
+        <li>
+            <label>操作人： </label>
+            <div class="module-fill w150">
+                <input type="text" class="module-input" name="operator">
+            </div>
+        </li>
+        <li>
+            <label>操作时间：</label>
+            <div class="module-time">
+                <input type="text" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm'})" class="module-input" name="startTime"/><span>到</span>
+                <input type="text" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm'})" class="module-input" name="endTime"/>
+            </div>
+        </li>
+        <li>
+            <a href="javascript:;" class="btn btn-orange">查询</a>
+        </li>
+    </ul>
+</div>
+
+<div class="mod-btn">
+
+</div>
+
+<div class="content_main"></div>

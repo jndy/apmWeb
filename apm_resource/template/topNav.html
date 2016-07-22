@@ -1,0 +1,19 @@
+<% for(var i = 0 ,l=list.length;i<l;i++) { %>
+<li>
+    <% if(i == list.length-1) { %>
+        <a href="javascript:;">
+            <i class="i-nav-<%=i+1%>"></i>
+            <span><%=list[i].title%></span>
+        </a>
+        <ul class="edit-user hide">
+            <li><a class="modifyPwd" href="javascript:;">修改密码</a></li>
+            <li><a class="logout" href="javascript:;">退出</a></li>
+        </ul>
+    <% } else {%>
+        <a href="#<%=list[i].func%>">
+            <i class="i-nav-<%=i+1%>"></i>
+            <span><%=list[i].title%></span>
+        </a>
+    <% } %>
+</li>
+<% } %>

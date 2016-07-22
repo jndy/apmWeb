@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>国网邮箱监控系统-系统管理</title>
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<div class="header">
+    <h1 class="logo fl"></h1>
+    <ul class="nav fr clearfix">
+        <li><a href=""><i class="i-nav-1"></i><span>主控台</span></a></li>
+        <li><a href=""><i class="i-nav-2"></i><span>质量监控</span></a></li>
+        <li class="current"><a href=""><i class="i-nav-3"></i><span>故障告警</span></a></li>
+        <li><a href=""><i class="i-nav-4"></i><span>业务拨测</span></a></li>
+        <li><a href=""><i class="i-nav-5"></i><span>VIP保障</span></a></li>
+        <li><a href=""><i class="i-nav-6"></i><span>安全互通</span></a></li>
+        <li><a href=""><i class="i-nav-7"></i><span>系统管理</span></a></li>
+        <li><a href="" class="show-user"><i class="i-nav-8"></i><span>用户名</span></a>
+            <ul class="edit-user hide">
+                <li><a href="">修改密码</a></li>
+                <li><a href="">退出</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<div class="wrapper">
+    <div class="sidebar">
+        <ul>
+            <li class="current">
+                <a href="">告警通知</a>
+            </li>
+            <li>
+                <a href="">告警历史</a>
+            </li>
+            <li>
+                <a href="">告警配置</a>
+            </li>
+        </ul>
+    </div>
+    <div class="container">
+        <div class="ui-dialog-body">
+
+            <ul>
+                <li><label for="" class="ui-dialog-label">角色：<span class="c-red">*</span></label> <select
+                        style="display:none" name="userType">
+                    <option value="0">全部</option>
+                    <option value="1">超级管理员</option>
+                    <option value="2">配置管理员</option>
+                    <option value="3">监控员</option>
+                </select></li>
+                <li><label for="" class="ui-dialog-label">账号：<span class="c-red">*</span></label>
+
+                    <div class="module-fill"><input data-required="required" data-len=",30" type="text"
+                                                    class="module-input" name="userName"></div>
+                </li>
+                <li><label for="" class="ui-dialog-label">姓名：<span class="c-red">*</span></label>
+
+                    <div class="module-fill"><input data-required="required" data-len=",30" type="text"
+                                                    class="module-input" name="userRealName"></div>
+                </li>
+                <li><label for="" class="ui-dialog-label">密码：<span class="c-red">*</span></label>
+
+                    <div class="module-fill"><input data-required="required" data-len=",30" type="password"
+                                                    class="module-input" name="userPwd"></div>
+                </li>
+                <li><label for="" class="ui-dialog-label">邮箱地址：<span class="c-red">*</span></label>
+
+                    <div class="module-fill"><input data-required="required" data-format="email" type="text"
+                                                    class="module-input" name="userEmail"></div>
+                </li>
+                <li><label for="" class="ui-dialog-label">手机号码：<span class="c-red">*</span></label>
+
+                    <div class="module-fill"><input data-required="required" data-format="phone" type="text"
+                                                    class="module-input" name="userPhone"></div>
+                </li>
+                <li><label for="" class="ui-dialog-label">备注：</label>
+
+                    <div class="module-textarea"><textarea class="module-area" name="summary"></textarea></div>
+                </li>
+            </ul>
+
+            <ul> <li><label for="" class="ui-dialog-label">账号：<span class="c-red">*</span></label> <div class="module-fill"><input data-required="required" type="text" class="module-input" name="userName"> </div> </li> <li><label for="" class="ui-dialog-label">角色：<span class="c-red">*</span></label> <div class="module-fill"><input data-required="required" type="text" class="module-input" name="userType"> </div> </li> <li><label for="" class="ui-dialog-label">原密码：<span class="c-red">*</span></label> <div class="module-fill"><input data-required="required" type="password" class="module-input" name="old_userPwd"> </div> </li> <li><label for="" class="ui-dialog-label">新密码：<span class="c-red">*</span></label> <div class="module-fill"><input data-required="required" type="password" class="module-input" name="new_userPwd"> </div> </li> <li><label for="" class="ui-dialog-label">确认密码：<span class="c-red">*</span></label> <div class="module-fill"><input data-required="required" type="password" class="module-input" name="new2_userPwd"> </div> </li> </ul>
+        </div>
+
+
+    </div>
+</div>
+</body>
+</html>

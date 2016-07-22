@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>国网邮箱监控系统-系统管理</title>
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+    <div class="header">
+        <h1 class="logo fl"></h1>
+        <ul class="nav fr clearfix">
+            <li><a href=""><i class="i-nav-1"></i><span>主控台</span></a></li>
+            <li><a href=""><i class="i-nav-2"></i><span>质量监控</span></a></li>
+            <li><a href=""><i class="i-nav-3"></i><span>故障告警</span></a></li>
+            <li><a href=""><i class="i-nav-4"></i><span>业务拨测</span></a></li>
+            <li><a href=""><i class="i-nav-5"></i><span>VIP保障</span></a></li>
+            <li><a href=""><i class="i-nav-6"></i><span>安全互通</span></a></li>
+            <li class="current"><a href=""><i class="i-nav-7"></i><span>系统管理</span></a></li>
+            <li><a href="" class="show-user"><i class="i-nav-8"></i><span>用户名</span></a>
+                <ul class="edit-user hide">
+                    <li><a href="">修改密码</a></li>
+                    <li><a href="">退出</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="wrapper">
+        <div class="sidebar">
+            <ul>
+                <li>
+                    <a href="">告警配置</a>
+                    <ul class="in-side hide">
+                        <li class="current"><a href=""><span>告警配置列表</span><i class="arrow-r"></i></a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="">系统管理</a>
+                    <ul class="in-side">
+                        <li><a href=""><span>用户</span><i class="arrow-r"></i></a></li>
+                        <li class="current"><a href=""><span>登录日志</span><i class="arrow-r"></i></a></li>
+                        <li><a href=""><span>操作日志</span><i class="arrow-r"></i></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="container">
+            <div class="bread-nav mb-20">
+                <h2>登录日志</h2><span class="tit">登录日志信息列表</span>
+            </div>
+
+            <div class="retrieval-con layout-time clearfix mb-20">
+                <ul class="clearfix">
+                    <li>
+                        <label>账号： </label>
+                        <div class="module-fill w150">
+                            <input type="text" class="module-input"/>
+                        </div>
+                    </li>
+                    <li>
+                        <label>姓名： </label>
+                        <div class="module-fill w150">
+                            <input type="text" class="module-input"/>
+                        </div>
+                    </li>
+                    <li>
+                        <label>服务器IP：</label>
+                        <div class="module-fill w150">
+                            <input type="text" class="module-input"/>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="clearfix">
+                    <li>
+                        <label>登录时间：</label>
+                        <div class="module-time">
+                            <input type="text" class="module-input"/><span>到</span><input type="text" class="module-input"/>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="btn btn-orange ml-60">查询</a>
+                    </li>
+                </ul>
+            </div>
+
+            <table class="table-con mb-20" cellspacing="0" cellpadding="0">
+                <tr>
+                    <th width="20%">账号</th>
+                    <th width="20%">姓名</th>
+                    <th width="40%">IP地址</th>
+                    <th width="20%">登录时间</th>
+                </tr>
+                <tr>
+                    <td>shania2</td>
+                    <td>shania2</td>
+                    <td>121.15.167.225</td>
+                    <td>2016-06-03 09:24</td>
+                </tr>
+            </table>
+
+            <div class="tr">
+                <div class="module-select page">
+                    <span>20</span><a href="javascript:;" class="btn-select"><i class="i-select"></i></a>
+                    <ul class="hide">
+                        <li class="active"><a href="">20</a></li>
+                        <li><a href="">40</a></li>
+                        <li><a href="">100</a></li>
+                    </ul>
+                </div>
+                <span class="page-num">
+                    <a href="">1</a><a href="" class="current">2</a><a href="">3</a><a href="" class="page-next">&gt;</a>
+                </span>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

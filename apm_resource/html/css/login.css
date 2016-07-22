@@ -1,0 +1,41 @@
+html,body,p,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,form,fieldset,legend,input,select,textarea,button,th,td,blockquote,address,var,pre{margin:0;padding:0;}
+h1,h2,h3,h4,h5,h6,input,textarea,select,button,label{font-size:100%;}
+body{color:#666;font:12px/1.5 'Microsoft Yahei',verdana,'Hiragino Sans GB';}
+::-ms-clear, ::-ms-reveal{display: none;}
+.hide{display: none!important;}
+ul,ol,li{list-style: none;}
+a,a:hover{text-decoration: none;}
+.clearfix:before,.clearfix:after{ content: ""; display: table }
+.clearfix:after{ clear: both }
+.clearfix{ *zoom:1}
+/* 登录页 */
+.header-login{height: 150px;}
+.header-login .layout{position: relative;width: 1000px;height: 150px;margin: 0 auto;}
+.header-login h1{background: url("../images/login/logo.png") no-repeat;width: 199px;height: 61px;position: absolute;top: 78px;}
+
+.main{background: #0367dd url("../images/login/bg-login.png") center;height: 450px;}
+.main-bd{width: 1000px;margin: 0 auto;position: relative} /*双重背景*/
+.login-pic{height: 450px;width: 1000px;}
+.login{width: 360px;height: 340px;background: #fff; border-radius: 5px; box-shadow: 0 0 8px rgba(0,0,0,0.1);position: absolute;right: 3px;top: 50%;margin-top: -170px;}
+.login h2{height: 50px;font: 18px/70px "microsoft yahei";color: #666;padding-left: 30px;}
+.login-contents{width: 300px;margin: 0 auto 30px;}
+.login-tips{height: 30px;line-height:30px;color: #ff1800}
+.in-text{background: #fff;border: #d6d6d6 1px solid;height: 36px;line-height: 36px;border-radius: 3px;position: relative;margin-bottom: 18px;}
+.in-text input{border: 0 none;font: 12px/36px "microsoft yahei";width: 100%;height: 36px;vertical-align: top;color: #999999;position: absolute;left: 0;top: 0;text-indent: 32px;}
+.in-check{color: #333;margin: 0 0 14px 0;display: block;cursor:pointer;}
+.in-check input{margin-right: 6px;vertical-align: -2px;}
+.btn-login{background: #01a796;width: 100%;height: 38px;font: 16px/38px "microsoft yahei";color: #fff;text-align: center;display: block;text-decoration: none;}
+.btn-login:hover{background: #00c6b2;color: #fff;}
+.in-text span{background: #fff;z-index: 1;position: relative;height: 34px;display: inline-block;margin: 1px 0 0 1px;}
+.in-text i{width: 16px;height: 18px;display: inline-block;margin: 8px 7px;}
+.i-user{background-image: url("../images/login/ico-user.png");}
+.i-psw{background-image: url("../images/login/ico-psw.png");}
+.ico-tip{background: url("../images/login/ico-tip.png");width: 13px;height: 13px;display: inline-block;vertical-align: middle;margin-right: 5px;}
+.in-code{margin-bottom: 18px;}
+.in-code input{border: #d6d6d6 1px solid;font: 12px/36px "microsoft yahei";width: 95px;height: 36px;vertical-align: top;color: #999999;text-indent: 1em;margin-right: 8px;}
+.in-code span{display: inline-block;height: 38px;line-height: 38px;color: #0a84ce;}
+.in-code span img{vertical-align: top;margin: 4px 6px 0 0;}
+.in-code span a{color: #333;}
+
+.login-footer{height: 86px;line-height: 86px;text-align: center;color: #999;}
+

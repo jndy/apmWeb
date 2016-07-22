@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>国网邮箱监控系统-系统管理</title>
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+    <div class="header">
+        <h1 class="logo fl"></h1>
+        <ul class="nav fr clearfix">
+            <li><a href=""><i class="i-nav-1"></i><span>主控台</span></a></li>
+            <li><a href=""><i class="i-nav-2"></i><span>质量监控</span></a></li>
+            <li class="current"><a href=""><i class="i-nav-3"></i><span>故障告警</span></a></li>
+            <li><a href=""><i class="i-nav-4"></i><span>业务拨测</span></a></li>
+            <li><a href=""><i class="i-nav-5"></i><span>VIP保障</span></a></li>
+            <li><a href=""><i class="i-nav-6"></i><span>安全互通</span></a></li>
+            <li><a href=""><i class="i-nav-7"></i><span>系统管理</span></a></li>
+            <li><a href="" class="show-user"><i class="i-nav-8"></i><span>用户名</span></a>
+                <ul class="edit-user hide">
+                    <li><a href="">修改密码</a></li>
+                    <li><a href="">退出</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="wrapper">
+        <div class="sidebar">
+            <ul>
+                <li class="current">
+                    <a href="">告警通知</a>
+                </li>
+                <li>
+                    <a href="">告警历史</a>
+                </li>
+                <li>
+                    <a href="">告警配置</a>
+                </li>
+            </ul>
+        </div>
+        <div class="container">
+            <div class="bread-nav mb-20">
+                <h2>告警配置</h2><span class="tit"> *对各类告警信息进行配置管理。</span>
+            </div>
+
+            <div class="quality-tit">新建用户服务监控点</div>
+
+            <div class="alarm-guide-new">
+                <h3>基本设置</h3>
+                <ul class="clearfix">
+                    <li>
+                        <label for="" class="mod-label">监控点名称：<span>*</span></label>
+                        <div class="module-select">
+                            <span>请选择监控项</span><a href="javascript:;" class="btn-select"><i class="i-select"></i></a>
+                            <ul class="hide">
+                                <li class="active"><a href="">全部</a></li>
+                                <li><a href="">111</a></li>
+                                <li><a href="">222</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <label for="" class="mod-label">告警条件：<span>*</span></label>
+                        <div class="mod-form mod-condition">
+                            <p>普通时段：00：00~24:00</p>
+                            <dl>
+                                <dt>当页面5分钟平均</dt>
+                                <dd>
+                                    <div class="mod-condition-con">
+                                        <span class="tit">成功率</span>
+                                        <div class="module-select">
+                                            <span>大于</span><a href="javascript:;" class="btn-select"><i class="i-select"></i></a>
+                                            <ul class="hide">
+                                                <li class="active"><a href="">大于</a></li>
+                                                <li><a href="">大于</a></li>
+                                                <li><a href="">大于</a></li>
+                                            </ul>
+                                        </div>
+                                        <input type="text" class="module-input">
+                                        <span>%时进行严重告警</span>，
+                                        <div class="module-select">
+                                            <span>大于</span><a href="javascript:;" class="btn-select"><i class="i-select"></i></a>
+                                            <ul class="hide">
+                                                <li class="active"><a href="">大于</a></li>
+                                                <li><a href="">大于</a></li>
+                                                <li><a href="">大于</a></li>
+                                            </ul>
+                                        </div>
+                                        <input type="text" class="module-input">
+                                        <span>%时进行较重告警</span>，
+                                        <div class="module-select">
+                                            <span>大于</span><a href="javascript:;" class="btn-select"><i class="i-select"></i></a>
+                                            <ul class="hide">
+                                                <li class="active"><a href="">大于</a></li>
+                                                <li><a href="">大于</a></li>
+                                                <li><a href="">大于</a></li>
+                                            </ul>
+                                        </div>
+                                        <span>%时进行一般告警</span>
+                                    </div>
+                                    <div class="mod-condition-con">
+                                        <span class="tit">响应时间</span>
+                                        <div class="module-select">
+                                            <span>大于</span><a href="javascript:;" class="btn-select"><i class="i-select"></i></a>
+                                            <ul class="hide">
+                                                <li class="active"><a href="">大于</a></li>
+                                                <li><a href="">大于</a></li>
+                                                <li><a href="">大于</a></li>
+                                            </ul>
+                                        </div>
+                                        <input type="text" class="module-input">
+                                        <span>%时进行严重告警</span>，
+                                        <div class="module-select">
+                                            <span>大于</span><a href="javascript:;" class="btn-select"><i class="i-select"></i></a>
+                                            <ul class="hide">
+                                                <li class="active"><a href="">大于</a></li>
+                                                <li><a href="">大于</a></li>
+                                                <li><a href="">大于</a></li>
+                                            </ul>
+                                        </div>
+                                        <input type="text" class="module-input"><span>%时进行较重告警</span>，
+                                        <div class="module-select">
+                                            <span>大于</span><a href="javascript:;" class="btn-select"><i class="i-select"></i></a>
+                                            <ul class="hide">
+                                                <li class="active"><a href="">大于</a></li>
+                                                <li><a href="">大于</a></li>
+                                                <li><a href="">大于</a></li>
+                                            </ul>
+                                        </div>
+                                        <input type="text" class="module-input">
+                                        <span>%时进行一般告警</span>
+                                    </div>
+                                </dd>
+                            </dl>
+
+                        </div>
+                    </li>
+                    <li>
+                        <label for="" class="mod-label">关联应用服务质量：<span>*</span></label>
+                        <div class="module-select">
+                            <span>共选择0项</span><a href="javascript:;" class="btn-select"><i class="i-select"></i></a>
+                            <ul class="hide">
+                                <li class="active"><a href="">全部</a></li>
+                                <li><a href="">111</a></li>
+                                <li><a href="">222</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+                <h3>告警设置</h3>
+                <ul class="clearfix">
+                    <li>
+                        <label for="" class="mod-label">告警方式：<span>*</span></label>
+                        <div class="mod-form mod-form-select">
+                            <dl class="clearfix">
+                                <dt><label for=""><input type="checkbox">短信告警</label></dt>
+                                <dd><label for=""><input type="checkbox">严重</label></dd>
+                                <dd><label for=""><input type="checkbox">较重</label></dd>
+                                <dd><label for=""><input type="checkbox">一般</label></dd>
+                            </dl>
+                            <dl class="clearfix">
+                                <dt><label for=""><input type="checkbox">邮件告警</label></dt>
+                                <dd><label for=""><input type="checkbox">严重</label></dd>
+                                <dd><label for=""><input type="checkbox">较重</label></dd>
+                                <dd><label for=""><input type="checkbox">一般</label></dd>
+                            </dl>
+                        </div>
+                    </li>
+                    <li>
+                        <label for="" class="mod-label">告警通知人：</label>
+                        <div class="mod-form">
+                            <textarea name="" class="module-textarea"></textarea>
+                            <div class="btn-choose">
+                                <a href="javascript:">选择通知人</a>
+                                <a href="javascript:">使用常用通知人</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <label for="" class="mod-label">短信告警时间：</label>
+                        <div class="mod-form">
+                           <div class="mod-form-time">
+                               <span>每周一到周五：</span>
+                               <div class="module-select">
+                                    <span>18:00</span><a href="javascript:;" class="btn-select"><i class="i-select"></i></a>
+                                    <ul class="hide">
+                                        <li class="active"><a href="">全部</a></li>
+                                        <li><a href="">111</a></li>
+                                        <li><a href="">222</a></li>
+                                    </ul>
+                               </div>
+                                <span>到</span>
+                                <div class="module-select">
+                                    <span>18:00</span><a href="javascript:;" class="btn-select"><i class="i-select"></i></a>
+                                    <ul class="hide">
+                                        <li class="active"><a href="">18:00</a></li>
+                                        <li><a href="">18:00</a></li>
+                                        <li><a href="">18:00</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mod-form-time">
+                                <span>每周六到周日：</span>
+                                <div class="module-select">
+                                    <span>18:00</span><a href="javascript:;" class="btn-select"><i class="i-select"></i></a>
+                                    <ul class="hide">
+                                        <li class="active"><a href="">18:00</a></li>
+                                        <li><a href="">18:00</a></li>
+                                        <li><a href="">18:00</a></li>
+                                    </ul>
+                                </div>
+                                <span>到</span>
+                                <div class="module-select">
+                                    <span>18:00</span><a href="javascript:;" class="btn-select"><i class="i-select"></i></a>
+                                    <ul class="hide">
+                                        <li class="active"><a href="">全部</a></li>
+                                        <li><a href="">111</a></li>
+                                        <li><a href="">222</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <label for="" class="mod-label">备注：</label>
+                        <div class="mod-form">
+                            <textarea name="" class="module-textarea"></textarea>
+                        </div>
+                    </li>
+                </ul>
+                <div class="mod-btn">
+                    <a href="" class="btn btn-blue">保存</a><a href="" class="btn btn-gray">返回</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

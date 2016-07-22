@@ -1,0 +1,41 @@
+<div class="bread-nav mb-20">
+    <h2>登录日志</h2><span class="tit">登录日志信息列表</span>
+    <a href="javascript:;" class="btn-search-hide">查询<i class="i-down"></i></a>
+</div>
+
+<div class="retrieval-con layout-time clearfix mb-20" style="display: none;">
+    <ul class="clearfix">
+        <li>
+            <label>账号： </label>
+            <div class="module-fill w150">
+                <input type="text" class="module-input" name="userName"/>
+            </div>
+        </li>
+        <li>
+            <label>姓名： </label>
+            <div class="module-fill w150">
+                <input type="text" class="module-input" name="userRealName"/>
+            </div>
+        </li>
+        <li>
+            <label>服务器IP：</label>
+            <div class="module-fill w150">
+                <input type="text" class="module-input" name="ipAddress"/>
+            </div>
+        </li>
+    </ul>
+    <ul class="clearfix">
+        <li>
+            <label>登录时间：</label>
+            <div class="module-time">
+                <input type="text" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm'})" class="module-input" name="startTime"/><span>到</span>
+                <input type="text" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm'})" class="module-input" name="endTime"/>
+            </div>
+        </li>
+        <li>
+            <a href="javascript:;" class="btn btn-orange">查询</a>
+        </li>
+    </ul>
+</div>
+
+<div class="content_main"></div>

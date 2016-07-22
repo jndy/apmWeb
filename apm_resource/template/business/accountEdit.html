@@ -1,0 +1,89 @@
+<%if(action!='detail'){%>
+<ul> 
+	<li>
+		<label for="" class="ui-dialog-label">
+			拨测邮箱：<span class="c-red">*</span>
+		</label> 
+		<div class="module-fill">
+			<input data-required="required" data-len=",30" type="text" class="module-input" name="user_email">
+		</div> 
+	</li> 
+	<li>
+		<label for="" class="ui-dialog-label">
+			省份：<span class="c-red">*</span>
+		</label> 
+		<select style="display:none" widthNo="150" name="corp_id">
+            <% for(var i = 0; i<provinceList.length; i++) { %>
+            <option value="<%=provinceList[i]['provinceId']%>"><%=provinceList[i]['provinceName']%></option>
+            <% } %>
+        </select>
+	</li> 
+	<li>
+		<label for="" class="ui-dialog-label">
+			拨测监控点：<span class="c-red">*</span>
+		</label> 
+		<div class="module-fill module-list">
+			<% for(var i = 0; i<monitoringPoints.length; i++) { %>
+            <label>
+                <input type="checkbox" name="testing_items" value="<%=monitoringPoints[i]['item_type_id']%>" /><%=monitoringPoints[i]['item_type_name']%>
+            </label>
+            <% } %>
+		</div> 
+	</li> 
+	<li>
+		<label for="" class="ui-dialog-label">
+			拨测频次：<span class="c-red">*</span>
+		</label> 
+		<div class="module-fill module-list">
+			<label>
+                <input type="radio" name="testing_frequency" value="30" />30分钟
+            </label>
+            <label>
+                <input type="radio" name="testing_frequency" value="40" />40分钟
+            </label> 
+            <label>
+                <input type="radio" name="testing_frequency" value="50" />50分钟
+            </label> 
+            <label>
+                <input type="radio" name="testing_frequency" value="60" />60分钟
+            </label> 
+		</div> 
+	</li> 
+</ul>
+<%}
+if(action=='detail'){%>
+<ul> 
+	<li>
+		<label for="" class="ui-dialog-label">
+			拨测邮箱：<span class="c-red">*</span>
+		</label> 
+		<div class="module-fill module-list">
+			<%=user_email%>
+		</div> 
+	</li> 
+	<li>
+		<label for="" class="ui-dialog-label">
+			省份：<span class="c-red">*</span>
+		</label> 
+		<div class="module-fill module-list">
+			<%=corp_name%>
+		</div> 
+	</li> 
+	<li>
+		<label for="" class="ui-dialog-label">
+			拨测监控点：<span class="c-red">*</span>
+		</label> 
+		<div class="module-fill module-list">
+			<%=testing_items_name%>
+		</div> 
+	</li> 
+	<li>
+		<label for="" class="ui-dialog-label">
+			拨测频次：<span class="c-red">*</span>
+		</label> 
+		<div class="module-fill module-list">
+			<%=testing_frequency%>分钟
+		</div> 
+	</li> 
+</ul>
+<%}%>

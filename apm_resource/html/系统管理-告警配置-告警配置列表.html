@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>国网邮箱监控系统-系统管理</title>
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+    <div class="header">
+        <h1 class="logo fl"></h1>
+        <ul class="nav fr clearfix">
+            <li><a href=""><i class="i-nav-1"></i><span>主控台</span></a></li>
+            <li><a href=""><i class="i-nav-2"></i><span>质量监控</span></a></li>
+            <li><a href=""><i class="i-nav-3"></i><span>故障告警</span></a></li>
+            <li><a href=""><i class="i-nav-4"></i><span>业务拨测</span></a></li>
+            <li><a href=""><i class="i-nav-5"></i><span>VIP保障</span></a></li>
+            <li><a href=""><i class="i-nav-6"></i><span>安全互通</span></a></li>
+            <li class="current"><a href=""><i class="i-nav-7"></i><span>系统管理</span></a></li>
+            <li><a href="" class="show-user"><i class="i-nav-8"></i><span>用户名</span></a>
+                <ul class="edit-user hide">
+                    <li><a href="">修改密码</a></li>
+                    <li><a href="">退出</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="wrapper">
+        <div class="sidebar">
+            <ul>
+                <li>
+                    <a href="">告警配置</a>
+                    <ul class="in-side">
+                        <li class="current"><a href=""><span>告警配置列表</span><i class="arrow-r"></i></a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="">系统管理</a>
+                    <ul class="in-side hide">
+                        <li><a href=""><span>用户</span><i class="arrow-r"></i></a></li>
+                        <li><a href=""><span>登录日志</span><i class="arrow-r"></i></a></li>
+                        <li><a href=""><span>操作日志</span><i class="arrow-r"></i></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="container">
+            <div class="bread-nav mb-20">
+                <span>系统管理</span>-&gt;<span>告警配置</span>
+                <p> *对监控阀值进行配置管理，满足告警的需要。</p>
+                <!--<a href="" class="btn-search">查询<i class="i-down"></i></a>-->
+                <!-- 点击后 i-up -->
+            </div>
+
+            <div class="retrieval-con clearfix">
+                <ul>
+                    <li>
+                        <label>监控类型： </label>
+                        <div class="module-select w168">
+                            <span>全部</span><a href="javascript:;" class="btn-select"><i class="i-select"></i></a>
+                            <ul>
+                                <li class="active"><a href="">全部</a></li>
+                                <li><a href="">应用质量应用质量</a></li>
+                                <li><a href="">应用质量</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <label>监控点名称： </label>
+                        <div class="module-select w220">
+                            <span>全部</span><a href="javascript:;" class="btn-select"><i class="i-select"></i></a>
+                            <ul class="hide">
+                                <li class="active"><a href="">全部</a></li>
+                                <li><a href="">应用质量应用质量</a></li>
+                                <li><a href="">应用质量</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <label>状态：</label>
+                        <div class="module-select w135">
+                            <span>全部</span><a href="javascript:;" class="btn-select"><i class="i-select"></i></a>
+                            <ul class="hide">
+                                <li class="active"><a href="">全部</a></li>
+                                <li><a href="">应用质量应用质量</a></li>
+                                <li><a href="">应用质量</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="javascript:;" role="query" class="btn btn-orange">查询</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="mod-btn">
+                <a href="" class="btn btn-blue">新建警告</a>
+            </div>
+
+            <table class="table-con mb-20" cellspacing="0" cellpadding="0">
+                <tr>
+                    <th width="5%">序号</th>
+                    <th width="15%" align="left">监控点名称</th>
+                    <th width="10%">监控类型</th>
+                    <th width="30%">告警条件</th>
+                    <th width="10%">更新时间</th>
+                    <th width="10%">更新人</th>
+                    <th width="5%">状态</th>
+                    <th width="15%">操作</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td><div class="tl">WebAPI服务</div></td>
+                    <td>应用服务质量</td>
+                    <td><div class="tl">当页面5分钟平均交易时间大于3000ms时进行严重告警，超时比例大于30%时进行严重告警，交易成功率小于70%时进行严重告警，进程不存在时进行严重告警</div></td>
+                    <td>2016-06-22 11:27:09</td>
+                    <td>杨丹丹</td>
+                    <td>启用</td>
+                    <td><div class="td-nowrap td-fun"><a href="">修改</a><a href="">暂停</a><a href="">详情</a></div></td>
+                </tr>
+            </table>
+
+            <div class="tr">
+                <div class="module-select page">
+                    <span>20</span><a href="javascript:;" class="btn-select"><i class="i-select"></i></a>
+                    <ul class="hide">
+                        <li class="active"><a href="">20</a></li>
+                        <li><a href="">40</a></li>
+                        <li><a href="">100</a></li>
+                    </ul>
+                </div>
+                <span class="page-num">
+                    <a href="">1</a><a href="" class="current">2</a><a href="">3</a><a href="" class="page-next">&gt;</a>
+                </span>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

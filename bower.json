@@ -1,0 +1,6 @@
+{
+  "name": "apm-web",
+  "version": "1.0.0",
+  "appPath": "apm_resource",
+  "moduleName": "apmWebApp"
+}

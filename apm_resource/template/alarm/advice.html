@@ -1,0 +1,109 @@
+<div class="bread-nav mb-20">
+    <h2>告警通知</h2><span class="tit">对当前异常状态的监控信息进行实时告警</span>
+    <a href="javascript:;" class="btn-search-hide">查询<i class="i-down"></i></a>
+</div>
+<div class="retrieval-con layout-time clearfix mb-20" style="display: none;">
+    <ul class="clearfix">
+        <li>
+            <label>监控方式： </label>
+            <div class="module-fill w150">
+                <select style="display:none" widthNo="150" name="mit_way">
+                    
+                </select>
+            </div>
+        </li>
+        <li>
+            <label>监控类型：</label>
+            <div class="module-fill w150">
+                <select style="display:none" widthNo="150" name="mit_type">
+                    <option value="0">全部</option>             
+                </select>
+            </div>
+        </li>
+        <li>
+            <label>监控点名称：</label>
+            <div class="module-fill w150">
+                <select style="display:none" widthNo="150" name="mit_name">
+                    <option value="0">全部</option>
+                    
+                </select>
+            </div>
+        </li>
+    </ul>
+    <ul class="clearfix">
+        <li>
+            <label>省份：</label>
+            <div class="module-fill w150">
+                <select style="display:none" widthNo="150" name="province">
+                    <option value="0">全部</option>
+                </select>
+            </div>
+        </li>
+        <li>
+            <label>服务器IP：</label>
+            <div class="module-fill w150">
+                <input type="text" name="srv_ip" class="module-input"/>
+            </div>
+            <a href="javascript:;" class="btn btn-orange ml-10" role="query">查询</a>
+        </li>
+
+    </ul>
+</div>
+
+<div class="mod-btn">
+    <a href="javascript:void(-1);" class="btn btn-blue" role='alarm-all'>全部</a><a href="javascript:void(-1);" class="btn btn-pink" role='alarm-1'><span role="serious_1">11</span>个严重</a><a href="javascript:void(-1);" class="btn btn-orange" role='alarm-2'><span role="serious_2">10</span>个较重</a><a href="javascript:void(-1);" class="btn btn-yellow" role='alarm-3'><span role="serious_3">21</span>个一般</a>
+    <a href="javascript:void(-1);" class="see-history">查看历史告警&gt;&gt;</a>
+</div>
+
+<div class="content_main"></div>
+<script type="text/template" id="list-modify">
+    <div class="td-nowrap td-fun">
+        <a class="action" role="advice-detail" href="javascript:;">详情</a>
+        <a class="action" role="advice-ignore" href="javascript:;">忽略</a>
+        <a class="action" role="advice-remark" href="javascript:;">备注</a>
+    </div>
+</script>
+<script type="text/template" id="advice-detail-tpl">
+
+<div class="detail-dialog">
+    <ul>
+        <li>
+            <span class="l">监控点名称：</span>
+            <span class="r">{mit_name}</span>
+        </li>
+        <li>
+            <span class="l">监控类型：</span>
+            <span class="r">{mit_type}</span>
+        </li>
+        <li>
+            <span class="l">监控时间：</span>
+            <span class="r">{createtime}</span>
+        </li>
+        <li>
+            <span class="l">告警条件：</span>
+            <span class="r">{alarmCondition}</span>
+        </li>
+        <li>
+            <span class="l">告警省份：</span>
+            <span class="r">{provinceName}</span>
+        </li>
+        <li>
+            <span class="l">告警等级：</span>
+            <span class="r">{alarm_status}</span>
+        </li>
+        <li>
+            <span class="l">告警方式：</span>
+            <span class="r">{alarm_way}</span>
+        </li>
+        <li>
+            <span class="l">维护人员：</span>
+            <span class="r">{name}</span>
+        </li>
+        <li>
+            <span class="l">告警原因：</span>
+            <span class="r">{reason}</span>
+        </li>
+    </ul>
+</div>
+    
+</script>

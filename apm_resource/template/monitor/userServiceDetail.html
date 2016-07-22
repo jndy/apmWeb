@@ -1,0 +1,79 @@
+<div class="bread-nav mb-20">
+    <h2><%=item_name%></h2><span class="tit"><%=item_description%></span>
+    <a href="javascript:;" class="btn-search-hide">查询<i class="i-down"></i></a>
+</div>
+<div class="clearfix mt-20 mb-20 toolbar">
+    <div class="fl">
+        <ul class="mod-tab clearfix">
+            <li class="current"><a href="javascript:;" role="export">导出</a></li>
+            <!-- <li><a href="javascript:;">关联服务</a></li> -->
+        </ul>
+        <a href="javascript:;" class="btn btn-border" role="goback">返回</a>
+    </div>
+    <div class="fr">
+    </div>
+</div>
+<div class="retrieval-con layout-time clearfix mb-20" style="display: none;"> 
+    <ul class="clearfix">
+        <li>
+            <label>省份：</label>
+            <div class="module-fill w150">
+                <select style="display:none" widthNo="150" name="corpId">
+                    <option value="0">全部</option>
+                    <% for(var i = 0; i<provinceList.length; i++) { %>
+                    <option value="<%=provinceList[i]['provinceId']%>"><%=provinceList[i]['provinceName']%></option>
+                    <% } %>
+                </select>
+            </div>
+        </li>
+        <li>
+            <label>显示方式：</label>
+            <div class="module-fill">
+                <label>
+                    <input type="radio" name="showStyle" value="1" checked />图表
+                </label>
+                <label>
+                    <input type="radio" name="showStyle" value="2" />列表
+                </label>        
+            </div>
+        </li>        
+        <li id="liOrderBy" class="hide">
+            <label>排序：</label>
+            <div class="module-fill w150">
+                <select style="display:none" widthNo="150" name="orderby">
+                    <option value="1">成功率排序</option>
+                    <option value="2">响应时间排序</option>
+                </select>
+            </div>
+        </li>
+        <li>
+            <a href="javascript:;" class="btn btn-orange" role="query">查询</a>
+        </li>
+    </ul>
+</div>
+
+
+
+<div class="graph">
+    <div class="graph-tab clearfix">
+        <h2 class="quality-tit"><%=item_name%>成功率(%)</h2>
+    </div>
+    <div class="graph-con" style="height: 400px;" id="successRate">
+        
+    </div>
+</div>
+<div class="graph">
+    <div class="graph-tab clearfix">
+        <h2 class="quality-tit"><%=item_name%>系统响应时间(ms)</h2>
+    </div>
+    <div class="graph-con" style="height: 400px;" id="averageTime">
+        图表
+    </div>
+</div>
+
+<div class="content_main hide">
+    <div class="graph-tab clearfix">
+        <h2 class="quality-tit"><%=item_name%></h2>
+    </div>
+    <div class="grid-content"></div>
+</div>

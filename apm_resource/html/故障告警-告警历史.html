@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>国网邮箱监控系统-系统管理</title>
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+    <div class="header">
+        <h1 class="logo fl"></h1>
+        <ul class="nav fr clearfix">
+            <li><a href=""><i class="i-nav-1"></i><span>主控台</span></a></li>
+            <li><a href=""><i class="i-nav-2"></i><span>质量监控</span></a></li>
+            <li class="current"><a href=""><i class="i-nav-3"></i><span>故障告警</span></a></li>
+            <li><a href=""><i class="i-nav-4"></i><span>业务拨测</span></a></li>
+            <li><a href=""><i class="i-nav-5"></i><span>VIP保障</span></a></li>
+            <li><a href=""><i class="i-nav-6"></i><span>安全互通</span></a></li>
+            <li><a href=""><i class="i-nav-7"></i><span>系统管理</span></a></li>
+            <li><a href="" class="show-user"><i class="i-nav-8"></i><span>用户名</span></a>
+                <ul class="edit-user hide">
+                    <li><a href="">修改密码</a></li>
+                    <li><a href="">退出</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="wrapper">
+        <div class="sidebar">
+            <ul>
+                <li class="current">
+                    <a href="">告警通知</a>
+                </li>
+                <li>
+                    <a href="">告警历史</a>
+                </li>
+                <li>
+                    <a href="">告警配置</a>
+                </li>
+            </ul>
+        </div>
+        <div class="container">
+            <div class="bread-nav mb-20">
+                <h2>告警历史</h2><span class="tit">可按时间、级别、状态等维度查询历史告警</span>
+            </div>
+
+            <div class="retrieval-con layout-grid clearfix mb-20">
+                <ul>
+                    <li>
+                        <label>监控方式： </label>
+                        <div class="module-select w150">
+                            <span>全部</span><a href="javascript:;" class="btn-select"><i class="i-select"></i></a>
+                            <ul class="hide">
+                                <li class="active"><a href="">全部</a></li>
+                                <li><a href="">111</a></li>
+                                <li><a href="">222</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <label>处理状态：</label>
+                        <div class="module-select w150">
+                            <span>全部</span><a href="javascript:;" class="btn-select"><i class="i-select"></i></a>
+                            <ul class="hide">
+                                <li class="active"><a href="">全部</a></li>
+                                <li><a href="">222</a></li>
+                                <li><a href="">111</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="clearfix">
+                    <li>
+                        <label>监控类型：</label>
+                        <div class="module-select w150">
+                            <span>全部</span><a href="javascript:;" class="btn-select"><i class="i-select"></i></a>
+                            <ul class="hide">
+                                <li class="active"><a href="">全部</a></li>
+                                <li><a href="">222</a></li>
+                                <li><a href="">111</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <label>告警等级：</label>
+                        <div class="module-select w150">
+                            <span>全部</span><a href="javascript:;" class="btn-select"><i class="i-select"></i></a>
+                            <ul class="hide">
+                                <li class="active"><a href="">全部</a></li>
+                                <li><a href="">222</a></li>
+                                <li><a href="">111</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                </ul>
+                <ul class="clearfix">
+                    <li>
+                        <label>监控点名称：</label>
+                        <div class="module-select w150">
+                            <span>全部</span><a href="javascript:;" class="btn-select"><i class="i-select"></i></a>
+                            <ul class="hide">
+                                <li class="active"><a href="">全部</a></li>
+                                <li><a href="">222</a></li>
+                                <li><a href="">111</a></li>
+                            </ul>
+                        </div>
+
+                        <label class="ml-60">告警省份：</label>
+                        <div class="module-select w150">
+                            <span>全部</span><a href="javascript:;" class="btn-select"><i class="i-select"></i></a>
+                            <ul class="hide">
+                                <li class="active"><a href="">全部</a></li>
+                                <li><a href="">222</a></li>
+                                <li><a href="">111</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <label>起始时间：</label>
+                        <div class="module-time">
+                            <input type="text" class="module-input"/><span>到</span><input type="text" class="module-input"/>
+                        </div>
+                        <a href="javascript:;" class="btn btn-orange ml-60">查询</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="mod-btn">
+                共<span class="c-red">0</span>条告警记录
+            </div>
+
+            <table class="table-con mb-20" cellspacing="0" cellpadding="0">
+                <tr>
+                    <th width="100">序号</th>
+                    <th width="150">监控方式</th>
+                    <th width="178">监控点名称</th>
+                    <th width="150">监控类型</th>
+                    <th width="265">告警原因</th>
+                    <th width="110">省份/IP</th>
+                    <th width="90">告警等级</th>
+                    <th width="198">持续时长</th>
+                    <th width="158">更新时间</th>
+                    <th width="250">操作</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>日志</td>
+                    <td>IMAP登录</td>
+                    <td>VIP监控</td>
+                    <td>成功率为0%</td>
+                    <td>设计院</td>
+                    <td>严重</td>
+                    <td>338天16小时31分</td>
+                    <td>2015-07-30 15:25</td>
+                    <td><div class="td-nowrap td-fun"><a href="">详情</a><a href="">忽略</a><a href="">备注</a><a href="">预处理</a></div></td>
+                </tr>
+            </table>
+
+            <div class="tr">
+                <div class="module-select page-size">
+                    <span>20</span><a href="javascript:;" class="btn-select"><i class="i-select"></i></a>
+                    <ul class="hide">
+                        <li class="active"><a href="">20</a></li>
+                        <li><a href="">40</a></li>
+                        <li><a href="">100</a></li>
+                    </ul>
+                </div>
+                <div class="pages">
+                    <a class="page page-prev">上一页</a>
+                    <span class="page-num">
+                        <a href="javascript:;" class="current">1</a>
+                        <a href="javascript:;" class="">2</a>
+                        <a href="javascript:;" class="">3</a>
+                        <a href="javascript:;" class="">4</a>
+                        <a href="javascript:;" class="">5</a>
+                        <a href="javascript:;" class="">6</a>
+                        <a href="javascript:;" class="">7</a>
+                        <a href="javascript:;" class="">8</a>
+                    </span>
+                    <a class="page page-next">下一页</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

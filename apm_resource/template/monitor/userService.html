@@ -1,0 +1,37 @@
+<div class="bread-nav mb-20">
+    <h2>用户服务质量</h2><span class="tit">用户服务质量是指对集中化邮件邮箱的各类核心业务指标进行监控，包括web邮箱登录、通讯录、短信、邮件收发加载速度及加载成功率等。</span>
+</div>
+<div class="mod-btn">
+    <ul class="mod-tab clearfix">
+        <li class="current"><a href="javascript:;" style="width:80px;">用户体验概览</a></li>
+        <!-- <li><a href="">分布式拨测</a></li> -->
+    </ul>
+    <a href="javascript:;" class="btn btn-border" role="refresh">刷新</a>
+</div>
+<div class="quality-count clearfix">
+    <span class="fl">共有<span>19</span>个日志监控点，其中<span class="c-red"><%=fCount%></span>个异常；</span>
+    <span class="fr">统计时间段：<%=startTime%>~<%=endTime%></span>
+</div>
+<div class="quality">
+    <div class="quality-info">
+        <% for(var j = 0, jl=dList.length; j<jl; j++) {
+           if(dList[j] && dList[j].length > 0){ %>
+        <ul class="ul<%=j%>">
+            <% for(var i = 0, dt=dList[j]; i<dt.length; i++) { %>
+            <li role="hoverDiv">
+                <a href="javascript:;" class="<%=dt[i].item_class%>" role="linkItem" id="<%=dt[i].item_type_id%>" title="<%=dt[i].item_type_name%>" description="<%=dt[i].item_description%>"><%=dt[i].item_type_name%></a>
+                <div class="quality-num hide">
+                    <% if(dt[i].alarm_status == null) { %>
+                    <span>成功率：无数据</span>
+                    <span>平均响应时间：无数据</span>
+                    <% } else {%>
+                    <span>成功率：<%=dt[i].success_rates%>%</span>
+                    <span>平均响应时间：<%=dt[i].avgsendtime%>ms</span>
+                    <% } %>
+                </div>
+            </li>
+            <% } %>
+        </ul>
+        <% }} %>  
+    </div>
+</div>

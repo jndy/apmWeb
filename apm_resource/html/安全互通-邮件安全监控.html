@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>国网邮箱监控系统-系统管理</title>
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+    <div class="header">
+        <h1 class="logo fl"></h1>
+        <ul class="nav fr clearfix">
+            <li><a href=""><i class="i-nav-1"></i><span>主控台</span></a></li>
+            <li><a href=""><i class="i-nav-2"></i><span>质量监控</span></a></li>
+            <li class="current"><a href=""><i class="i-nav-3"></i><span>故障告警</span></a></li>
+            <li><a href=""><i class="i-nav-4"></i><span>业务拨测</span></a></li>
+            <li><a href=""><i class="i-nav-5"></i><span>VIP保障</span></a></li>
+            <li><a href=""><i class="i-nav-6"></i><span>安全互通</span></a></li>
+            <li><a href=""><i class="i-nav-7"></i><span>系统管理</span></a></li>
+            <li><a href="" class="show-user"><i class="i-nav-8"></i><span>用户名</span></a>
+                <ul class="edit-user hide">
+                    <li><a href="">修改密码</a></li>
+                    <li><a href="">退出</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="wrapper">
+        <div class="sidebar">
+            <ul>
+                <li class="current">
+                    <a href="">告警通知</a>
+                </li>
+                <li>
+                    <a href="">告警历史</a>
+                </li>
+                <li>
+                    <a href="">告警配置</a>
+                </li>
+            </ul>
+        </div>
+        <div class="container">
+            <div class="bread-nav mb-20">
+                <h2>恶意登录分析</h2><span class="tit">对恶意登录用户情况进行分析。</span>
+            </div>
+
+            <div class="retrieval-con clearfix">
+                <ul>
+                    <li>
+                        <label>登录IP：	</label>
+                        <div class="module-fill w150">
+                            <input type="text" class="module-input">
+                        </div>
+                    </li>
+                    <li>
+                        <a href="javascript:;" role="query" class="btn btn-orange">查询</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="clearfix mt-20 mb-20">
+                <div class="fl">
+                    <ul class="mod-tab clearfix">
+                        <li class="current"><a href="">IP&账号</a></li>
+                        <li><a href="">IP</a></li>
+                    </ul>
+                </div>
+                <div class="fr">
+                    <ul class="mod-tab clearfix">
+                        <li class="current"><a href="">最近24小时</a></li>
+                        <li><a href="">昨天</a></li>
+                        <li><a href="">最近7天</a></li>
+                        <li><a href="">最近30天</a></li>
+                        <li><a href="">自定义范围</a></li>
+                    </ul>
+                    <div class="search-range">
+                        <input type="text" class="module-input"/><input type="text" class="module-input"/>
+                        <a href="" class="btn btn-pink">自定义查询</a>
+                    </div>
+
+                </div>
+            </div>
+            
+            <div class="graph">
+                <div class="graph-tab clearfix">
+                    <ul>
+                        <li class="current"><a href="">登录次数<i></i></a></li>
+                        <li><a href="">登录账号个数<i></i></a></li>
+                    </ul>
+                </div>
+                <div class="graph-con">
+                    图表
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</body>
+</html>

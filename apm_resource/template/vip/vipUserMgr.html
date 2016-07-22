@@ -1,0 +1,74 @@
+<div class="bread-nav mb-20">
+    <h2>VIP用户管理</h2><span class="tit">对VIP用户进行管理，方便定位和跟踪VIP用户。</span>
+    <a href="javascript:;" class="btn-search-hide">查询<i class="i-down"></i></a>
+</div>
+<div class="retrieval-con layout-time mb-20" style="display: block;">
+    <ul class="clearfix long-label">
+        <li>
+            <label>更新时间：</label>
+            <div class="module-time">
+                <input onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm'})" type="text" class="module-input" name="startTime"/>
+                <span>到</span>
+                <input onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm'})" type="text" class="module-input" name="endTime"/>
+            </div>
+        </li>
+        <li>
+            <label>省份：</label>
+            <div class="module-fill w150">
+                 <select style="display:none" widthNo="150" name="role">
+                    <option value="0">全部</option>
+                    <option value="1">运维管理员</option>
+                    <option value="2">配置管理员</option>
+                    <option value="3">监控员</option>
+                    <option value="4">运维工程师</option>
+                </select>
+            </div>
+        </li>
+    </ul>
+    <ul class="clearfix long-label">
+        <li>
+            <label>VIP用户账号：</label>
+            <div class="module-fill w150">
+                <input type="text" name="srv_ip" class="module-input"/>
+            </div>
+        </li>
+        <li>
+            <label>VIP用户姓名：</label>
+            <div class="module-fill w150">
+                <input type="text" name="srv_ip" class="module-input"/>
+            </div>
+        </li>
+        
+    </ul>
+    <ul class="clearfix long-label">
+        <li>
+            <label>VIP服务等级：</label>
+            <div class="module-fill w150">
+                 <select style="display:none" widthNo="150" name="role">
+                    <option value="0">全部</option>
+                    <option value="1">运维管理员</option>
+                    <option value="2">配置管理员</option>
+                    <option value="3">监控员</option>
+                    <option value="4">运维工程师</option>
+                </select>
+            </div>
+        </li>
+        <li>
+            <label>跟踪状态：</label>
+            <div class="module-fill">
+                <label for=""><input type="checkbox" name="srv_ip" class="srv_ip"/>正常</label>
+                <label for=""><input type="checkbox" name="srv_ip" class="srv_ip"/>冻结</label>
+                <label for=""><input type="checkbox" name="srv_ip" class="srv_ip"/>注销</label>
+                <label for=""><input type="checkbox" name="srv_ip" class="srv_ip"/>删除</label>
+            </div>
+            <a href="javascript:;" class="btn btn-orange ml-10">查询</a>
+        </li>
+    </ul>
+</div>
+<div class="mod-btn">
+  
+</div>
+
+<div class="content_main">
+  
+</div>

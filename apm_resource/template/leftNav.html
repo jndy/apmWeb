@@ -1,0 +1,27 @@
+<ul>
+<% for(var i = 0 ,l=list.length;i<l;i++) { %>
+    <% if(list[i].children.length === 0) { %>
+        <li class="child-li" level="1">
+            <a href="#<%=module%>/<%=list[i].func%>">
+                <span><%=list[i].title%></span>
+                <i class="arrow-r"></i>
+            </a>
+        </li>
+    <% }else { %>
+        <li class="parent-li" level="1">
+            <a href="javascript:;"><%=list[i].title%></a>
+            <ul class="hide">
+                <% var items = list[i].children; %>
+                <% for(var j = 0 ,k=items.length;j<k;j++) { %>
+                <li class="child-li second" level="2">
+                    <a href="#<%=module%>/<%=list[i].func%>/<%=items[j].func%>">
+                        <span><%=items[j].title%></span>
+                        <i class="arrow-r"></i>
+                    </a>
+                </li>
+                <% } %>
+            </ul>
+        </li>
+    <% } %>
+<% } %>
+</ul>

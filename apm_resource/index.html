@@ -1,0 +1,145 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Language" content="zh-CN"/>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="Keywords" content=""/>
+    <meta name="Description" content=""/>
+    <title>flm-监控项目</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="css/ui-dialog.css"/>
+</head>
+
+<body>
+<div class="header">
+    <h1 class="logo fl"></h1>
+    <ul class="nav fr clearfix">
+    </ul>
+</div>
+
+<div class="control" style="display: none;">
+</div>
+
+<div class="wrapper" style="display: none;">
+    <div class="sidebar">
+    </div>
+    <div class="container">
+        内容
+    </div>
+</div>
+
+<div id="tips" style="position:fixed;_position:absolute;"><span></span></div>
+<script type="text/javascript" src="js/lib/sea.js"></script>
+<script type="text/javascript" src="js/lib/seajs-text.js"></script>
+<script type="text/javascript" src="js/lib/jquery.js"></script>
+<script type="text/javascript" src="js/lib/md5.js"></script>
+<script type="text/javascript" src="js/lib/laydate/laydate.js"></script>
+<script type="text/javascript" src="js/lib/json.js"></script>
+<script type="text/javascript" src="js/lib/dialog-plus.js"></script>
+<script type="text/javascript" src="js/lib/underscore.js"></script>
+<script type="text/javascript" src="js/lib/backbone.js"></script>
+<script type="text/javascript" src="js/lib/echarts.js"></script>
+<script type="text/javascript" src="js/lib/china.js"></script>
+
+<script type="text/javascript">
+    seajs.config({
+        base:'/',
+        vars:{
+            rootPath:'/../../'
+        },
+        alias:{
+            init:'js/init.js',
+            router:'js/router.js',
+            menu:'js/menu.js',
+            globalEnum:'js/globalEnum.js',
+            topNav:'js/cmp/topNav.js',
+            leftNav:'js/cmp/leftNav.js',
+            grid:'js/cmp/grid.js',
+            simpleGrid:'js/cmp/simpleGrid.js',
+            dateBar:'js/cmp/dateBar.js',
+            common:'js/util/common.js',
+            util:'js/util/util.js',
+            expand:'js/util/expand.js',
+            mainControl:'js/module/main/mainControl.js',
+            leftMap:'js/module/main/leftMap.js',
+            rightGrid:'js/module/main/rightGrid.js',
+            user:'js/module/manage/user.js',
+            loginLog:'js/module/manage/loginLog.js',
+            operLog:'js/module/manage/operLog.js',
+            loginAnalysy:'js/module/connect/loginAnalysy.js',
+            classAnalysy:'js/module/connect/classAnalysy.js',
+            mailAnalysy:'js/module/connect/mailAnalysy.js',
+            virusAnalysy:'js/module/connect/virusAnalysy.js',
+            sendAnalysy:'js/module/connect/sendAnalysy.js',
+            receiveAnalysy:'js/module/connect/receiveAnalysy.js',
+            net:'js/module/connect/net.js',
+            dataAnalysy:'js/module/business/dnsManage.js',
+            actionTrace:'js/module/business/actionTrace.js',
+            clientManage:'js/module/business/clientManage.js',
+            alarmApi:'js/module/alarm/alarmApi.js',
+            notifier:'js/module/alarm/notifier.js',
+            configList:'js/module/alarm/configList.js',
+            addConfig:'js/module/alarm/addConfig.js',
+            addConfigType:'js/module/alarm/addConfigType.js',
+            advice:'js/module/alarm/advice.js',
+            history:'js/module/alarm/history.js',
+            vipExp:'js/module/vip/vipExp.js',
+            vipQues:'js/module/vip/vipQues.js',
+            vipQuality:'js/module/vip/vipQuality.js',
+            vipUserMgr:'js/module/vip/vipUserMgr.js',
+            userService:'js/module/monitor/userService.js',
+            userServiceDetail:'js/module/monitor/userServiceDetail.js',
+            appService:'js/module/monitor/appService.js',
+            serviceDetail:'js/module/monitor/serviceDetail.js',
+            userArchiving:'js/module/monitor/userArchiving.js',
+            dataAnalasy:'js/module/business/dataAnalasy.js',
+            actionTrace:'js/module/business/actionTrace.js',
+            accountManage:'js/module/business/accountManage.js'
+        }
+    });
+    seajs.use('init');
+
+    /*全部网省列表*/
+    var provinceList = [
+        {'provinceId': '1', 'provinceName': '北京'},
+        {'provinceId': '2', 'provinceName': '天津'},
+        {'provinceId': '3', 'provinceName': '河北'},
+        {'provinceId': '4', 'provinceName': '山东'},
+        {'provinceId': '5', 'provinceName': '江苏'},
+        {'provinceId': '6', 'provinceName': '浙江'},
+        {'provinceId': '7', 'provinceName': '山西'},
+        {'provinceId': '8', 'provinceName': '陕西'},
+        {'provinceId': '9', 'provinceName': '安徽'},
+        {'provinceId': '10', 'provinceName': '福建'},
+        {'provinceId': '11', 'provinceName': '内蒙古'},
+        {'provinceId': '12', 'provinceName': '辽宁'}
+    ];
+    /*监控点列表*/
+    var monitoringPoints = [
+        {"item_type_id" : "1", "item_type_name" : "SMTP登录"}, 
+        {"item_type_id" : "2", "item_type_name" : "SMTP发邮件"}, 
+        {"item_type_id" : "3", "item_type_name" : "POP登录"}, 
+        {"item_type_id" : "4", "item_type_name" : "POP收邮件"}, 
+        {"item_type_id" : "5", "item_type_name" : "IMAP登录"}, 
+        {"item_type_id" : "6", "item_type_name" : "IMAP收邮件"}, 
+        {"item_type_id" : "7", "item_type_name" : "通讯录加载"}, 
+        {"item_type_id" : "8", "item_type_name" : "通讯录查询"}, 
+        {"item_type_id" : "9", "item_type_name" : "邮件到达通知"}, 
+        {"item_type_id" : "10", "item_type_name" : "Web邮箱登录"}, 
+        {"item_type_id" : "11", "item_type_name" : "Web首页打开"}, 
+        {"item_type_id" : "12", "item_type_name" : "Web写信打开"}, 
+        {"item_type_id" : "13", "item_type_name" : "Web收邮件"}, 
+        {"item_type_id" : "14", "item_type_name" : "Web发邮件"}, 
+        {"item_type_id" : "15", "item_type_name" : "Web读邮件"}, 
+        {"item_type_id" : "16", "item_type_name" : "附件上传"}, 
+        {"item_type_id" : "17", "item_type_name" : "附件下载"}, 
+        {"item_type_id" : "18", "item_type_name" : "网盘上传"}, 
+        {"item_type_id" : "19", "item_type_name" : "网盘下载"}
+    ];
+</script>
+</body>
+</html>

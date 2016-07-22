@@ -1,0 +1,19 @@
+<div class="server-ui">
+    <a href="javascript:;" class="server-ui-more">服务运行详情&gt;&gt;</a>
+    <ul class="clearfix">
+        <% for(var i = 0 ,l=list.length;i<l;i++) { %>
+        <li>
+            <img src="images/srv.jpg" alt=""/>
+            <p class="server-ui-p"><%=list[i].serverName%></p>
+            <div class="con">
+                <i class="i-top"></i>
+                <p>连接数：<%=list[i].connectCount%>次</p>
+                <p>请求数：<%=list[i].requestCount%>次</p>
+                <p>交易成功率：<%=list[i].succPercent%>%</p>
+                <p>失败次数：<a href="javascript:;" role="failDetail"><%=list[i].failCount%></a>次</p>
+                <p>交易时间：<%=list[i].connectTime%>ms</p>
+            </div>
+        </li>
+        <% } %>
+    </ul>
+</div>

@@ -1,0 +1,69 @@
+<div class="bread-nav mb-20">
+    <h2><%=item_name%></h2><span class="tit"><%=item_description%></span>
+    <a href="javascript:;" class="btn-search-hide">查询<i class="i-down"></i></a>
+</div>
+
+<div class="retrieval-con layout-time clearfix mb-20" style="display: none;"> 
+    <ul class="clearfix">
+        <li>
+            <label>省份：</label>
+            <div class="module-fill w150">
+                <select style="display:none" widthNo="150" name="corpId">
+                    <option value="0">全部</option>
+                    <% for(var i = 0; i<provinceList.length; i++) { %>
+                    <option value="<%=provinceList[i]['provinceId']%>"><%=provinceList[i]['provinceName']%></option>
+                    <% } %>
+                </select>
+            </div>
+        </li>
+        <li>
+            <label>监控点名称：</label>
+            <div class="module-fill w150">
+                <select style="display:none" widthNo="150" name="itemTypeId">
+                    <option value="0">全部</option>
+                    <% for(var i = 0; i<monitoringPoints.length; i++) { %>
+                    <option value="<%=monitoringPoints[i]['item_type_id']%>"><%=monitoringPoints[i]['item_type_name']%></option>
+                    <% } %>
+                </select>
+            </div>
+        </li>  
+        <li>
+            <label>拨测邮箱账号</label>
+            <div class="module-fill w150">
+                <input type="text" class="module-input" name="userEmail"/>
+            </div>
+        </li>    
+        <li>
+            <label>排序：</label>
+            <div class="module-fill w150">
+                <select style="display:none" widthNo="150" name="orderby">
+                    <option value="1">拨测次数排序</option>
+                    <option value="2">失败次数排序</option>
+                    <option value="3">成功率排序</option>
+                    <option value="4">平均响应时间排序</option>
+                    <option value="5">拨测最大时延排序</option>
+                </select>
+            </div>
+        </li>
+        <li>
+            <a href="javascript:;" class="btn btn-orange" role="query">查询</a>
+        </li>
+    </ul>
+</div>
+
+<div class="clearfix mt-20 mb-20 toolbar">
+    <div class="fl">
+        <ul class="mod-tab clearfix">
+            <li class="current"><a href="javascript:;" role="export">导出</a></li>
+        </ul>
+    </div>
+    <div class="fr">
+    </div>
+</div>
+
+<div class="content_main">
+    <div class="graph-tab clearfix">
+        <h2 class="quality-tit"><%=item_name%></h2>
+    </div>
+    <div class="grid-content"></div>
+</div>
