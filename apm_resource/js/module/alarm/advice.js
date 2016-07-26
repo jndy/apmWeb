@@ -118,8 +118,9 @@ define('advice',function(require,exports,module){
             $("select[name=mit_way]").empty().html(me.createOptions(mit_way));
 
 
-            $("select[name=mit_way]").off("change").on("change",function(e){
+            $("select[name=mit_way]").on("change",function(e){
                 var val = $(this).val();
+                console.log('test');
             })
 
             me.renderMitType();

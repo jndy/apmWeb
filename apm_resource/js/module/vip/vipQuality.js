@@ -6,6 +6,7 @@
  */
 define('vipQuality',function(require,exports,module){
   var tpl = require('{rootPath}/template/vip/vipQuality.html');
+  var grid = require('grid');
 
   var view = Backbone.View.extend({
         el:'.container',
@@ -17,6 +18,52 @@ define('vipQuality',function(require,exports,module){
             var html = _.template(tpl)({});
             this.$el.empty().append(html);
             util.my_select();
+            this.renderGrid();
+        },
+        renderGrid:function(){
+            $('.content_main').empty();
+            var option = {
+                el:'.content_main',
+                url:'data.do?func=vip:getVipQualityList',
+                plugin:'page',
+                tableCss:'table-con mb-20',
+                columns:[
+                    {
+                        name:'id',
+                        text:'序号'
+                    },{
+                        name:'statisticsTime',
+                        text:'统计日期'
+                    },{
+                        name:'statisticsWay',
+                        text:'统计方式'
+                    },{
+                        name:'mitName',
+                        text:'监控点名称'
+                    },{
+                        name:'vipCounts',
+                        text:'VIP用户数'
+                    },{
+                        name:'statisticsCount',
+                        text:'统计次数'
+                    },{
+                        name:'successCounts',
+                        text:'成功次数'
+                    },{
+                        name:'errorCounts',
+                        text:'失败次数'
+                    },{
+                        name:'successRate',
+                        text:'成功率'
+                    },{
+                        name:'respTime',
+                        text:'平均响应时间'
+                    }
+                ]
+                //plugin:'page'
+            };
+            var gridView = new grid(option);
+            this.gridView = gridView;
         },
         initEvents:function(){
             var me = this;

@@ -64,12 +64,14 @@ define('userService',function(require,exports,module){
         getStatusClass: function(val){
             switch(val){
                 case 0:
-                    return 'btn-normal';
+                    return 'btn-nothing';
                 case 1:
-                    return 'btn-commonly';
+                    return 'btn-normal';
                 case 2:
-                    return 'btn-heavier';
+                    return 'btn-commonly';
                 case 3:
+                    return 'btn-heavier';
+                case 4:
                     return 'btn-serious';
                 default:
                     return 'btn-nothing';

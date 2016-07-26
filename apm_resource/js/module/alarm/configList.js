@@ -88,12 +88,12 @@ define('configList',function(require,exports,module){
                 me.gridView.requestData(param,1);
             }).on('click','a[role=addConfig]',function(e){
                 me.onAddConfig();
-            }).on('click','.action',function(e){
-                var dom = $(this);
-                if(dom.hasClass('edit'))
-                    me.onEdit(dom);
-                else
-                    me.onEnable(dom);
+            }).on('click','a[role=config-edit]',function(e){
+                me.onEdit();
+            }).on('click','a[role=config-pause]',function(e){
+                me.onPause();
+            }).on('click','a[role=config-detail]',function(e){
+                me.onDetail();
             });
         },
         showQueryDiv:function(dom){
@@ -149,13 +149,17 @@ define('configList',function(require,exports,module){
             var me = this;
             util.jumpModule("alarm/configList?childView=addConfig");
         },
-        onEdit:function(dom){
+        onEdit:function(type){
+            var me = this;
+            util.jumpModule("alarm/configList?childView=updateConfigType&type=edit&oper=edit");
+        },
+        onPause:function(type){
             var me = this;
             
         },
-        onEnable:function(dom){
+        onDetail:function(type){
             var me = this;
-            
+            util.jumpModule("alarm/configList?childView=configDetail&type=detail&oper=detail");
         },
         getWindowParam:function(){
             var dialogWindow = $('.ui-dialog'),

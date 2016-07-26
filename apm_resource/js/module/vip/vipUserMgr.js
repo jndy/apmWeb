@@ -6,6 +6,7 @@
  */
 define('vipUserMgr',function(require,exports,module){
   var tpl = require('{rootPath}/template/vip/vipUserMgr.html');
+  var grid = require('grid');
 
   var view = Backbone.View.extend({
         el:'.container',
@@ -17,6 +18,43 @@ define('vipUserMgr',function(require,exports,module){
             var html = _.template(tpl)({});
             this.$el.empty().append(html);
             util.my_select();
+            this.renderGrid();
+        },
+        renderGrid: function(){
+            $('.content_main').empty();
+            var option = {
+                el:'.content_main',
+                url:'data.do?func=vip:getVipUserList',
+                plugin:'page',
+                tableCss:'table-con mb-20',
+                columns:[
+                    {
+                        name:'id',
+                        text:'序号'
+                    },{
+                        name:'province',
+                        text:'省份'
+                    },{
+                        name:'account',
+                        text:'VIP用户帐号'
+                    },{
+                        name:'userName',
+                        text:'VIP用户姓名'
+                    },{
+                        name:'VIPLevel',
+                        text:'VIP服务等级'
+                    },{
+                        name:'status',
+                        text:'跟踪状态'
+                    },{
+                        name:'updateTime',
+                        text:'更新时间'
+                    }
+                ]
+                //plugin:'page'
+            };
+            var gridView = new grid(option);
+            this.gridView = gridView;
         },
         initEvents:function(){
             var me = this;

@@ -6,6 +6,7 @@
  */
 define('vipQues',function(require,exports,module){
   var tpl = require('{rootPath}/template/vip/vipQues.html');
+  var grid = require('grid');
 
   var view = Backbone.View.extend({
         el:'.container',
@@ -17,6 +18,55 @@ define('vipQues',function(require,exports,module){
             var html = _.template(tpl)({});
             this.$el.empty().append(html);
             util.my_select();
+            this.renderGrid();
+        },
+        renderGrid:function(){
+            $('.content_main').empty();
+            var option = {
+                el:'.content_main',
+                url:'data.do?func=vip:getVipQuesList',
+                plugin:'page',
+                tableCss:'table-con mb-20',
+                columns:[
+                    {
+                        name:'id',
+                        text:'序号'
+                    },{
+                        name:'province',
+                        text:'省份'
+                    },{
+                        name:'account',
+                        text:'VIP用户帐号'
+                    },{
+                        name:'userName',
+                        text:'VIP用户姓名'
+                    },{
+                        name:'VIPLevel',
+                        text:'VIP服务等级'
+                    },{
+                        name:'mitName',
+                        text:'监控点名称'
+                    },{
+                        name:'errorType',
+                        text:'失败类型'
+                    },{
+                        name:'respTime',
+                        text:'失败类型'
+                    },{
+                        name:'errorCode',
+                        text:'失败返回状态码'
+                    },{
+                        name:'errorDesc',
+                        text:'故障描述'
+                    },{
+                        name:'operTime',
+                        text:'操作时间'
+                    }
+                ]
+                //plugin:'page'
+            };
+            var gridView = new grid(option);
+            this.gridView = gridView;
         },
         initEvents:function(){
             var me = this;

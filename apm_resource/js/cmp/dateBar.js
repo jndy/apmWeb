@@ -110,7 +110,7 @@ define('dateBar',function(){
                     break;
                 default :
                     break;
-            };
+            }
             //是否需要返回字符串类型的时间
             if(dateFormat){
                 result.st = result.st.Format(dateFormat);

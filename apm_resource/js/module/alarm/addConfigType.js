@@ -16,10 +16,12 @@ define('addConfigType',function(require,exports,module){
                 type:1
             }
         }
+        //获取地址栏参数JSON对象
+        var urlParamObj = util.urlParamObj(location.hash);
+
         var view = Backbone.View.extend({
             el:'.container',
             initialize:function(){
-
                 this.render();
                 this.initEvents();
                 this.ruleWayEventHandler();
@@ -148,9 +150,9 @@ define('addConfigType',function(require,exports,module){
                         var html = "";
                         $.each(obj,function(key,val){
                             html += val["realName"]+"("+val["role"]+")，";
-                        })
+                        });
                         return html;
-                    }
+                    };
                     if(notifiers["serious_1"]){
                         //严重
                         serious_1_html = getHtml(notifiers["serious_1"]);
@@ -204,7 +206,7 @@ define('addConfigType',function(require,exports,module){
                                 inputVal = $.trim($("input[name="+inputName+"]").val());
                             var returnVal = ((com==1)?">":"<") + inputVal;
                             return returnVal;
-                        }
+                        };
                         var obj = {
                             ruleId:ruleId,
                             ruleCondition:{
@@ -212,7 +214,7 @@ define('addConfigType',function(require,exports,module){
                                 serious_2:getVal(2),                                
                                 serious_3:getVal(3)                                
                             }
-                        }
+                        };
                         alarmCondition.push(obj);
                     })
                 }
@@ -223,7 +225,7 @@ define('addConfigType',function(require,exports,module){
                 }else{
                    $("input[name^=smsF_]").each(function(index){
                     smsF += ($(this).is(":checked")?(index+1):"0")+"|";
-                   })
+                   });
                    smsF = smsF.replace(/\|$/,"");
                 }
                 if(!$("input[name=mailF]").is(":checked")){
@@ -240,9 +242,9 @@ define('addConfigType',function(require,exports,module){
                     var arr = [];
                     $.each(obj,function(key, val){
                         arr.push({"userName":val["name"]});
-                    })
+                    });
                     return arr;
-               }
+               };
                if($("div[role='selected-notifier']").html().length>0){
                   var notifiers = notifier.getNotifiers();
                   alarmUser = {
@@ -266,6 +268,6 @@ define('addConfigType',function(require,exports,module){
             }
         });
         return new view();
-    }
+    };
     return addConfigTypeView;
 });

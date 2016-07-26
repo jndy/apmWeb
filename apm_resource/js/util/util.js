@@ -26,7 +26,7 @@ define('util',function(require,exports,module){
                     me.hideMsg();
                     if(resp.code == 'S_OK'){
                         if(options.fnSuc){
-                            options.fnSuc(resp);
+                            options.fnSuc(resp,1);
                         }
                         else{
                             me.showMsg(resp.msg);
@@ -38,7 +38,7 @@ define('util',function(require,exports,module){
                         }
                         else if(options.defaultFail === false){
                             var msg = resp.msg || options.url + '接口出错';
-                            me.showMsg(msg);
+                            me.showMsg(msg,-1);
                         }
                     }
                 },
@@ -46,7 +46,7 @@ define('util',function(require,exports,module){
                     if(!!options.fnErr)
                         options.fnErr(resp);
                     else
-                        me.showMsg(options.url + '接口出错');
+                        me.showMsg(options.url + '接口出错',-1);
                 }
             });
         },
@@ -75,16 +75,19 @@ define('util',function(require,exports,module){
          */
         showMsg:function(msg, type, autoHide){
             var tipDiv = jQuery('#tips'),
-                type = type == undefined ? '0': type,
-                cssArr = ['orange','green','red'];
+                type = type == undefined ? 0: type,
+                cssArr = ['red','orange','green'];
 
-            tipDiv.attr('class',cssArr[type]);
+            tipDiv.attr('class',cssArr[type+1]);
             tipDiv.html(msg);
             tipDiv.show();
-            if(autoHide === true){
-                setTimeout(function(){
+            if(autoHide !== false){
+                if(window.autoHideHandler){
+                    clearTimeout(window.autoHideHandler)
+                }
+                window.autoHideHandler = setTimeout(function(){
                     tipDiv.hide();
-                },3000);
+                },2000);
             }
         },
         /**
@@ -92,6 +95,9 @@ define('util',function(require,exports,module){
          */
         hideMsg:function(){
             jQuery('#tips').hide();
+            if(window.autoHideHandler){
+                clearTimeout(window.autoHideHandler)
+            }
         },
         /**
          * 获取某个输入组件的值
@@ -316,7 +322,7 @@ define('util',function(require,exports,module){
                 var widthCss = 'w' + (that.attr('widthNo')|| 150);
 
                 if (that.parent(".module-select").length == 0) {
-                    var select_wrap = $('<div class="module-select '+widthCss +'"></div>');
+                    var select_wrap = $('<div active="false" class="module-select '+widthCss +'"></div>');
                     var $arrow = $('<a href="javascript:;" class="btn-select"><i class="i-select"></i></a>');
                     var $ul = $('<ul style="display: none;"></ul>');
                     var $li = "";
@@ -348,6 +354,12 @@ define('util',function(require,exports,module){
                 var ulList = _this.find("ul");
                 var ul_li = ulList.find("li");
                 var p_txt = _this.find("span");
+
+                $('.module-select ul:visible').each(function(index,item){
+                    var selectItem = $(item);
+                    if(selectItem.is(':visible') && !selectItem.is(ulList))
+                        selectItem.slideToggle(100);
+                });
                 event.stopPropagation();
                 ulList.slideToggle(100);
 //                if ($(this).css("zIndex") == 888) {
@@ -355,12 +367,12 @@ define('util',function(require,exports,module){
 //                } else {
 //                    $(this).css("zIndex", 888)
 //                }
-                ul_li.on("click",function () {
+                ul_li.off().on("click",function () {
                     var index = $(this).index();
                     p_txt.text($(this).text());
                     p_txt.attr('optionValue',$(this).find('a').attr('optionValue'));
                     _this.find("option").removeAttr("selected").eq(index).prop("selected", "selected");
-                    _this.find("select").trigger("change")
+                    _this.find("select").trigger("change");
                 });
             });
         },
@@ -427,8 +439,8 @@ define('util',function(require,exports,module){
         /***
          *格式化字符串高级版，提供数组和object两种方式
          *@example
-         *$T.Utils.format("hello,{name}",{name:"kitty"})
-         *$T.Utils.format("hello,{0}",["kitty"])
+         *util.format("hello,{name}",{name:"kitty"})
+         *util.format("hello,{0}",["kitty"])
          *@returns {String}
          */
         format_advanced: function (str, arr) {
@@ -447,6 +459,24 @@ define('util',function(require,exports,module){
                 }
             });
         },
+        /**
+         * 将URL请求参数转为JSON对象
+         * @param url 
+         * @return json obj
+         */
+        urlParamObj: function (url) {
+          var reg_url = /^[^\?]+\?([\w\W]+)$/,
+              reg_para = /([^&=]+)=([\w\W]*?)(&|$|#)/g,
+              arr_url = reg_url.exec(url),
+              ret = {};
+          if(arr_url && arr_url[1]){
+            var str_para = arr_url[1], result;
+            while ((result = reg_para.exec(str_para)) != null) {
+                ret[result[1]] = result[2];
+            }
+          }
+          return ret;
+         },
         /**
          * 用于系统内部的模块跳转，支持A模块跳转到B模块B1功能的第N视图
          * @param url

@@ -196,6 +196,24 @@ app.post('/apm/data.do', function (req, res) {
         case 'connect:getQualityAnalasyGrid':
             response = {"code": "S_OK", "errorCode": "", "msg": "", "var": appService.qualityGridData}
             break;
+
+        //VIP保障
+        case 'vip:getVipExpList':
+            response = {"code": "S_OK", "errorCode": "", "msg": "", "var": {'dataList':fixtures.getVipExpList}}
+            break;
+        case 'vip:getVipQuesList':
+            response = {"code": "S_OK", "errorCode": "", "msg": "", "var": {'dataList':fixtures.getVipQuesList}}
+            break;
+        case 'vip:getVipQualityList':
+            response = {"code": "S_OK", "errorCode": "", "msg": "", "var": {'dataList':fixtures.getVipQualityList}}
+            break;
+        case 'vip:getVipUserList':
+            response = {"code": "S_OK", "errorCode": "", "msg": "", "var": {'dataList':fixtures.getVipUserList}}
+            break;
+        case 'vip:updateStatus':
+            response = {"code": "S_OK", "errorCode": "", "msg": "", "var": {}}
+            break;
+
         // case '':
         //   response =
         //   break;

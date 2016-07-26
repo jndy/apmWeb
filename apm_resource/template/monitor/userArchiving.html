@@ -18,7 +18,7 @@
             <li role="hoverDiv">
                 <a href="javascript:;" class="<%=dt[i].item_class%>" role="linkItem" id="<%=dt[i].item_type_id%>" title="<%=dt[i].item_type_name%>" description="<%=dt[i].item_description%>"><%=dt[i].item_type_name%></a>
                 <div class="quality-num hide">
-                    <% if(dt[i].alarm_status == null) { %>
+                    <% if(dt[i].alarm_status == 0) { %>
                     <span>成功率：无数据</span>
                     <span>平均响应时间：无数据</span>
                     <% } else {%>

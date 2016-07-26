@@ -42,7 +42,7 @@ define('addConfig',function(require,exports,module){
                 var me = this;
                 var fnSuc = function(resp){
                     me.renderContent(resp);
-                }
+                };
                 alarmApi.getConfigType({fnSuc:fnSuc});
             },
             initEvents:function(){

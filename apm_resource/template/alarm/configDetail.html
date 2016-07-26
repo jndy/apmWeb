@@ -1,0 +1,93 @@
+<div class="bread-nav mb-20">
+    <h2>查看告警配置</h2><span class="tit">查看告警配置详细信息</span>
+</div>
+<div class="content_main">
+  <div class="quality-tit">查看用户服务监控点</div>
+  
+</div>
+<script type="text/template" id="config-detail-tpl">
+    <div class="alarm-guide-new">
+        <h3>基本设置</h3>
+        <ul class="clearfix">
+            <li>
+                <label for="" class="mod-label">监控点名称：<span>*</span></label>
+                <div class="module-fill">
+                   {mitName}
+                </div>
+            </li>
+            <li>
+                <label for="" class="mod-label">告警条件：<span>*</span></label>
+                <div class="mod-form mod-condition">
+                    <p>普通时段：00：00~24:00</p>
+                    <dl>
+                        <dt>当页面5分钟平均</dt>
+                        <dd id="config-rule">
+                            {alarmCondition}
+                        </dd>
+                    </dl>
+
+                </div>
+            </li>
+            
+        </ul>
+        <h3>告警设置</h3>
+        <ul class="clearfix">
+            <li>
+                <label for="" class="mod-label">告警方式：<span>*</span></label>
+                <div class="mod-form mod-form-select">
+                    <dl class="clearfix">
+                        <dt><label for=""><input name="smsF" type="checkbox" disabled="true">短信告警</label></dt>
+                        <dd><label for=""><input type="checkbox" name="smsF_1" disabled="true" >严重</label></dd>
+                        <dd><label for=""><input name="smsF_2" type="checkbox" disabled="true">较重</label></dd>
+                        <dd><label for=""><input name="smsF_3" type="checkbox" disabled="true">一般</label></dd>
+                    </dl>
+                    <dl class="clearfix">
+                        <dt><label for=""><input name="mailF" type="checkbox" disabled="true">邮件告警</label></dt>
+                        <dd><label for=""><input name="mailF_1" type="checkbox" disabled="true">严重</label></dd>
+                        <dd><label for=""><input name="mailF_2" type="checkbox" disabled="true">较重</label></dd>
+                        <dd><label for=""><input name="mailF_3" type="checkbox" disabled="true">一般</label></dd>
+                    </dl>
+                </div>
+            </li>
+            <li>
+                <label for="" class="mod-label">告警通知人：</label>
+                <div class="mod-form">
+                    <div class="module-textarea" role="selected-notifier">{notifiers}</div>
+                </div>
+            </li>
+            <li>
+                <label for="" class="mod-label">短信告警时间：</label>
+                <div class="mod-form">
+                   <div class="mod-form-time">
+                       <span>每周一到周五：</span>
+                       <div class="module-fill">
+                            {time_1}
+                       </div>
+                        <span>到</span>
+                        <div class="module-fill">
+                            {time_2}
+                        </div>
+                    </div>
+                    <div class="mod-form-time">
+                        <span>每周六到周日：</span>
+                        <div class="module-fill">
+                            {time_3}
+                        <span>到</span>
+                        <div class="module-fill">
+                          {time_4}
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <label for="" class="mod-label">备注：</label>
+                <div class="mod-form">
+                    <textarea name="config-remark" disabled="true" class="module-textarea">{remark}</textarea>
+                </div>
+            </li>
+        </ul>
+        <div class="mod-btn">
+            <a href="javascript:void(-1);" class="btn btn-gray" role="back">返回</a>
+        </div>
+    </div>
+</script>

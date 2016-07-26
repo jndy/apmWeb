@@ -27,13 +27,13 @@ exports.userServiceQuality = [
   	{"createtime" : null, "success_rates" : 99.52, "avgsendtime" : 221.27, "item_type_name" : "IMAP收邮件", "item_type_id" : "6", "alarm_status" : 3, "point_order" : 1, "item_description" : "对通过IMAP协议收取邮件的情况进行监控，包括邮件收取成功率、邮件接收用时和收邮件用时分布状况监控。" }, 
   	{"createtime" : null, "success_rates" : 99.52, "avgsendtime" : 221.27, "item_type_name" : "通讯录加载", "item_type_id" : "7", "alarm_status" : 0, "point_order" : 3, "item_description" : "对通讯录加载质量进行监控，包括整体通讯录加载成功率、通讯录加载用时及通讯录加载用时分布。" }, 
   	{"createtime" : null, "success_rates" : 99.52, "avgsendtime" : 221.27, "item_type_name" : "通讯录查询", "item_type_id" : "8", "alarm_status" : 0, "point_order" : 3, "item_description" : "对通讯录查询功能进行监控，包括整体通讯录查询成功率、通讯录查询用时。" }, 
-  	{"createtime" : null, "success_rates" : 99.52, "avgsendtime" : 221.27, "item_type_name" : "邮件到达通知", "item_type_id" : "9", "alarm_status" : null, "point_order" : 4, "item_description" : "对用户所接收的邮件到达通知短信质量进行监控，包括邮件到达通知发送成功率。" }, 
+  	{"createtime" : null, "success_rates" : 99.52, "avgsendtime" : 221.27, "item_type_name" : "邮件到达通知", "item_type_id" : "9", "alarm_status" : 4, "point_order" : 4, "item_description" : "对用户所接收的邮件到达通知短信质量进行监控，包括邮件到达通知发送成功率。" }, 
 	  {"createtime" : null, "success_rates" : 99.52, "avgsendtime" : 221.27, "item_type_name" : "Web邮箱登录", "item_type_id" : "10", "alarm_status" : 0, "point_order" : 5, "item_description" : "对Web邮箱登录质量进行监控，包括Web邮箱整体登录成功率、登录用时、登录人数。" }, 
   	{"createtime" : null, "success_rates" : 99.52, "avgsendtime" : 221.27, "item_type_name" : "Web首页打开", "item_type_id" : "11", "alarm_status" : 0, "point_order" : 5, "item_description" : "对Web邮箱的首页打开质量进行监控，包括Web邮箱整体首页打开成功率、首页打开用时及首页打开用时分布。" }, 
   	{"createtime" : null, "success_rates" : 89.51, "avgsendtime" : 1671.11, "item_type_name" : "Web写信打开", "item_type_id" : "12", "alarm_status" : 3, "point_order" : 6, "item_description" : "对Web邮箱的写信页打开质量进行监控，包括Web邮箱整体写信页打开成功率、写信页打开用时及写信页打开用时分布。" }, 
   	{"createtime" : null, "success_rates" : 99.52, "avgsendtime" : 221.27, "item_type_name" : "Web收邮件", "item_type_id" : "13", "alarm_status" : 1, "point_order" : 6, "item_description" : "对用户打开Web收件箱列表的情况进行监控，包括邮件打开收件箱列表成功率、打开用时。" }, 
-  	{"createtime" : null, "success_rates" : 99.52, "avgsendtime" : 221.27, "item_type_name" : "Web发邮件", "item_type_id" : "14", "alarm_status" : null, "point_order" : 6, "item_description" : "对Web邮箱发送邮件情况进行监控，包括邮件发送成功率、邮件发送用时、发邮件人数和发邮件用时分布状况监控。" }, 
-  	{"createtime" : null, "success_rates" : 99.52, "avgsendtime" : 221.27, "item_type_name" : "Web读邮件", "item_type_id" : "15", "alarm_status" : null, "point_order" : 6, "item_description" : "对Web邮箱读取邮件情况进行监控，包括邮件读取成功率、邮件读取用时、读取邮件失败次数监控。" }, 
+  	{"createtime" : null, "success_rates" : 99.52, "avgsendtime" : 221.27, "item_type_name" : "Web发邮件", "item_type_id" : "14", "alarm_status" : 4, "point_order" : 6, "item_description" : "对Web邮箱发送邮件情况进行监控，包括邮件发送成功率、邮件发送用时、发邮件人数和发邮件用时分布状况监控。" }, 
+  	{"createtime" : null, "success_rates" : 99.52, "avgsendtime" : 221.27, "item_type_name" : "Web读邮件", "item_type_id" : "15", "alarm_status" : 4, "point_order" : 6, "item_description" : "对Web邮箱读取邮件情况进行监控，包括邮件读取成功率、邮件读取用时、读取邮件失败次数监控。" }, 
   	{"createtime" : null, "success_rates" : 99.52, "avgsendtime" : 221.27, "item_type_name" : "附件上传", "item_type_id" : "16", "alarm_status" : 0, "point_order" : 7, "item_description" : "对附件上传质量进行监控，包括整体附件上传成功率、附件上传用时、附件上传用时分布。" }, 
 	  {"createtime" : null, "success_rates" : 99.52, "avgsendtime" : 221.27, "item_type_name" : "附件下载", "item_type_id" : "17", "alarm_status" : 2, "point_order" : 7, "item_description" : "对附件下载质量进行监控，包括整体附件下载成功率、附件下载用时及附件下载用时分布。" }, 
   	{"createtime" : null, "success_rates" : 99.52, "avgsendtime" : 221.27, "item_type_name" : "网盘上传", "item_type_id" : "18", "alarm_status" : 0, "point_order" : 8, "item_description" : "网盘上传描述" }, 
@@ -113,7 +113,7 @@ exports.accountInfo = {"account_id" : 125, "createtime" : null, "user_email" : "
 /*归档用户服务质量监控点列表数据*/
 exports.userArchivingQuality = [
     {"createtime" : null, "success_rates" : 99.52, "avgsendtime" : 221.27, "item_type_name" : "Web登录", "item_type_id" : "21", "alarm_status" : 0, "point_order" : 1, "item_description" : "通过对Web登录邮箱的质量进行监控，包括SMTP登录成功率、登录用时。" }, 
-    {"createtime" : null, "success_rates" : 99.52, "avgsendtime" : 221.27, "item_type_name" : "邮件归档", "item_type_id" : "22", "alarm_status" : null, "point_order" : 1, "item_description" : "对邮件归档情况进行监控，包括邮件发送成功率、邮件发送用时。" }, 
+    {"createtime" : null, "success_rates" : 99.52, "avgsendtime" : 221.27, "item_type_name" : "邮件归档", "item_type_id" : "22", "alarm_status" : 4, "point_order" : 1, "item_description" : "对邮件归档情况进行监控，包括邮件发送成功率、邮件发送用时。" }, 
     {"createtime" : null, "success_rates" : 99.52, "avgsendtime" : 221.27, "item_type_name" : "读邮件", "item_type_id" : "23", "alarm_status" : 0, "point_order" : 1, "item_description" : "通过对读邮件进行监控，包括POP登录成功率、登录用时。" }, 
     {"createtime" : null, "success_rates" : 99.52, "avgsendtime" : 221.27, "item_type_name" : "邮件检索", "item_type_id" : "24", "alarm_status" : 1, "point_order" : 1, "item_description" : "通过对邮件检索进行监控，包括邮件收送成功率、邮件收送用时和收邮件用时分布状况监控。" }, 
     {"createtime" : null, "success_rates" : 99.52, "avgsendtime" : 221.27, "item_type_name" : "邮件还原", "item_type_id" : "25", "alarm_status" : 2, "point_order" : 1, "item_description" : "通过对邮件还原进行监控，包括IMAP登录成功率、登录用时。" }, 
@@ -170,4 +170,26 @@ exports.notifiers = [
   {id:1,userName:"ccc",userRealName:"aaadddccc",roleName:'管理员',userPhone:'1111'},
   {id:1,userName:"eee",userRealName:"aaaffff",roleName:'管理员',userPhone:'1111'},
   {id:1,userName:"ggg",userRealName:"aaaffff",roleName:'管理员',userPhone:'1111'}
+];
+
+////VIP保障
+
+/*VIP保障-VIP用户体验跟踪*/
+exports.getVipExpList = [
+  {id:1, operTime:"2015-07-21", mitName:"邮件到达", respTime:"2015-06-22", status:1, account:"admin", userName:"管理员", province:"广东", respCode:1 ,errorDesc:"邮件到达时间太久"}
+];
+
+/*VIP保障-VIP用户问题跟踪*/
+exports.getVipQuesList = [
+  {id:1, province:"广东", account:"admin", userName:"管理员", vipLevel:"VIP等级", mitName:"邮件到达率", errorType:1, respTime:"2015-06-22", respCode:1, errorDesc:"响应时间慢",operTime:"2015-06-11"}
+];
+
+/*VIP保障-VIP服务质量*/
+exports.getVipQualityList = [
+  {id:1, statisticsTime:"2015-03-21", statisticsWay:"周期", mitName:"邮件提醒", vipCounts:"111", statisticsCount:22, successCounts:1, errorCounts:2, successRate:"80", respTime:"2014-05-20"}
+];
+
+/*VIP保障-VIP用户列表*/
+exports.getVipUserList = [
+  {id:1, province:"广东", account:20, userName:"admin", vipLevel:"VIP等级", status:2, updateTime:"2015-03-22"}
 ];
