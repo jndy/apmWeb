@@ -6,14 +6,14 @@
  */
 define('alarmApi',function(require,exports,module){
   
-  var _fnErr = function(resp){
+  var _fnFail = function(resp){
      util.showMsg('接口请求出错',-1);
   }
 
   var _request = function(options){
     var param = options.param||{};
-    var fnErr = options.fnErr || _fnErr;
-    util.request({url:options.url,param:param,fnSuc:options.fnSuc,fnErr:fnErr});
+    var fnFail = options.fnFail || _fnFail;
+    util.request({url:options.url,param:param,fnSuc:options.fnSuc,fnFail:fnFail});
   }
 
   /**
@@ -72,7 +72,9 @@ define('alarmApi',function(require,exports,module){
    * @return {[type]} [description]
    */
   exports.updateAdviceRemark = function(){
-
+    options.url = 'data.do?func=alarm:alarmOperation';
+    options["opertareType"] = 3;
+    _request(options);
   }
 
   /**
@@ -80,8 +82,21 @@ define('alarmApi',function(require,exports,module){
    * [updateAdviceIgnore description]
    * @return {[type]} [description]
    */
-  exports.updateAdviceIgnore = function(){
+  exports.updateAdviceIgnore = function(options){
+    options.url = 'data.do?func=alarm:alarmOperation';
+    options["opertareType"] = 1;
+    _request(options);
+  }
 
+  /**
+   * 已恢复告警通知
+   * [updateAdviceResume description]
+   * @return {[type]} [description]
+   */
+  exports.updateAdviceResume = function(options){
+    options.url = 'data.do?func=alarm:alarmOperation';
+    options["opertareType"] = 2;
+    _request(options);
   }
 
   /**

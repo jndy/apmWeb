@@ -81,7 +81,7 @@ define('receiveAnalysy',function(require,exports,module){
                 text:'入信成功数'
             },{
                 name:'failCount',
-                text:'入信失败数',
+                text:'邮件拦截数',
                 renderer:function(val,index ,item){
                     if(val == 0)
                         return val;
@@ -90,13 +90,10 @@ define('receiveAnalysy',function(require,exports,module){
                 }
             },{
                 name:'succPercent',
-                text:'发送成功率',
+                text:'邮件拦截率',
                 renderer:function(val){
                     return val+'%';
                 }
-            },{
-                name:'avgSendTime',
-                text:'平均发送时间'
             }];
             var option = {
                 el:'.grid-content',
@@ -130,6 +127,11 @@ define('receiveAnalysy',function(require,exports,module){
                 me.queryData();
             }).on('timeChange','.toolbar .fr div[role=dateBar]',function(e,value){
                 me.queryData();
+            }).on('click','.action.failDetail',function(e){
+                var email = $(this).attr('mail');
+                me.getFailDetail(email)
+            }).on('change','select',function(e){
+                me.queryGrid();
             });
         },
         defaultClick:function(){
@@ -176,7 +178,70 @@ define('receiveAnalysy',function(require,exports,module){
                     me.renderChart(resp['var']);
                 }
             });
-            me.gridView.requestData(me.getParam(true),1);
+            me.queryGrid();
+        },
+        queryGrid:function(){
+            this.gridView.requestData(this.getParam(true),1);
+        },
+        getFailDetail:function(email){
+            var me = this;
+            util.dialog('  ','<div class="failPieChart" style="width: 600px;height: 300px;"></div>',null,null,{id:'peiFail',cancelDisplay:false,onshow:function(){
+                util.request({
+                    url:'data.do?func=service:analyseServerFail',
+                    param:{email:email},
+                    fnSuc:function(res){
+                        var data = res['var'];
+                        me.drawPieChart(data);
+                    }
+                });
+            }
+            });
+
+        },
+        drawPieChart:function(data){
+            var chart = echarts.init(jQuery('.ui-dialog .failPieChart')[0]);
+            var legendData = [];
+            $.each(data.dataList,function(index,item){
+                legendData.push(item.name);
+            });
+            var option = {
+                title : {
+                    text: '邮件拦截原因分析',
+                    x:'center'
+                },
+                tooltip : {
+                    trigger: 'item',
+                    formatter: "{b}"
+                },
+                legend: {
+                    orient: 'vertical',
+                    left: 'right',
+                    align:'left',
+                    y:'middle',
+                    data: legendData
+                },
+                series : [
+                    {
+                        type: 'pie',
+                        radius : '65%',
+                        center: ['20%', '50%'],
+                        data:data.dataList,
+                        itemStyle: {
+                            normal:{
+                                label:{
+                                    show:false
+                                }
+                            },
+                            emphasis: {
+                                shadowBlur: 10,
+                                shadowOffsetX: 0,
+                                shadowColor: 'rgba(0, 0, 0, 0.5)'
+                            }
+                        }
+                    }
+                ]
+            };
+            chart.setOption(option);
         },
         checkParam:function(){
             var me = this,
@@ -192,7 +257,7 @@ define('receiveAnalysy',function(require,exports,module){
         getParam:function(isGrid){
             var me = this,
                 param = {},
-                orderType = util.getVal('.retrieval-con input[name=orderType]','select'),
+                orderType = util.getVal('span[name=orderType]','select'),
                 dateBar = me.dateBar;
 
             $.extend(param,dateBar.getValue(null,'yyyy-MM-dd HH:mm'));

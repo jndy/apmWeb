@@ -56,8 +56,7 @@ define('operLog',function(require,exports,module){
                 var dom = $(this).find('i');
                 me.showQueryDiv(dom);
             }).on('click','a[role=query]',function(e){
-                var param = me.getParam();
-                me.gridView.requestData(param,1);
+                me.queryData();
             });
         },
         showQueryDiv:function(dom){
@@ -73,6 +72,14 @@ define('operLog',function(require,exports,module){
                 me.$el.find('.retrieval-con').css('display','none');
             }
         },
+        queryData:function(){
+            var me = this,
+                param = me.getParam();
+
+            if(!param)
+                return;
+            me.gridView.requestData(param,1);
+        },
         getParam:function(){
             var me = this,
                 param = {},
@@ -83,7 +90,7 @@ define('operLog',function(require,exports,module){
                 param.operDesc = operDesc;
             }
 
-            operator = util.getVal('.retrieval-con input[name=realName]');
+            operator = util.getVal('.retrieval-con input[name=opertor]');
             if(operator != ''){
                 param.operator = operator;
             }

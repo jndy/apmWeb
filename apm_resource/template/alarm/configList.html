@@ -1,5 +1,5 @@
 <div class="bread-nav mb-20">
-    <h2>告警配置</h2><span class="tit">*对监控阀值进行配置管理，满足告警的需要。</span>
+    <h2>告警配置</h2><span class="tit">对监控阀值进行配置管理，满足告警的需要。</span>
     <a href="javascript:;" class="btn-search-hide">查询<i class="i-down"></i></a>
 </div>
 
@@ -8,39 +8,30 @@
         <li>
             <label>监控类型： </label>
             <div class="module-fill w150">
-                 <select style="display:none" widthNo="150" name="role">
-                    <option value="0">全部</option>
-                    <option value="1">运维管理员</option>
-                    <option value="2">配置管理员</option>
-                    <option value="3">监控员</option>
-                    <option value="4">运维工程师</option>
+                 <select style="display:none" widthNo="150" name="mitType">
+                    <option value="">全部</option>                    
                 </select>
             </div>
         </li>
         <li>
             <label>监控点名称：</label>
-            <div class="module-fill w150">
-                 <select style="display:none" widthNo="150" name="role">
-                    <option value="0">全部</option>
-                    <option value="1">运维管理员</option>
-                    <option value="2">配置管理员</option>
-                    <option value="3">监控员</option>
-                    <option value="4">运维工程师</option>
+            <div class="module-fill w150" role="mitName">
+                 <select style="display:none" widthNo="150" name="mitName">
+                    <option value="">全部</option>
                 </select>
             </div>
         </li>
         <li>
             <label>状态：</label>
             <div class="module-fill w150">
-                 <select style="display:none" widthNo="150" name="role">
-                    <option value="0">全部</option>
-                    <option value="1">运维管理员</option>
-                    <option value="2">配置管理员</option>
-                    <option value="3">监控员</option>
-                    <option value="4">运维工程师</option>
+                 <select style="display:none" widthNo="150" name="status">
+                    <option value="">全部</option>
+                    <option value="4">严重</option>
+                    <option value="3">较重</option>
+                    <option value="2">一般</option>
                 </select>
             </div>
-            <a href="javascript:;" class="btn btn-orange ml-10">查询</a>
+            <a href="javascript:;" class="btn btn-orange ml-10" role="query">查询</a>
         </li>
     </ul>
 

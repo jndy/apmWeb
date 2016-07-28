@@ -2,9 +2,7 @@
     <h2>归档用户服务质量</h2><span class="tit">归档用户服务质量是指对国网归档系统的各类核心业务指标进行监控，包括web邮箱登录、邮件归档、邮件检索等。</span>
 </div>
 <div class="mod-btn">
-    <ul class="mod-tab clearfix">
-        <li class="current"><a href="javascript:;" style="width:80px;">归档用户体验概览</a></li>
-    </ul>
+    <a href="javascript:;" class="btn btn-blue">归档用户体验概览</a>
     <a href="javascript:;" class="btn btn-border" role="refresh">刷新</a>
 </div>
 <div class="quality-count clearfix">
@@ -16,14 +14,14 @@
         <ul>
             <% for(var i = 0, dt=dList; i<dt.length; i++) { %>
             <li role="hoverDiv">
-                <a href="javascript:;" class="<%=dt[i].item_class%>" role="linkItem" id="<%=dt[i].item_type_id%>" title="<%=dt[i].item_type_name%>" description="<%=dt[i].item_description%>"><%=dt[i].item_type_name%></a>
+                <a href="javascript:;" class="<%=dt[i].itemClass%>" role="linkItem" id="<%=dt[i].itemTypeId%>" title="<%=dt[i].itemTypeName%>" description="<%=dt[i].itemDescription%>"><%=dt[i].itemTypeName%></a>
                 <div class="quality-num hide">
-                    <% if(dt[i].alarm_status == 0) { %>
+                    <% if(dt[i].alarmStatus == 5) { %>
                     <span>成功率：无数据</span>
                     <span>平均响应时间：无数据</span>
                     <% } else {%>
-                    <span>成功率：<%=dt[i].success_rates%>%</span>
-                    <span>平均响应时间：<%=dt[i].avgsendtime%>ms</span>
+                    <span>成功率：<%=dt[i].successRates%>%</span>
+                    <span>平均响应时间：<%=dt[i].avgSendTime%>ms</span>
                     <% } %>
                 </div>
             </li>

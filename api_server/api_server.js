@@ -136,15 +136,15 @@ app.post('/apm/data.do', function (req, res) {
         case 'alarm:advice':
             response = {'code': 'S_OK', 'errorCode': '', 'msg': '', "var": { "listCount": 82, 'dataList': fixtures.adviceList}};
             break;
-    case 'alarm:getAdviceDetail':
-    response = {'code': 'S_OK', 'errorCode': '', 'msg':'', "var": fixtures.getAdviceDetail};
-    break;
+        case 'alarm:getAdviceDetail':
+            response = {'code': 'S_OK', 'errorCode': '', 'msg':'', "var": fixtures.getAdviceDetail};
+            break;
         case 'alarm:history':
             response = {'code': 'S_OK', 'errorCode': '', 'msg': '告警历史', "var": {'startTime': '07月12日17:00:00', 'endTime': '17:04:59', "current": 0, "retCode": 0, "listCount": 82, 'dataList': fixtures.historyList}};
             break;
-    case 'alarm:getNotifiers':
-    response = {'code': 'S_OK', 'errorCode': '', 'msg':'', "var": {"listCount" : 40, 'dataList': fixtures.notifiers}};
-    break;
+        case 'alarm:getNotifiers':
+            response = {'code': 'S_OK', 'errorCode': '', 'msg':'', "var": {"listCount" : 40, 'dataList': fixtures.notifiers}};
+            break;
         case 'alarm:getMonitor':
             response = {'code': 'S_OK', 'errorCode': '', 'msg': '', "var": {'dataList': fixtures.monitorList}};
             break;
@@ -213,7 +213,12 @@ app.post('/apm/data.do', function (req, res) {
         case 'vip:updateStatus':
             response = {"code": "S_OK", "errorCode": "", "msg": "", "var": {}}
             break;
-
+        case 'main:getServerTime':
+            response = {"code": "S_OK", "errorCode": "", "msg": "", "var": "2016-07-25 12:00:00"}
+            break;
+        case 'main:getTotalStatic':
+            response = {"code": "S_OK", "errorCode": "", "msg": "", "var": appService.mapData}
+            break;
         // case '':
         //   response =
         //   break;

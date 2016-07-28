@@ -13,7 +13,7 @@ define('router',function(require,exports,module){
 	var router = Backbone.Router.extend({
         routes:{
             '':'loadDefault',
-            'main':'loadMain',
+            'main':'loadModule',
             'monitor':'loadModule',
             'alarm':'loadModule',
             'business':'loadModule',
@@ -38,11 +38,20 @@ define('router',function(require,exports,module){
                     require.async(childViewName,function(obj){
                         if(!obj )
                             return false;
-                        obj();
+                        var param = {};
+                        var paramArr = url.split('?')[1].split('&');
+                        for(var i =0;i<paramArr.length;i++){
+                            var items = paramArr[i].split('=');
+                            param[items[0]]=items[1];
+                        }
+                        //window.router.navigate(url.split('?')[0],{trigger:false});
+                        obj(param);
                     });
                 }
             });
-            this.loadModule();
+            var moduleName = common.getHash()||'main';
+            if(moduleName != 'main')
+                this.loadModule();
         },
         loadDefault:function(){
             this.navigate('main',{trigger:true});

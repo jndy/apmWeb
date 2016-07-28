@@ -13,11 +13,11 @@ define('vipQues',function(require,exports,module){
         initialize:function(){
             this.render();
             this.initEvents();
+            this.selectEventHandler();
         },
         render:function(){
             var html = _.template(tpl)({});
             this.$el.empty().append(html);
-            util.my_select();
             this.renderGrid();
         },
         renderGrid:function(){
@@ -71,10 +71,31 @@ define('vipQues',function(require,exports,module){
         initEvents:function(){
             var me = this;
 
-            me.$el.off().on('click','.btn-search-hide',function(e){
-                var dom = $(this).find('i');
-                me.showQueryDiv(dom);
+            me.$el.off().on("click",'a[role=query]',function(e){
+                me.onQuery();
             })
+        },
+        /**
+         * 查询下拉框事件处理
+         * @return {[type]} [description]
+         */
+        selectEventHandler:function(){
+            var me = this;
+            me.renderMitName();
+            me.renderProvince();
+
+            util.my_select();
+
+        },
+        //监控点名称
+        renderMitName:function(){
+            var me = this;
+            $("select[name=mitName]").empty().html(util.createOptions(gMain.monitoringPoints["mitId_4"],"itemTypeName","itemTypeId"));
+        },
+        //省份
+        renderProvince:function(){
+            var me = this;
+            $("select[name=corpId]").empty().html(util.createOptions(gMain.provinceList,"corpName","corpId"));
         },
         showQueryDiv:function(dom){
             var me = this;
@@ -88,6 +109,37 @@ define('vipQues',function(require,exports,module){
                 dom.addClass('i-down');
                 me.$el.find('.retrieval-con').css('display','none');
             }
+        },
+        onQuery:function(){
+            var me = this;
+            me.gridView.requestData(me.getParam);
+        },
+        getParam:function(){
+            var param = {
+                startTime:$("select[name=startTime]").val(),
+                endTime:$("select[name=endTime]").val(),
+                province:$("select[name=province]").val(),
+                mitName:$("select[name=mitName]").val(),
+                vipLevel:$("select[name=vipLevel]").val()
+            };
+            var account = $.trim($("input[name=account]").val());
+            var userName = $.trim($("input[name=userName]").val());
+            var errorCode = $.trim($("input[name=errorDesc]").val());
+
+            var errorType = "";
+            $("input[name=errorType]").each(function(){
+                if($(this).is(":checked")){
+                    errorType += $(this).val()+","
+                }
+            });
+            errorType = errorType.replace(/,$/,"");
+
+            param["account"] = account;
+            param["userName"] = userName;
+            param["errorCode"] = errorCode;
+            param["errorType"] = errorType;
+
+            return param;
         }
       })
 

@@ -60,8 +60,7 @@ define('loginLog',function(require,exports,module){
                 var dom = $(this).find('i');
                 me.showQueryDiv(dom);
             }).on('click','a[role=query]',function(e){
-                var param = me.getParam();
-                me.gridView.requestData(param,1);
+                me.queryData();
             }).on('click','.action',function(e){
                 var dom = $(this);
                 if(dom.hasClass('edit'))
@@ -83,6 +82,14 @@ define('loginLog',function(require,exports,module){
                 me.$el.find('.retrieval-con').css('display','none');
             }
         },
+        queryData:function(){
+            var me = this,
+                param = me.getParam();
+
+            if(!param)
+                return;
+            me.gridView.requestData(param,1);
+        },
         getParam:function(){
             var me = this,
                 param = {},
@@ -93,14 +100,20 @@ define('loginLog',function(require,exports,module){
                 param.actionUserId = userName;
             }
 
-            realName = util.getVal('.retrieval-con input[name=realName]');
+            realName = util.getVal('.retrieval-con input[name=userRealName]');
             if(realName != ''){
                 param.actionUserName = realName;
             }
 
             ip = util.getVal('.retrieval-con input[name=ip]');
-            if(ip != 0){
-                param.actionUserIp = ip;
+            if(ip != ''){
+                var result = util.validate(ip,'ip');
+                if(result.flag)
+                    param.actionUserIp = ip;
+                else{
+                    util.showMsg(result.msg);
+                    return null;
+                }
             }
 
             startTime = util.getVal('.retrieval-con input[name=startTime]');

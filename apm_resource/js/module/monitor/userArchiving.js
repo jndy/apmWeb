@@ -28,10 +28,10 @@ define('userArchiving',function(require,exports,module){
                     rData.fCount = 0;
                     rData.dList = [];
                     _.each(rData['dataList'], function(item){
-                        if(item.alarm_status != null && item.alarm_status > 0){
+                        if(item.alarmStatus != 5 && item.alarmStatus > 1){
                             rData.fCount++;
                         }
-                        item.item_class = me.getStatusClass(item.alarm_status);
+                        item.itemClass = me.getStatusClass(item.alarmStatus);
                         rData.dList.push(item); 
                     });
                     var html = _.template(tpl)(rData);
@@ -56,7 +56,7 @@ define('userArchiving',function(require,exports,module){
         },
         getStatusClass: function(val){
             switch(val){
-                case 0:
+                case 5:
                     return 'btn-nothing';
                 case 1:
                     return 'btn-normal';

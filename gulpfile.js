@@ -127,20 +127,6 @@ gulp.task('client:build', ['html', 'styles'], function () {
   var cssFilter = $.filter('**/*.css');
   var htmlFilter = $.filter(['**/*', '!**/index.html', '!**/login.html'], { restore: true });
 
-  // return gulp.src('apm_resource/js/module/**/*.js')
-  //   .pipe($.concat('module.js'))
-  //   .pipe(gulp.dest(yeoman.dist+'/js/'))
-  //   .pipe($.rename({ suffix: '.min' }))
-  //   .pipe($.uglify())
-  //   .pipe(gulp.dest(yeoman.dist+'/js/'))
-  //   &
-  //   gulp.src('apm_resource/js/lib/**/*.js')
-  //   .pipe($.concat('lib.js'))
-  //   .pipe(gulp.dest(yeoman.dist+'/js/'))
-  //   .pipe($.rename({ suffix: '.min' }))
-  //   .pipe($.uglify())
-  //   .pipe(gulp.dest(yeoman.dist+'/js/'));
-
   return gulp.src([paths.views.main, paths.views.login])
     //.pipe($.replace('bower_components', yeoman.app + '/bower_components'))
     .pipe($.useref({searchPath: [yeoman.app, '.tmp']}))

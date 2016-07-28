@@ -16,10 +16,10 @@ define('actionTrace',function(require,exports,module){
             this.initEvents();
         },
         render:function(){
-            var data = {item_name: '拨测行为跟踪', 
-                        item_description: '对拨测客户端的行为进行跟踪，方便查找和定位问题，保障拨测客户端的畅通使用。', 
-                        provinceList: provinceList,
-                        monitoringPoints: monitoringPoints
+            var data = {itemName: '拨测行为跟踪', 
+                        itemDescription: '对拨测客户端的行为进行跟踪，方便查找和定位问题，保障拨测客户端的畅通使用。', 
+                        provinceList: gMain.provinceList,
+                        monitoringPoints: gMain.monitoringPoints.mitId_3
                     };
             var html = _.template(tpl)(data);
             this.$el.empty().append(html);  
@@ -33,38 +33,38 @@ define('actionTrace',function(require,exports,module){
             var option = {
                 el:'.grid-content',
                 url:'data.do?func=business:getActionTraceList',
-                param: params,
+                params: params,
                 plugin:'page',
                 tableCss:'table-con mb-20',
                 columns:[{
                     renderer:'serial',
                     text:'序号'
                 },{
-                    name:'user_email',
+                    name:'userEmail',
                     text:'拨测邮箱账号'
                 },{
-                    name:'corp_name',
+                    name:'corpName',
                     text: '省份'
                 },{
-                    name:'testing_time',
+                    name:'testingTime',
                     text:'拨测时间'
                 },{
-                    name:'item_type_name',
+                    name:'itemTypeName',
                     text:'监控点名称'
                 },{
-                    name:'testing_status',
+                    name:'testingStatus',
                     text:'拨测结果'
                 },{
-                    name:'response_time',
+                    name:'responseTime',
                     text:'响应时间(ms)',
                     renderer:function(val){
                         return val + 'ms';
                     }
                 },{
-                    name:'error_code',
+                    name:'errorCode',
                     text:'失败返回码'
                 },{
-                    name:'error_description',
+                    name:'errorDescription',
                     text:'故障描述'
                 }]
             };
@@ -106,7 +106,7 @@ define('actionTrace',function(require,exports,module){
             var opt = {};
             opt.url = 'exportDataAnalasyList.do';
             opt.param = this.getParam();
-            util.export(opt);
+            util.exports(opt);
         },
         getParam:function(){
             var me = this,
@@ -114,17 +114,19 @@ define('actionTrace',function(require,exports,module){
                 statusArray = [],
                 corpId,itemTypeId,userEmail,startTime,endTime;
 
-            corpId = util.getVal('.retrieval-con span[name=corpId]','select');
+            var pObj = util.urlParamObj(location.hash);          
+
+            corpId = pObj.corpId || util.getVal('.retrieval-con span[name=corpId]','select');
             if(corpId != undefined){
                 param.corpId = corpId;
             }
 
-            itemTypeId = util.getVal('.retrieval-con span[name=itemTypeId]','select');
+            itemTypeId = pObj.itemTypeId || util.getVal('.retrieval-con span[name=itemTypeId]','select');
             if(itemTypeId != undefined){
                 param.itemTypeId = itemTypeId;
             }
 
-            userEmail = util.getVal('.retrieval-con input[name=userEmail]');
+            userEmail = pObj.userEmail || util.getVal('.retrieval-con input[name=userEmail]');
             if(userEmail != undefined){
                 param.userEmail = userEmail;
             }

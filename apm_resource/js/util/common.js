@@ -43,7 +43,7 @@ define('common',function(requires,exports,module){
             return this.getHash() == page;
         },
         activateNav:function(moduleName){
-            var mapModuleName = this.getHash();
+            var mapModuleName = moduleName || this.getHash();
             var dom = jQuery('.header .nav li>a[href="#'+mapModuleName+'"]');
             if(dom.length == 0){
                 this.jump404();

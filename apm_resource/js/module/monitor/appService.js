@@ -147,6 +147,7 @@ define('appService',function(require,exports,module){
                 legend: {
                     orient: 'vertical',
                     left: 'right',
+                    align:'left',
                     y:'middle',
                     data: legendData
                 },

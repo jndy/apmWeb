@@ -84,3 +84,61 @@ exports.mailGridData = {
     ]
 };
 
+exports.mapData={
+    totalDetail:{
+        webNo:11,
+        vipNo:22,
+        smtpNo:33,
+        pop3No:44,
+        imapNo:55,
+        sendNo:1000,
+        receiveNo:2000
+    },
+    dataList:[
+        [
+            {name: '北京',value: 4, webNo:1, vipNo: 1, smtpNo: 1, pop3No: 1, imapNo: 1, alarmNo: [11, 22,33,44] },
+            {name: '天津',value: 4 },
+            {name: '上海',value: 4 },
+            {name: '重庆',value: 4 },
+            {name: '河北',value: 4 },
+            {name: '河南',value: 4 },
+            {name: '新疆',value: 4 },
+            {name: '山西',value: 4 },
+            {name: '贵州',value: 4 },
+            {name: '广东',value: 4 },
+            {name: '青海',value: 4 },
+            {name: '西藏',value: 4 },
+            {name: '四川',value: 4 },
+            {name: '宁夏',value: 4 },
+            {name: '海南',value: 4 },
+            {name: '香港',value: 4 },
+            {name: '澳门',value: 4 }
+        ],
+        [
+            {name: '云南',value: 3 },
+            {name: '辽宁',value: 3 },
+            {name: '黑龙江',value: 3 },
+            {name: '湖南',value: 3 },
+            {name: '安徽',value: 3 },
+            {name: '山东',value: 3 }
+        ],
+        [
+            {name: '江苏',value: 2 },
+            {name: '浙江',value: 2 },
+            {name: '江西',value: 2 },
+            {name: '湖北',value: 2 },
+            {name: '广西',value: 2 },
+            {name: '甘肃',value: 2 }
+        ],
+        [
+            {name: '内蒙古',value: 1 },
+            {name: '陕西',value: 1 },
+            {name: '吉林',value: 1 },
+            {name: '福建',value: 1 }
+        ],
+        [
+            {name: '台湾',value: 0 }
+        ]
+    ]
+}
+

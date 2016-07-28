@@ -17,10 +17,10 @@ define('dataAnalasy',function(require,exports,module){
             this.initEvents();
         },
         render:function(){
-            var data = {item_name: '拨测数据分析', 
-                        item_description: '对拨测客户端拨测的数据进行统计分析，方便查找和定位问题，保障拨测客户端的畅通使用。', 
-                        provinceList: provinceList,
-                        monitoringPoints: monitoringPoints
+            var data = {itemName: '拨测数据分析', 
+                        itemDescription: '对拨测客户端拨测的数据进行统计分析，方便查找和定位问题，保障拨测客户端的畅通使用。', 
+                        provinceList: gMain.provinceList,
+                        monitoringPoints: gMain.monitoringPoints.mitId_3
                     };
             var html = _.template(tpl)(data);
             this.$el.empty().append(html);  
@@ -34,55 +34,55 @@ define('dataAnalasy',function(require,exports,module){
             var option = {
                 el:'.grid-content',
                 url:'data.do?func=business:getDataAnalasyList',
-                param: params,
+                params: params,
                 plugin:'page',
                 tableCss:'table-con mb-20',
                 columns:[{
                     renderer:'serial',
                     text:'序号'
                 },{
-                    name:'user_email',
+                    name:'userEmail',
                     text:'拨测邮箱账号'
                 },{
-                    name:'corp_name',
+                    name:'corpName',
                     text: '省份'
                 },{
-                    name:'item_type_name',
+                    name:'itemTypeName',
                     text:'监控点名称'
                 },{
-                    name:'testing_nums',
+                    name:'testingNums',
                     text:'拨测次数',
                     renderer:function(val, index, item){
                         if(val > 0){
-                            return "<a href='javascript:;' role='showTrace' userEmail='"+item.user_email+"' corpId='"+item.corp_id+"'>"+val+"</a>";
+                            return "<a href='javascript:;' role='showTrace' itemTypeId='"+item.itemTypeId+"' userEmail='"+item.userEmail+"' corpId='"+item.corpId+"'>"+val+"</a>";
                         }else{
                             return val;
                         } 
                     }
                 },{
-                    name:'testing_errors',
+                    name:'testingErrors',
                     text:'失败次数',
                     renderer:function(val, index, item){
                         if(val > 0){
-                            return "<a href='javascript:;' role='showError' corpId='"+item.corp_id+"'>"+val+"</a>";
+                            return "<a href='javascript:;' role='showError' userEmail='"+item.userEmail+"' corpId='"+item.corpId+"'>"+val+"</a>";
                         }else{
                             return val;
                         }                        
                     }
                 },{
-                    name:'success_rates',
+                    name:'successRates',
                     text:'登录成功率(%)',
                     renderer:function(val){
                         return val + '%';
                     }
                 },{
-                    name:'avgsendtime',
+                    name:'avgSendTime',
                     text:'平均响应时间(ms)',
                     renderer:function(val){
                         return val + 'ms';
                     }
                 },{
-                    name:'maxsendtime',
+                    name:'maxSendTime',
                     text:'拨测最大时延(ms)',
                     renderer:function(val){
                         return val + 'ms';
@@ -108,6 +108,7 @@ define('dataAnalasy',function(require,exports,module){
             }).on('click','a[role=showTrace]',function(e){
                 var opt = {};
                 opt.corpId = $.trim($(this).attr('corpId'));
+                opt.itemTypeId = $.trim($(this).attr('itemTypeId'));
                 opt.userEmail = $.trim($(this).attr('userEmail'));
                 me.showActionTrace(opt);
             }).on('click','a[role=showError]',function(e){
@@ -139,15 +140,17 @@ define('dataAnalasy',function(require,exports,module){
             var opt = {};
             opt.url = 'exportDataAnalasyList.do';
             opt.param = this.getParam();
-            util.export(opt);
+            util.exports(opt);
         },
         showActionTrace:function(opt){
-            $('.child-li:eq(1)').trigger('click');
+            //$('.child-li:eq(1)').trigger('click');
+            var url = 'business/actionTrace?corpId='+opt.corpId+'&itemTypeId='+opt.itemTypeId+'&userEmail='+opt.userEmail;
+            util.jumpModule(url);
         },
         showErrorDetail:function(opt){
             var me = this;
             var params = me.getParam();
-            delete params.orderby;
+            delete params.orderBy;
             delete params.showStyle;
             params.corpId = opt.corpId;
             params.dataType = '1';
@@ -168,7 +171,7 @@ define('dataAnalasy',function(require,exports,module){
             var seriesData = [], legendData = [];
             for(var i=0; i<data.length; i++){ 
                 legendData.push(data[i]['name']);                           
-                seriesData.push({value:data[i]['error_nums'], name:data[i]['name']});
+                seriesData.push({value:data[i]['errorNums'], name:data[i]['name']});
             }
             util.dialog('失败原因分析',content,null,null,{cancelDisplay:false,onshow:function(){
                 //渲染图表
@@ -235,8 +238,8 @@ define('dataAnalasy',function(require,exports,module){
             }                
 
             var vDate = me.dateBar.getValue();
-            param.startTime = vDate.st;
-            param.endTime = vDate.et;
+            param.startTime = vDate.st.Format('yyyy-MM-dd HH:mm');
+            param.endTime = vDate.et.Format('yyyy-MM-dd HH:mm');
             param.timeType = vDate.timeType;
 
             if(!util.compareTimeValid(param.startTime, param.endTime))

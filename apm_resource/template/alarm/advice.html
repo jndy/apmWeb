@@ -7,7 +7,7 @@
         <li>
             <label>监控方式： </label>
             <div class="module-fill w150">
-                <select style="display:none" widthNo="150" name="mit_way">
+                <select style="display:none" widthNo="150" name="mitWay">
                     
                 </select>
             </div>
@@ -15,15 +15,15 @@
         <li>
             <label>监控类型：</label>
             <div class="module-fill w150">
-                <select style="display:none" widthNo="150" name="mit_type">
+                <select style="display:none" widthNo="150" name="mitType">
                     <option value="0">全部</option>             
                 </select>
             </div>
         </li>
         <li>
             <label>监控点名称：</label>
-            <div class="module-fill w150">
-                <select style="display:none" widthNo="150" name="mit_name">
+            <div class="module-fill w150" role="mitName">
+                <select style="display:none" widthNo="150" name="mitName">
                     <option value="0">全部</option>
                     
                 </select>
@@ -34,7 +34,7 @@
         <li>
             <label>省份：</label>
             <div class="module-fill w150">
-                <select style="display:none" widthNo="150" name="province">
+                <select style="display:none" widthNo="150" name="corpId">
                     <option value="0">全部</option>
                 </select>
             </div>
@@ -42,7 +42,7 @@
         <li>
             <label>服务器IP：</label>
             <div class="module-fill w150">
-                <input type="text" name="srv_ip" class="module-input"/>
+                <input type="text" name="srvIp" class="module-input"/>
             </div>
             <a href="javascript:;" class="btn btn-orange ml-10" role="query">查询</a>
         </li>
@@ -51,7 +51,10 @@
 </div>
 
 <div class="mod-btn">
-    <a href="javascript:void(-1);" class="btn btn-blue" role='alarm-all'>全部</a><a href="javascript:void(-1);" class="btn btn-pink" role='alarm-1'><span role="serious_1">11</span>个严重</a><a href="javascript:void(-1);" class="btn btn-orange" role='alarm-2'><span role="serious_2">10</span>个较重</a><a href="javascript:void(-1);" class="btn btn-yellow" role='alarm-3'><span role="serious_3">21</span>个一般</a>
+    <a href="javascript:void(-1);" class="btn btn-blue" role='alarm-all'>全部</a>
+    <a href="javascript:void(-1);" class="btn btn-pink" role='alarm-1'><span role="serious_1">11</span>个严重</a>
+    <a href="javascript:void(-1);" class="btn btn-orange" role='alarm-2'><span role="serious_2">10</span>个较重</a>
+    <a href="javascript:void(-1);" class="btn btn-yellow" role='alarm-3'><span role="serious_3">21</span>个一般</a>
     <a href="javascript:void(-1);" class="see-history">查看历史告警&gt;&gt;</a>
 </div>
 
@@ -61,6 +64,7 @@
         <a class="action" role="advice-detail" href="javascript:;">详情</a>
         <a class="action" role="advice-ignore" href="javascript:;">忽略</a>
         <a class="action" role="advice-remark" href="javascript:;">备注</a>
+        <a class="action" role="advice-resume" href="javascript:;">已恢复</a>
     </div>
 </script>
 <script type="text/template" id="advice-detail-tpl">
@@ -69,15 +73,15 @@
     <ul>
         <li>
             <span class="l">监控点名称：</span>
-            <span class="r">{mit_name}</span>
+            <span class="r">{mitName}</span>
         </li>
         <li>
             <span class="l">监控类型：</span>
-            <span class="r">{mit_type}</span>
+            <span class="r">{mitType}</span>
         </li>
         <li>
             <span class="l">监控时间：</span>
-            <span class="r">{createtime}</span>
+            <span class="r">{createTime}</span>
         </li>
         <li>
             <span class="l">告警条件：</span>
@@ -89,11 +93,11 @@
         </li>
         <li>
             <span class="l">告警等级：</span>
-            <span class="r">{alarm_status}</span>
+            <span class="r">{alarmStatus}</span>
         </li>
         <li>
             <span class="l">告警方式：</span>
-            <span class="r">{alarm_way}</span>
+            <span class="r">{alarmWay}</span>
         </li>
         <li>
             <span class="l">维护人员：</span>
@@ -106,4 +110,33 @@
     </ul>
 </div>
     
+</script>
+<script type="text/template" id="advice-ignore-tpl">
+    <div class="select-mark">
+        <textarea name="ignore" id="" class="area-mark"></textarea>
+    </div>
+</script>
+<script type="text/template" id="advice-resume-tpl">
+    <div class="select-mark">
+        <textarea name="resume" id="" class="area-mark"></textarea>
+    </div>
+</script>
+<script type="text/template" id="advice-remark-tpl">
+    <div class="select-mark">
+        <ul>
+            <li>
+                <p>演示：wwwwww</p>
+                <p class="col-6">2016-07-21 10:38:48</p>
+            </li>
+            <li>
+                <p>演示：wwwwww</p>
+                <p class="col-6">2016-07-21 10:38:48</p>
+            </li>
+            <li>
+                <p>演示：wwwwww</p>
+                <p class="col-6">2016-07-21 10:38:48</p>
+            </li>
+        </ul>
+        <textarea name="" id="" class="area-mark"></textarea>
+    </div>
 </script>

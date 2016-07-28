@@ -1,5 +1,5 @@
 <div class="bread-nav mb-20">
-    <h2><%=item_name%></h2><span class="tit"><%=item_description%></span>
+    <h2><%=itemName%></h2><span class="tit"><%=itemDescription%></span>
     <a href="javascript:;" class="btn-search-hide">查询<i class="i-down"></i></a>
 </div>
 
@@ -11,7 +11,7 @@
                 <select style="display:none" widthNo="150" name="corpId">
                     <option value="0">全部</option>
                     <% for(var i = 0; i<provinceList.length; i++) { %>
-                    <option value="<%=provinceList[i]['provinceId']%>"><%=provinceList[i]['provinceName']%></option>
+                    <option value="<%=provinceList[i]['corpId']%>"><%=provinceList[i]['corpName']%></option>
                     <% } %>
                 </select>
             </div>
@@ -22,7 +22,7 @@
                 <select style="display:none" widthNo="150" name="itemTypeId">
                     <option value="0">全部</option>
                     <% for(var i = 0; i<monitoringPoints.length; i++) { %>
-                    <option value="<%=monitoringPoints[i]['item_type_id']%>"><%=monitoringPoints[i]['item_type_name']%></option>
+                    <option value="<%=monitoringPoints[i]['itemTypeId']%>"><%=monitoringPoints[i]['itemTypeName']%></option>
                     <% } %>
                 </select>
             </div>
@@ -47,19 +47,19 @@
             <label>拨测结果：</label>
             <div class="module-fill">
                 <label>
-                    <input type="checkbox" name="statusArray" value="0" checked />成功
+                    <input type="checkbox" name="statusArray" value="1" checked />成功
                 </label>
                 <label>
-                    <input type="checkbox" name="statusArray" value="1" checked />失败
+                    <input type="checkbox" name="statusArray" value="2" checked />失败
                 </label>    
                 <label>
-                    <input type="checkbox" name="statusArray" value="2" checked />一般超时
+                    <input type="checkbox" name="statusArray" value="3" checked />一般超时
                 </label>    
                 <label>
-                    <input type="checkbox" name="statusArray" value="3" checked />较重超时
+                    <input type="checkbox" name="statusArray" value="4" checked />较重超时
                 </label>    
                 <label>
-                    <input type="checkbox" name="statusArray" value="4" checked />严重超时
+                    <input type="checkbox" name="statusArray" value="5" checked />严重超时
                 </label>        
             </div>
         </li>
@@ -71,7 +71,7 @@
 
 <div class="content_main">
     <div class="graph-tab clearfix">
-        <h2 class="quality-tit"><%=item_name%></h2>
+        <h2 class="quality-tit"><%=itemName%></h2>
     </div>
     <div class="grid-content"></div>
 </div>

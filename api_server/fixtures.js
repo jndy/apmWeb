@@ -19,45 +19,45 @@ exports.users = [
 
 /*用户服务质量监控点列表数据*/
 exports.userServiceQuality = [
-  	{"createtime" : null, "success_rates" : 99.52, "avgsendtime" : 221.27, "item_type_name" : "SMTP登录", "item_type_id" : "1", "alarm_status" : 0, "point_order" : 1, "item_description" : "对通过SMTP协议登录邮箱的质量进行监控，包括SMTP登录成功率、登录用时。" }, 
-  	{"createtime" : null, "success_rates" : 99.52, "avgsendtime" : 221.27, "item_type_name" : "SMTP发邮件", "item_type_id" : "2", "alarm_status" : 0, "point_order" : 1, "item_description" : "对SMTP发邮件情况进行监控，包括邮件发送成功率、邮件发送用时。" }, 
-  	{"createtime" : null, "success_rates" : 99.52, "avgsendtime" : 221.27, "item_type_name" : "POP登录", "item_type_id" : "3", "alarm_status" : 0, "point_order" : 1, "item_description" : "对通过POP协议登录邮箱的质量进行监控，包括POP登录成功率、登录用时。" }, 
-  	{"createtime" : null, "success_rates" : 99.52, "avgsendtime" : 221.27, "item_type_name" : "POP收邮件", "item_type_id" : "4", "alarm_status" : 1, "point_order" : 1, "item_description" : "对通过POP协议收邮件的情况进行监控，包括邮件收送成功率、邮件收送用时和收邮件用时分布状况监控。" }, 
-  	{"createtime" : null, "success_rates" : 99.52, "avgsendtime" : 221.27, "item_type_name" : "IMAP登录", "item_type_id" : "5", "alarm_status" : 2, "point_order" : 1, "item_description" : "对通过IMAP协议登录邮箱的质量进行监控，包括IMAP登录成功率、登录用时。" }, 
-  	{"createtime" : null, "success_rates" : 99.52, "avgsendtime" : 221.27, "item_type_name" : "IMAP收邮件", "item_type_id" : "6", "alarm_status" : 3, "point_order" : 1, "item_description" : "对通过IMAP协议收取邮件的情况进行监控，包括邮件收取成功率、邮件接收用时和收邮件用时分布状况监控。" }, 
-  	{"createtime" : null, "success_rates" : 99.52, "avgsendtime" : 221.27, "item_type_name" : "通讯录加载", "item_type_id" : "7", "alarm_status" : 0, "point_order" : 3, "item_description" : "对通讯录加载质量进行监控，包括整体通讯录加载成功率、通讯录加载用时及通讯录加载用时分布。" }, 
-  	{"createtime" : null, "success_rates" : 99.52, "avgsendtime" : 221.27, "item_type_name" : "通讯录查询", "item_type_id" : "8", "alarm_status" : 0, "point_order" : 3, "item_description" : "对通讯录查询功能进行监控，包括整体通讯录查询成功率、通讯录查询用时。" }, 
-  	{"createtime" : null, "success_rates" : 99.52, "avgsendtime" : 221.27, "item_type_name" : "邮件到达通知", "item_type_id" : "9", "alarm_status" : 4, "point_order" : 4, "item_description" : "对用户所接收的邮件到达通知短信质量进行监控，包括邮件到达通知发送成功率。" }, 
-	  {"createtime" : null, "success_rates" : 99.52, "avgsendtime" : 221.27, "item_type_name" : "Web邮箱登录", "item_type_id" : "10", "alarm_status" : 0, "point_order" : 5, "item_description" : "对Web邮箱登录质量进行监控，包括Web邮箱整体登录成功率、登录用时、登录人数。" }, 
-  	{"createtime" : null, "success_rates" : 99.52, "avgsendtime" : 221.27, "item_type_name" : "Web首页打开", "item_type_id" : "11", "alarm_status" : 0, "point_order" : 5, "item_description" : "对Web邮箱的首页打开质量进行监控，包括Web邮箱整体首页打开成功率、首页打开用时及首页打开用时分布。" }, 
-  	{"createtime" : null, "success_rates" : 89.51, "avgsendtime" : 1671.11, "item_type_name" : "Web写信打开", "item_type_id" : "12", "alarm_status" : 3, "point_order" : 6, "item_description" : "对Web邮箱的写信页打开质量进行监控，包括Web邮箱整体写信页打开成功率、写信页打开用时及写信页打开用时分布。" }, 
-  	{"createtime" : null, "success_rates" : 99.52, "avgsendtime" : 221.27, "item_type_name" : "Web收邮件", "item_type_id" : "13", "alarm_status" : 1, "point_order" : 6, "item_description" : "对用户打开Web收件箱列表的情况进行监控，包括邮件打开收件箱列表成功率、打开用时。" }, 
-  	{"createtime" : null, "success_rates" : 99.52, "avgsendtime" : 221.27, "item_type_name" : "Web发邮件", "item_type_id" : "14", "alarm_status" : 4, "point_order" : 6, "item_description" : "对Web邮箱发送邮件情况进行监控，包括邮件发送成功率、邮件发送用时、发邮件人数和发邮件用时分布状况监控。" }, 
-  	{"createtime" : null, "success_rates" : 99.52, "avgsendtime" : 221.27, "item_type_name" : "Web读邮件", "item_type_id" : "15", "alarm_status" : 4, "point_order" : 6, "item_description" : "对Web邮箱读取邮件情况进行监控，包括邮件读取成功率、邮件读取用时、读取邮件失败次数监控。" }, 
-  	{"createtime" : null, "success_rates" : 99.52, "avgsendtime" : 221.27, "item_type_name" : "附件上传", "item_type_id" : "16", "alarm_status" : 0, "point_order" : 7, "item_description" : "对附件上传质量进行监控，包括整体附件上传成功率、附件上传用时、附件上传用时分布。" }, 
-	  {"createtime" : null, "success_rates" : 99.52, "avgsendtime" : 221.27, "item_type_name" : "附件下载", "item_type_id" : "17", "alarm_status" : 2, "point_order" : 7, "item_description" : "对附件下载质量进行监控，包括整体附件下载成功率、附件下载用时及附件下载用时分布。" }, 
-  	{"createtime" : null, "success_rates" : 99.52, "avgsendtime" : 221.27, "item_type_name" : "网盘上传", "item_type_id" : "18", "alarm_status" : 0, "point_order" : 8, "item_description" : "网盘上传描述" }, 
-  	{"createtime" : null, "success_rates" : 89.51, "avgsendtime" : 1671.11, "item_type_name" : "网盘下载", "item_type_id" : "19", "alarm_status" : 3, "point_order" : 8, "item_description" : "网盘下载描述" }
+    {"createTime" : null, "successRates" : 99.52, "avgSendTime" : 221.27, "itemTypeName" : "SMTP登录", "itemTypeId" : "1", "alarmStatus" : 5, "pointOrder" : 1, "itemDescription" : "对通过SMTP协议登录邮箱的质量进行监控，包括SMTP登录成功率、登录用时。" }, 
+    {"createTime" : null, "successRates" : 99.52, "avgSendTime" : 221.27, "itemTypeName" : "SMTP发邮件", "itemTypeId" : "2", "alarmStatus" : 5, "pointOrder" : 1, "itemDescription" : "对SMTP发邮件情况进行监控，包括邮件发送成功率、邮件发送用时。" }, 
+    {"createTime" : null, "successRates" : 99.52, "avgSendTime" : 221.27, "itemTypeName" : "POP登录", "itemTypeId" : "3", "alarmStatus" : 5, "pointOrder" : 1, "itemDescription" : "对通过POP协议登录邮箱的质量进行监控，包括POP登录成功率、登录用时。" }, 
+    {"createTime" : null, "successRates" : 99.52, "avgSendTime" : 221.27, "itemTypeName" : "POP收邮件", "itemTypeId" : "4", "alarmStatus" : 1, "pointOrder" : 1, "itemDescription" : "对通过POP协议收邮件的情况进行监控，包括邮件收送成功率、邮件收送用时和收邮件用时分布状况监控。" }, 
+    {"createTime" : null, "successRates" : 99.52, "avgSendTime" : 221.27, "itemTypeName" : "IMAP登录", "itemTypeId" : "5", "alarmStatus" : 2, "pointOrder" : 1, "itemDescription" : "对通过IMAP协议登录邮箱的质量进行监控，包括IMAP登录成功率、登录用时。" }, 
+    {"createTime" : null, "successRates" : 99.52, "avgSendTime" : 221.27, "itemTypeName" : "IMAP收邮件", "itemTypeId" : "6", "alarmStatus" : 3, "pointOrder" : 1, "itemDescription" : "对通过IMAP协议收取邮件的情况进行监控，包括邮件收取成功率、邮件接收用时和收邮件用时分布状况监控。" }, 
+    {"createTime" : null, "successRates" : 99.52, "avgSendTime" : 221.27, "itemTypeName" : "通讯录加载", "itemTypeId" : "7", "alarmStatus" : 5, "pointOrder" : 3, "itemDescription" : "对通讯录加载质量进行监控，包括整体通讯录加载成功率、通讯录加载用时及通讯录加载用时分布。" }, 
+    {"createTime" : null, "successRates" : 99.52, "avgSendTime" : 221.27, "itemTypeName" : "通讯录查询", "itemTypeId" : "8", "alarmStatus" : 5, "pointOrder" : 3, "itemDescription" : "对通讯录查询功能进行监控，包括整体通讯录查询成功率、通讯录查询用时。" }, 
+    {"createTime" : null, "successRates" : 99.52, "avgSendTime" : 221.27, "itemTypeName" : "邮件到达通知", "itemTypeId" : "9", "alarmStatus" : 4, "pointOrder" : 4, "itemDescription" : "对用户所接收的邮件到达通知短信质量进行监控，包括邮件到达通知发送成功率。" }, 
+    {"createTime" : null, "successRates" : 99.52, "avgSendTime" : 221.27, "itemTypeName" : "Web邮箱登录", "itemTypeId" : "10", "alarmStatus" : 5, "pointOrder" : 5, "itemDescription" : "对Web邮箱登录质量进行监控，包括Web邮箱整体登录成功率、登录用时、登录人数。" }, 
+    {"createTime" : null, "successRates" : 99.52, "avgSendTime" : 221.27, "itemTypeName" : "Web首页打开", "itemTypeId" : "11", "alarmStatus" : 5, "pointOrder" : 5, "itemDescription" : "对Web邮箱的首页打开质量进行监控，包括Web邮箱整体首页打开成功率、首页打开用时及首页打开用时分布。" }, 
+    {"createTime" : null, "successRates" : 89.51, "avgSendTime" : 1671.11, "itemTypeName" : "Web写信打开", "itemTypeId" : "12", "alarmStatus" : 3, "pointOrder" : 6, "itemDescription" : "对Web邮箱的写信页打开质量进行监控，包括Web邮箱整体写信页打开成功率、写信页打开用时及写信页打开用时分布。" }, 
+    {"createTime" : null, "successRates" : 99.52, "avgSendTime" : 221.27, "itemTypeName" : "Web收邮件", "itemTypeId" : "13", "alarmStatus" : 1, "pointOrder" : 6, "itemDescription" : "对用户打开Web收件箱列表的情况进行监控，包括邮件打开收件箱列表成功率、打开用时。" }, 
+    {"createTime" : null, "successRates" : 99.52, "avgSendTime" : 221.27, "itemTypeName" : "Web发邮件", "itemTypeId" : "14", "alarmStatus" : 4, "pointOrder" : 6, "itemDescription" : "对Web邮箱发送邮件情况进行监控，包括邮件发送成功率、邮件发送用时、发邮件人数和发邮件用时分布状况监控。" }, 
+    {"createTime" : null, "successRates" : 99.52, "avgSendTime" : 221.27, "itemTypeName" : "Web读邮件", "itemTypeId" : "15", "alarmStatus" : 4, "pointOrder" : 6, "itemDescription" : "对Web邮箱读取邮件情况进行监控，包括邮件读取成功率、邮件读取用时、读取邮件失败次数监控。" }, 
+    {"createTime" : null, "successRates" : 99.52, "avgSendTime" : 221.27, "itemTypeName" : "附件上传", "itemTypeId" : "16", "alarmStatus" : 5, "pointOrder" : 7, "itemDescription" : "对附件上传质量进行监控，包括整体附件上传成功率、附件上传用时、附件上传用时分布。" }, 
+    {"createTime" : null, "successRates" : 99.52, "avgSendTime" : 221.27, "itemTypeName" : "附件下载", "itemTypeId" : "17", "alarmStatus" : 2, "pointOrder" : 7, "itemDescription" : "对附件下载质量进行监控，包括整体附件下载成功率、附件下载用时及附件下载用时分布。" }, 
+    {"createTime" : null, "successRates" : 99.52, "avgSendTime" : 221.27, "itemTypeName" : "网盘上传", "itemTypeId" : "18", "alarmStatus" : 5, "pointOrder" : 8, "itemDescription" : "网盘上传描述" }, 
+    {"createTime" : null, "successRates" : 89.51, "avgSendTime" : 1671.11, "itemTypeName" : "网盘下载", "itemTypeId" : "19", "alarmStatus" : 3, "pointOrder" : 8, "itemDescription" : "网盘下载描述" }
 ];
 
 /*用户服务质量监控点数据明细*/
 exports.userServiceDetail = {
   "startTime" : "2016-07-12 09:25",
   "endTime" : "2016-07-13 09:25",
-  "item_name" : "SMTP登录",
-  "item_description" : "对通过SMTP协议登录邮箱的质量进行监控，包括SMTP登录成功率、登录用时",
+  "itemName" : "SMTP登录",
+  "itemDescription" : "对通过SMTP协议登录邮箱的质量进行监控，包括SMTP登录成功率、登录用时",
   "listCount" : 25,
   "dataList" : [
-    {"corp_id" : 11,"name" : "北京","time_value" : "2016-07-13 08:00","rate" : 100.0,"nums" : 89.0,"error_nums" : 2,"averagetime" : 401.2,"createtime" : null,"resp_time" : 21.0,"file_size" : 0.0,"probe_rate" : 0.0, "probe_resp_time" : 0.0}, 
-    {"corp_id" : 12,"name" : "天津","time_value" : "2016-07-13 08:00","time_value" : "2016-07-13 08:00","rate" : 100.0,"nums" : 176.0,"error_nums" : 0.0,"averagetime" : 40.09,"createtime" : null,"resp_time" : 25.0,"file_size" : 0.0,"probe_rate" : 0.0,"probe_resp_time" : 0.0}, 
-    {"corp_id" : 13,"name" : "上海","time_value" : "2016-07-13 08:00","rate" : 95.0,"nums" : 176.0,"error_nums" : 42,"averagetime" : 89.09,"createtime" : null,"resp_time" : 25.0,"file_size" : 0.0,"probe_rate" : 0.0,"probe_resp_time" : 0.0}, 
-    {"corp_id" : 14,"name" : "江苏","time_value" : "2016-07-13 08:00","rate" : 89.0,"nums" : 176.0,"error_nums" : 0.0,"averagetime" : 42.09,"createtime" : null,"resp_time" : 25.0,"file_size" : 0.0,"probe_rate" : 0.0,"probe_resp_time" : 0.0}, 
-    {"corp_id" : 15,"name" : "浙江","time_value" : "2016-07-13 08:00","rate" : 87.0,"nums" : 17.0,"error_nums" : 0.0,"averagetime" : 223.09,"createtime" : null,"resp_time" : 25.0,"file_size" : 0.0,"probe_rate" : 0.0,"probe_resp_time" : 0.0},
-    {"corp_id" : 16,"name" : "福建","time_value" : "2016-07-13 08:00","rate" : 77.0,"nums" : 17.0,"error_nums" : 0.0,"averagetime" : 23.09,"createtime" : null,"resp_time" : 25.0,"file_size" : 0.0,"probe_rate" : 0.0,"probe_resp_time" : 0.0},
-    {"corp_id" : 17,"name" : "安徽","time_value" : "2016-07-13 08:00","rate" : 75.0,"nums" : 117.0,"error_nums" : 0.0,"averagetime" : 211.09,"createtime" : null,"resp_time" : 25.0,"file_size" : 0.0,"probe_rate" : 0.0,"probe_resp_time" : 0.0},
-    {"corp_id" : 18,"name" : "山东","time_value" : "2016-07-13 08:00","rate" : 70.0,"nums" : 17.0,"error_nums" : 0.0,"averagetime" : 23.09,"createtime" : null,"resp_time" : 25.0,"file_size" : 0.0,"probe_rate" : 0.0,"probe_resp_time" : 0.0},
-    {"corp_id" : 19,"name" : "山西","time_value" : "2016-07-13 08:00","rate" : 69.0,"nums" : 17.0,"error_nums" : 0.0,"averagetime" : 133.09,"createtime" : null,"resp_time" : 25.0,"file_size" : 0.0,"probe_rate" : 0.0,"probe_resp_time" : 0.0},
-    {"corp_id" : 20,"name" : "内蒙古","time_value" : "2016-07-13 08:00","rate" : 67.0,"nums" : 127.0,"error_nums" : 0.0,"averagetime" : 63.09,"createtime" : null,"resp_time" : 25.0,"file_size" : 0.0,"probe_rate" : 0.0,"probe_resp_time" : 0.0},
+    {"corpId" : 11,"name" : "北京","timeValue" : "2016-07-13 08:00","rate" : 100.0,"nums" : 89.0,"errorNums" : 2,"averageTime" : 401.2,"createTime" : null,"respTime" : 21.0,"fileSize" : 0.0,"probeRate" : 0.0, "probeRespTime" : 0.0}, 
+    {"corpId" : 12,"name" : "天津","timeValue" : "2016-07-13 08:00","rate" : 100.0,"nums" : 176.0,"errorNums" : 0.0,"averageTime" : 40.09,"createTime" : null,"respTime" : 25.0,"fileSize" : 0.0,"probeRate" : 0.0,"probeRespTime" : 0.0}, 
+    {"corpId" : 13,"name" : "上海","timeValue" : "2016-07-13 08:00","rate" : 95.0,"nums" : 176.0,"errorNums" : 42,"averageTime" : 89.09,"createTime" : null,"respTime" : 25.0,"fileSize" : 0.0,"probeRate" : 0.0,"probeRespTime" : 0.0}, 
+    {"corpId" : 14,"name" : "江苏","timeValue" : "2016-07-13 08:00","rate" : 89.0,"nums" : 176.0,"errorNums" : 0.0,"averageTime" : 42.09,"createTime" : null,"respTime" : 25.0,"fileSize" : 0.0,"probeRate" : 0.0,"probeRespTime" : 0.0}, 
+    {"corpId" : 15,"name" : "浙江","timeValue" : "2016-07-13 08:00","rate" : 87.0,"nums" : 17.0,"errorNums" : 0.0,"averageTime" : 223.09,"createTime" : null,"respTime" : 25.0,"fileSize" : 0.0,"probeRate" : 0.0,"probeRespTime" : 0.0},
+    {"corpId" : 16,"name" : "福建","timeValue" : "2016-07-13 08:00","rate" : 77.0,"nums" : 17.0,"errorNums" : 0.0,"averageTime" : 23.09,"createTime" : null,"respTime" : 25.0,"fileSize" : 0.0,"probeRate" : 0.0,"probeRespTime" : 0.0},
+    {"corpId" : 17,"name" : "安徽","timeValue" : "2016-07-13 08:00","rate" : 75.0,"nums" : 117.0,"errorNums" : 0.0,"averageTime" : 211.09,"createTime" : null,"respTime" : 25.0,"fileSize" : 0.0,"probeRate" : 0.0,"probeRespTime" : 0.0},
+    {"corpId" : 18,"name" : "山东","timeValue" : "2016-07-13 08:00","rate" : 70.0,"nums" : 17.0,"errorNums" : 0.0,"averageTime" : 23.09,"createTime" : null,"respTime" : 25.0,"fileSize" : 0.0,"probeRate" : 0.0,"probeRespTime" : 0.0},
+    {"corpId" : 19,"name" : "山西","timeValue" : "2016-07-13 08:00","rate" : 69.0,"nums" : 17.0,"errorNums" : 0.0,"averageTime" : 133.09,"createTime" : null,"respTime" : 25.0,"fileSize" : 0.0,"probeRate" : 0.0,"probeRespTime" : 0.0},
+    {"corpId" : 20,"name" : "内蒙古","timeValue" : "2016-07-13 08:00","rate" : 67.0,"nums" : 127.0,"errorNums" : 0.0,"averageTime" : 63.09,"createTime" : null,"respTime" : 25.0,"fileSize" : 0.0,"probeRate" : 0.0,"probeRespTime" : 0.0},
   ]
 };
 
@@ -65,8 +65,8 @@ exports.userServiceDetail = {
 exports.userServiceErrors = {
   "startTime" : "2016-07-12 09:25",
   "dataList" : [
-    {"corp_id" : 0,"name" : "ANTISPAM邮件地址错误","rate" : 0.0,"nums" : 0.0,"error_nums" : 19.0,"averagetime" : 0.0,"createtime" : null,"resp_time" : 0.0,"file_size" : 0.0,"probe_rate" : 0.0,"probe_resp_time" : 0.0},
-    {"corp_id" : 0,"name" : "SMTP服务异常","rate" : 0.0,"nums" : 0.0,"error_nums" : 12.0,"averagetime" : 0.0,"createtime" : null,"resp_time" : 0.0,"file_size" : 0.0,"probe_rate" : 0.0,"probe_resp_time" : 0.0}
+    {"corpId" : 0,"name" : "ANTISPAM邮件地址错误","rate" : 0.0,"nums" : 0.0,"errorNums" : 19.0,"averageTime" : 0.0,"createTime" : null,"respTime" : 0.0,"fileSize" : 0.0,"probeRate" : 0.0,"probeRespTime" : 0.0},
+    {"corpId" : 0,"name" : "SMTP服务异常","rate" : 0.0,"nums" : 0.0,"errorNums" : 12.0,"averageTime" : 0.0,"createTime" : null,"respTime" : 0.0,"fileSize" : 0.0,"probeRate" : 0.0,"probeRespTime" : 0.0}
   ],
   "endTime" : "2016-07-13 09:25"
 };
@@ -75,10 +75,10 @@ exports.userServiceErrors = {
 exports.businessAnalasyList = {
   "startTime" : "2016-07-12 09:25",
   "dataList" : [
-    {"createtime" : null,"user_email" : "test@sgcc.com","corp_id" : 12,"corp_name" : "北京","item_type_name" : "WEB发邮件","item_type_id" : "21","testing_nums": 11,"testing_errors": 4,"success_rates": 10,"avgsendtime": 124,"maxsendtime": 1325},
-    {"createtime" : null,"user_email" : "test@sgcc.com","corp_id" : 12,"corp_name" : "北京","item_type_name" : "WEB发邮件","item_type_id" : "21","testing_nums": 10,"testing_errors": 3,"success_rates": 10,"avgsendtime": 124,"maxsendtime": 325},
-    {"createtime" : null,"user_email" : "test@sgcc.com","corp_id" : 12,"corp_name" : "北京","item_type_name" : "WEB发邮件","item_type_id" : "21","testing_nums": 12,"testing_errors": 7,"success_rates": 10,"avgsendtime": 124,"maxsendtime": 1825},
-    {"createtime" : null,"user_email" : "test@sgcc.com","corp_id" : 12,"corp_name" : "北京","item_type_name" : "WEB发邮件","item_type_id" : "21","testing_nums": 10,"testing_errors": 4,"success_rates": 10,"avgsendtime": 224,"maxsendtime": 825}
+    {"createTime" : null,"userEmail" : "test@sgcc.com","corpId" : 12,"corpName" : "北京","itemTypeName" : "WEB发邮件","itemTypeId" : "21","testingNums": 11,"testingErrors": 4,"successRates": 10,"avgSendTime": 124,"maxSendTime": 1325},
+    {"createTime" : null,"userEmail" : "test@sgcc.com","corpId" : 12,"corpName" : "北京","itemTypeName" : "WEB发邮件","itemTypeId" : "21","testingNums": 10,"testingErrors": 3,"successRates": 10,"avgSendTime": 124,"maxSendTime": 325},
+    {"createTime" : null,"userEmail" : "test@sgcc.com","corpId" : 12,"corpName" : "北京","itemTypeName" : "WEB发邮件","itemTypeId" : "21","testingNums": 12,"testingErrors": 7,"successRates": 10,"avgSendTime": 124,"maxSendTime": 1825},
+    {"createTime" : null,"userEmail" : "test@sgcc.com","corpId" : 12,"corpName" : "北京","itemTypeName" : "WEB发邮件","itemTypeId" : "21","testingNums": 10,"testingErrors": 4,"successRates": 10,"avgSendTime": 224,"maxSendTime": 825}
   ],
   "listCount" : 15,
   "endTime" : "2016-07-13 09:25"
@@ -88,10 +88,10 @@ exports.businessAnalasyList = {
 exports.actionTraceList = {
   "startTime" : "2016-07-12 09:25",
   "dataList" : [
-    {"createtime" : null,"user_email" :  "test@sgcc.com","corp_id" : 12,"corp_name" : "北京","item_type_name" : "WEB发邮件","item_type_id" : "21","testing_time": "2016-07-13 17:00:00","testing_status": "成功","response_time": 124,"error_code": "12321","error_description": "错误描述1"},
-    {"createtime" : null,"user_email" :  "test@sgcc.com","corp_id" : 12,"corp_name" : "北京","item_type_name" : "WEB发邮件","item_type_id" : "21","testing_time": "2016-07-13 17:00:00","testing_status": "成功","response_time": 114,"error_code": "12321","error_description": "错误描述2"},
-    {"createtime" : null,"user_email" :  "test@sgcc.com","corp_id" : 12,"corp_name" : "北京","item_type_name" : "WEB发邮件","item_type_id" : "21","testing_time": "2016-07-13 17:00:00","testing_status": "失败","response_time": 1224,"error_code": "12221","error_description": "错误描述3"},
-    {"createtime" : null,"user_email" :  "test@sgcc.com","corp_id" : 12,"corp_name" : "北京","item_type_name" : "WEB发邮件","item_type_id" : "21","testing_time": "2016-07-13 17:00:00","testing_status": "成功","response_time": 2124,"error_code": "22321","error_description": "错误描述4"}
+    {"createTime" : null,"userEmail" :  "test@sgcc.com","corpId" : 12,"corpName" : "北京","itemTypeName" : "WEB发邮件","itemTypeId" : "21","testingTime": "2016-07-13 17:00:00","testingStatus": "成功","responseTime": 124,"errorCode": "12321","errorDescription": "错误描述1"},
+    {"createTime" : null,"userEmail" :  "test@sgcc.com","corpId" : 12,"corpName" : "北京","itemTypeName" : "WEB发邮件","itemTypeId" : "21","testingTime": "2016-07-13 17:00:00","testingStatus": "成功","responseTime": 114,"errorCode": "12321","errorDescription": "错误描述2"},
+    {"createTime" : null,"userEmail" :  "test@sgcc.com","corpId" : 12,"corpName" : "北京","itemTypeName" : "WEB发邮件","itemTypeId" : "21","testingTime": "2016-07-13 17:00:00","testingStatus": "失败","responseTime": 1224,"errorCode": "12221","errorDescription": "错误描述3"},
+    {"createTime" : null,"userEmail" :  "test@sgcc.com","corpId" : 12,"corpName" : "北京","itemTypeName" : "WEB发邮件","itemTypeId" : "21","testingTime": "2016-07-13 17:00:00","testingStatus": "成功","responseTime": 2124,"errorCode": "22321","errorDescription": "错误描述4"}
   ],
   "listCount" : 15,
   "endTime" : "2016-07-13 09:25"
@@ -100,24 +100,24 @@ exports.actionTraceList = {
 /*拨测账户管理数据列表*/
 exports.accountManageList = {
   "dataList" : [
-    {"account_id" : 115, "createtime" : null,"user_email": "test@sgcc.com","corp_id" : 12,"corp_name" : "北京","account_status_id": "0","account_status": "运行中","testing_lasttime": "2016-07-18 12:00:00","testing_items": "1,11,13,15,18,19","testing_frequency": "30"},
-    {"account_id" : 125, "createtime" : null,"user_email": "test@sgcc.com","corp_id" : 12,"corp_name" : "北京","account_status_id": "0","account_status": "运行中","testing_lasttime": "2016-07-18 12:00:00","testing_items": "1,11,13,15,18,19","testing_frequency": "30"},
-    {"account_id" : 135, "createtime" : null,"user_email": "test@sgcc.com","corp_id" : 12,"corp_name" : "北京","account_status_id": "0","account_status": "运行中","testing_lasttime": "2016-07-18 12:00:00","testing_items": "1,11,13,15,18,19","testing_frequency": "30"},
-    {"account_id" : 145, "createtime" : null,"user_email": "test@sgcc.com","corp_id" : 12,"corp_name" : "北京","account_status_id": "0","account_status": "运行中","testing_lasttime": "2016-07-18 12:00:00","testing_items": "1,11,13,15,18,19","testing_frequency": "30"}
+    {"accountId" : 115, "createTime" : null,"userEmail": "test@sgcc.com","corpId" : 12,"corpName" : "北京","accountStatusId": "1","accountStatus": "运行中","testingLastTime": "2016-07-18 12:00:00","testingItems": "1,11,13,15,18,19","testingFrequency": "30"},
+    {"accountId" : 125, "createTime" : null,"userEmail": "test@sgcc.com","corpId" : 12,"corpName" : "北京","accountStatusId": "1","accountStatus": "运行中","testingLastTime": "2016-07-18 12:00:00","testingItems": "1,11,13,15,18,19","testingFrequency": "30"},
+    {"accountId" : 135, "createTime" : null,"userEmail": "test@sgcc.com","corpId" : 12,"corpName" : "北京","accountStatusId": "1","accountStatus": "运行中","testingLastTime": "2016-07-18 12:00:00","testingItems": "1,11,13,15,18,19","testingFrequency": "30"},
+    {"accountId" : 145, "createTime" : null,"userEmail": "test@sgcc.com","corpId" : 12,"corpName" : "北京","accountStatusId": "1","accountStatus": "运行中","testingLastTime": "2016-07-18 12:00:00","testingItems": "1,11,13,15,18,19","testingFrequency": "30"}
   ],
   "listCount" : 15
 };
 /*拨测账户详情*/
-exports.accountInfo = {"account_id" : 125, "createtime" : null, "user_email" : "test@sgcc.com","corp_id" : 8,"corp_name" : "陕西", "account_status_id": "0", "account_status": "运行中", "testing_lasttime": "2016-07-18 12:00:00", "testing_items": "1,7,8,11,13,15,18,19", "testing_frequency": "40" }
+exports.accountInfo = {"accountId" : 125, "createTime" : null, "userEmail" : "test@sgcc.com","corpId" : 8,"corpName" : "陕西", "accountStatusId": "0", "accountStatus": "运行中", "testingLastTime": "2016-07-18 12:00:00", "testingItems": "1,7,8,11,13,15,18,19", "testingFrequency": "40" }
 
 /*归档用户服务质量监控点列表数据*/
 exports.userArchivingQuality = [
-    {"createtime" : null, "success_rates" : 99.52, "avgsendtime" : 221.27, "item_type_name" : "Web登录", "item_type_id" : "21", "alarm_status" : 0, "point_order" : 1, "item_description" : "通过对Web登录邮箱的质量进行监控，包括SMTP登录成功率、登录用时。" }, 
-    {"createtime" : null, "success_rates" : 99.52, "avgsendtime" : 221.27, "item_type_name" : "邮件归档", "item_type_id" : "22", "alarm_status" : 4, "point_order" : 1, "item_description" : "对邮件归档情况进行监控，包括邮件发送成功率、邮件发送用时。" }, 
-    {"createtime" : null, "success_rates" : 99.52, "avgsendtime" : 221.27, "item_type_name" : "读邮件", "item_type_id" : "23", "alarm_status" : 0, "point_order" : 1, "item_description" : "通过对读邮件进行监控，包括POP登录成功率、登录用时。" }, 
-    {"createtime" : null, "success_rates" : 99.52, "avgsendtime" : 221.27, "item_type_name" : "邮件检索", "item_type_id" : "24", "alarm_status" : 1, "point_order" : 1, "item_description" : "通过对邮件检索进行监控，包括邮件收送成功率、邮件收送用时和收邮件用时分布状况监控。" }, 
-    {"createtime" : null, "success_rates" : 99.52, "avgsendtime" : 221.27, "item_type_name" : "邮件还原", "item_type_id" : "25", "alarm_status" : 2, "point_order" : 1, "item_description" : "通过对邮件还原进行监控，包括IMAP登录成功率、登录用时。" }, 
-    {"createtime" : null, "success_rates" : 99.52, "avgsendtime" : 221.27, "item_type_name" : "存储空间", "item_type_id" : "26", "alarm_status" : 3, "point_order" : 1, "item_description" : "通过对存储空间进行监控，包括邮件收取成功率、邮件接收用时和收邮件用时分布状况监控。" }    
+    {"createTime" : null, "successRates" : 99.52, "avgSendTime" : 221.27, "itemTypeName" : "Web登录", "itemTypeId" : "21", "alarmStatus" : 5, "pointOrder" : 1, "itemDescription" : "通过对Web登录邮箱的质量进行监控，包括SMTP登录成功率、登录用时。" }, 
+    {"createTime" : null, "successRates" : 99.52, "avgSendTime" : 221.27, "itemTypeName" : "邮件归档", "itemTypeId" : "22", "alarmStatus" : 4, "pointOrder" : 1, "itemDescription" : "对邮件归档情况进行监控，包括邮件发送成功率、邮件发送用时。" }, 
+    {"createTime" : null, "successRates" : 99.52, "avgSendTime" : 221.27, "itemTypeName" : "读邮件", "itemTypeId" : "23", "alarmStatus" : 5, "pointOrder" : 1, "itemDescription" : "通过对读邮件进行监控，包括POP登录成功率、登录用时。" }, 
+    {"createTime" : null, "successRates" : 99.52, "avgSendTime" : 221.27, "itemTypeName" : "邮件检索", "itemTypeId" : "24", "alarmStatus" : 1, "pointOrder" : 1, "itemDescription" : "通过对邮件检索进行监控，包括邮件收送成功率、邮件收送用时和收邮件用时分布状况监控。" }, 
+    {"createTime" : null, "successRates" : 99.52, "avgSendTime" : 221.27, "itemTypeName" : "邮件还原", "itemTypeId" : "25", "alarmStatus" : 2, "pointOrder" : 1, "itemDescription" : "通过对邮件还原进行监控，包括IMAP登录成功率、登录用时。" }, 
+    {"createTime" : null, "successRates" : 99.52, "avgSendTime" : 221.27, "itemTypeName" : "存储空间", "itemTypeId" : "26", "alarmStatus" : 3, "pointOrder" : 1, "itemDescription" : "通过对存储空间进行监控，包括邮件收取成功率、邮件接收用时和收邮件用时分布状况监控。" }    
 ];
 
 /*故障告警-告警配置列表*/
@@ -136,16 +136,16 @@ exports.addConfigList = [
 
 /*故障告警-告警通知列表*/
 exports.adviceList = [
-  {"businessId" : 0, "id" : 1507, "mit_id" : 113, "mit_type" : 3, "mit_name" : "IMAP登录", "reason" : "成功率为0%", "province" : 35, "provinceName" : "广东", "alarm_Status" : 3, "last_State_Change" : "2015-07-30 08:00:00", "last_Update" : "2015-07-30 15:20:00", "compare_Oper" : null, "alarm_Threshold" : 0.0, "deal_Status" : 0, "createtime" : null, "error_Nums" : null, "send_SMS_Nums" : 1, "send_Mail_Nums" : 1, "index_Id" : null, "notice_Id" : 58, "task_Conf_Id" : 49, "srv_ip" : 0, "srv_ip_string" : null, "descp" : "", "ruleId" : 971, "alarmCondition" : "成功率小于50%时进行严重告警", "dealDescp" : null, "mit_way" : 0, "searchContent" : null, "currentPage" : 0, "totalPage" : 0, "pageSize" : 0, "totalRecord" : 0, "authToken" : null, "searchStartDate" : null, "searchEndDate" : null, "entityName" : ""}, 
-  {"businessId" : 0, "id" : 1329, "mit_id" : 22, "mit_type" : 1, "mit_name" : "附件下载", "reason" : "响应时间为29158.5ms", "province" : 9, "provinceName" : "西藏", "alarm_Status" : 3, "last_State_Change" : "2015-07-30 15:20:00", "last_Update" : "2015-07-30 15:20:00", "compare_Oper" : null, "alarm_Threshold" : 0.0, "deal_Status" : 0, "createtime" : null, "error_Nums" : null, "send_SMS_Nums" : 1, "send_Mail_Nums" : 1, "index_Id" : null, "notice_Id" : 12, "task_Conf_Id" : 3, "srv_ip" : 0, "srv_ip_string" : null, "descp" : "", "ruleId" : 529, "alarmCondition" : "响应时间大于10000ms时进行严重告警", "dealDescp" : "111", "mit_way" : 0, "searchContent" : null, "currentPage" : 0, "totalPage" : 0, "pageSize" : 0, "totalRecord" : 0, "authToken" : null, "searchStartDate" : null, "searchEndDate" : null, "entityName" : ""}
+  {"businessId" : 0, "id" : 1507, "mitId" : 113, "mitType" : 3, "mitName" : "IMAP登录", "reason" : "成功率为0%", "province" : 35, "provinceName" : "广东", "alarmStatus" : 3, "lastStateChange" : "2015-07-30 08:00:00", "updateTime" : "2015-07-30 15:20:00", "compareOper" : null, "alarmThreshold" : 0.0, "dealStatus" : 0, "createtime" : null, "errorNums" : null, "sendSMSNums" : 1, "sendMailNums" : 1, "indexId" : null, "noticeId" : 58, "taskConfId" : 49, "srvIp" : 0, "srvIpString" : null, "descp" : "", "ruleId" : 971, "alarmCondition" : "成功率小于50%时进行严重告警", "dealDescp" : null, "mit_way" : 0, "searchContent" : null, "currentPage" : 0, "totalPage" : 0, "pageSize" : 0, "totalRecord" : 0, "authToken" : null, "startTime" : null, "endTime" : null, "entityName" : ""}, 
+  {"businessId" : 0, "id" : 1329, "mitId" : 22, "mitType" : 1, "mitName" : "附件下载", "reason" : "响应时间为29158.5ms", "province" : 9, "provinceName" : "西藏", "alarmStatus" : 3, "lastStateChange" : "2015-07-30 15:20:00", "updateTime" : "2015-07-30 15:20:00", "compareOper" : null, "alarmThreshold" : 0.0, "dealStatus" : 0, "createtime" : null, "errorNums" : null, "sendSMSNums" : 1, "sendMailNums" : 1, "indexId" : null, "noticeId" : 12, "taskConfId" : 3, "srvIp" : 0, "srvIpString" : null, "descp" : "", "ruleId" : 529, "alarmCondition" : "响应时间大于10000ms时进行严重告警", "dealDescp" : "111", "mit_way" : 0, "searchContent" : null, "currentPage" : 0, "totalPage" : 0, "pageSize" : 0, "totalRecord" : 0, "authToken" : null, "startTime" : null, "endTime" : null, "entityName" : ""}
 ];
 /*故障告警-告警详情*/
-exports.getAdviceDetail = {"id": 22, "name": "test_运维工程师", "email": "w3523535@werwe.com", "phone": "12345344465", "createtime": "2015-11-30 14:43:42", "updatetime": "2015-12-08 11:20:45", sms_count:1, email_count:1, "rname": null}
+exports.getAdviceDetail = {"id": 22, "name": "test_运维工程师", "email": "w3523535@werwe.com", "phone": "12345344465", "createtime": "2015-11-30 14:43:42", "updatetime": "2015-12-08 11:20:45", smsCCount:1, emailCount:1, "rname": null}
 
 /*故障告警-告警历史列表*/
 exports.historyList = [
-  {"businessId" : 0, "id" : 1507, "mit_id" : 113, "mit_type" : 3, "mit_name" : "IMAP登录", "reason" : "成功率为0%", "province" : 35, "provinceName" : "广东", "alarm_Status" : 3, "last_State_Change" : "2015-07-30 08:00:00", "last_Update" : "2015-07-30 15:20:00", "compare_Oper" : null, "alarm_Threshold" : 0.0, "deal_Status" : 0, "createtime" : null, "error_Nums" : null, "send_SMS_Nums" : 1, "send_Mail_Nums" : 1, "index_Id" : null, "notice_Id" : 58, "task_Conf_Id" : 49, "srv_ip" : 0, "srv_ip_string" : null, "descp" : "", "ruleId" : 971, "alarmCondition" : "成功率小于50%时进行严重告警", "dealDescp" : null, "mit_way" : 0, "searchContent" : null, "currentPage" : 0, "totalPage" : 0, "pageSize" : 0, "totalRecord" : 0, "authToken" : null, "searchStartDate" : null, "searchEndDate" : null, "entityName" : ""}, 
-  {"businessId" : 0, "id" : 1329, "mit_id" : 22, "mit_type" : 1, "mit_name" : "附件下载", "reason" : "响应时间为29158.5ms", "province" : 9, "provinceName" : "西藏", "alarm_Status" : 3, "last_State_Change" : "2015-07-30 15:20:00", "last_Update" : "2015-07-30 15:20:00", "compare_Oper" : null, "alarm_Threshold" : 0.0, "deal_Status" : 0, "createtime" : null, "error_Nums" : null, "send_SMS_Nums" : 1, "send_Mail_Nums" : 1, "index_Id" : null, "notice_Id" : 12, "task_Conf_Id" : 3, "srv_ip" : 0, "srv_ip_string" : null, "descp" : "", "ruleId" : 529, "alarmCondition" : "响应时间大于10000ms时进行严重告警", "dealDescp" : "111", "mit_way" : 0, "searchContent" : null, "currentPage" : 0, "totalPage" : 0, "pageSize" : 0, "totalRecord" : 0, "authToken" : null, "searchStartDate" : null, "searchEndDate" : null, "entityName" : ""}
+  {"businessId" : 0, "id" : 1507, "mitId" : 113, "mitType" : 3, "mitName" : "IMAP登录", "reason" : "成功率为0%", "province" : 35, "provinceName" : "广东", "alarmStatus" : 3, "lastStateChange" : "2015-07-30 08:00:00", "updateTime" : "2015-07-30 15:20:00", "compareOper" : null, "alarmThreshold" : 0.0, "dealStatus" : 0, "createtime" : null, "errorNums" : null, "sendSMSNums" : 1, "sendMailNums" : 1, "indexId" : null, "noticeId" : 58, "taskConfId" : 49, "srvIp" : 0, "srvIpString" : null, "descp" : "", "ruleId" : 971, "alarmCondition" : "成功率小于50%时进行严重告警", "dealDescp" : null, "mit_way" : 0, "searchContent" : null, "currentPage" : 0, "totalPage" : 0, "pageSize" : 0, "totalRecord" : 0, "authToken" : null, "startTime" : null, "endTime" : null, "entityName" : ""}, 
+  {"businessId" : 0, "id" : 1329, "mitId" : 22, "mitType" : 1, "mitName" : "附件下载", "reason" : "响应时间为29158.5ms", "province" : 9, "provinceName" : "西藏", "alarmStatus" : 3, "lastStateChange" : "2015-07-30 15:20:00", "updateTime" : "2015-07-30 15:20:00", "compareOper" : null, "alarmThreshold" : 0.0, "dealStatus" : 0, "createtime" : null, "errorNums" : null, "sendSMSNums" : 1, "sendMailNums" : 1, "indexId" : null, "noticeId" : 12, "taskConfId" : 3, "srvIp" : 0, "srvIpString" : null, "descp" : "", "ruleId" : 529, "alarmCondition" : "响应时间大于10000ms时进行严重告警", "dealDescp" : "111", "mit_way" : 0, "searchContent" : null, "currentPage" : 0, "totalPage" : 0, "pageSize" : 0, "totalRecord" : 0, "authToken" : null, "startTime" : null, "endTime" : null, "entityName" : ""}
 ];
 
 /*故障告警-监控点列表*/

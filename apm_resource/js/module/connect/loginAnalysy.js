@@ -74,6 +74,7 @@ define('loginAnalysy',function(require,exports,module){
             chart.setOption(option);
         },
         renderGrid:function(){
+            var me = this;
             $('.grid-content').empty();
             var columns = [{
                 text:'序号',
@@ -100,7 +101,7 @@ define('loginAnalysy',function(require,exports,module){
             var option = {
                 el:'.grid-content',
                 url:'data.do?func=connect:getLoginAnalasyGrid',
-                //autoLoad:false,
+                params:me.getParam(),
                 plugin:'page',
                 tableCss:'table-con mb-20',
                 columns:columns
@@ -125,10 +126,13 @@ define('loginAnalysy',function(require,exports,module){
                 var dom = $(this);
                 dom.addClass('current').siblings().removeClass('current');
                 me.tabType = dom.index()+1;
-                me.queryData();
+                me.queryChart(true);
             }).on('timeChange','.toolbar .fr div[role=dateBar]',function(e,value){
                 me.queryData();
-            });
+            }).on('click','.action.detail',function(e){
+                var ip = $(this).attr('ip');
+                me.getDetail(ip)
+            })
         },
         defaultClick:function(){
             var me = this;
@@ -147,7 +151,7 @@ define('loginAnalysy',function(require,exports,module){
                 me.$el.find('.retrieval-con').css('display','none');
             }
         },
-        queryData:function(){
+        queryData:function(onlyChart){
             var me = this,
                 result= me.checkParam(),
                 param = me.getParam();
@@ -155,20 +159,52 @@ define('loginAnalysy',function(require,exports,module){
             if(!result)
                 return;
             me.setTitle();
+            me.queryChart();
+            if(onlyChart != true)
+                me.renderGrid();
+        },
+        queryChart:function(){
+            var me = this;
             util.request({
                 url:'data.do?func=connect:getLoginAnalasyChart',
-                param:param,
+                param:me.getParam(),
                 fnSuc:function(resp){
                     me.renderChart(resp['var']);
                 }
             });
-            me.renderGrid();
+        },
+        queryGrid:function(){
+
+        },
+        getDetail:function(ip){
+            var me = this;
+            util.dialog('账号集','<div class="detailGrid" style="width: 400px;height: 250px;"></div>',null,null,{id:'peiFail',cancelDisplay:false,onshow:function(){
+                var columns = [{
+                    name:'loginIp',
+                    text:'登陆IP'
+                },{
+                    name:'loginAccount',
+                    text:'登录账号'
+                },{
+                    name:'loginCount',
+                    text:'登录次数'
+                }];
+                var option = {
+                    el:'.ui-dialog .detailGrid',
+                    url:'data.do?func=connect:getLoginAnalasyGrid',
+                    param:{loginIp:ip},
+                    tableCss:'table-con mb-20',
+                    columns:columns
+                };
+                new grid(option);
+            }
+            });
         },
         setTitle:function(){
             var me = this,
                 titleArr1 = ['IP&账号','IP'],
-                titleArr2 = ['登录次数','登录账号个数'],
-                title = titleArr1[me.type-1]+titleArr2[me.tabType-1];
+                //titleArr2 = ['登录次数','登录账号个数'],
+                title = titleArr1[me.type-1]+'登录详情';
 
             me.$el.find('.grid-title').text(title);
         },
@@ -192,6 +228,7 @@ define('loginAnalysy',function(require,exports,module){
         },
         getParam:function(){
             var me = this,
+                type = me.type,
                 param = {},
                 dateBar = me.dateBar,
                 loginIP = util.getVal('.retrieval-con input[name=loginIP]');

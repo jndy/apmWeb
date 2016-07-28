@@ -15,12 +15,9 @@
         <li>
             <label>省份：</label>
             <div class="module-fill w150">
-                 <select style="display:none" widthNo="150" name="role">
+                 <select style="display:none" widthNo="150" name="corpId">
                     <option value="0">全部</option>
-                    <option value="1">运维管理员</option>
-                    <option value="2">配置管理员</option>
-                    <option value="3">监控员</option>
-                    <option value="4">运维工程师</option>
+                    
                 </select>
             </div>
         </li>
@@ -29,13 +26,13 @@
         <li>
             <label>VIP用户账号：</label>
             <div class="module-fill w150">
-                <input type="text" name="srv_ip" class="module-input"/>
+                <input type="text" name="account" class="module-input"/>
             </div>
         </li>
         <li>
-            <label>VIP用户姓名：</label>
+            <label style="margin-left: 144px;">VIP用户姓名：</label>
             <div class="module-fill w150">
-                <input type="text" name="srv_ip" class="module-input"/>
+                <input type="text" name="userName" class="module-input"/>
             </div>
         </li>
         
@@ -44,29 +41,33 @@
         <li>
             <label>VIP服务等级：</label>
             <div class="module-fill w150">
-                 <select style="display:none" widthNo="150" name="role">
+                 <select style="display:none" widthNo="150" name="vipLevel">
                     <option value="0">全部</option>
-                    <option value="1">运维管理员</option>
-                    <option value="2">配置管理员</option>
-                    <option value="3">监控员</option>
-                    <option value="4">运维工程师</option>
+                    <option value="1">一级VIP</option>
+                    <option value="2">二级VIP</option>
                 </select>
             </div>
         </li>
         <li>
-            <label>跟踪状态：</label>
+            <label style="margin-left: 144px;">跟踪状态：</label>
             <div class="module-fill">
-                <label for=""><input type="checkbox" name="srv_ip" class="srv_ip"/>正常</label>
-                <label for=""><input type="checkbox" name="srv_ip" class="srv_ip"/>冻结</label>
-                <label for=""><input type="checkbox" name="srv_ip" class="srv_ip"/>注销</label>
-                <label for=""><input type="checkbox" name="srv_ip" class="srv_ip"/>删除</label>
+                <label for="" class="mr-5"><input type="checkbox" name="status" value="1" />正常</label>
+                <label for="" class="mr-5"><input type="checkbox" name="status" value="2" />冻结</label>
+                <label for="" class="mr-5"><input type="checkbox" name="status" value="3" />注销</label>
+                <label for="" class="mr-5"><input type="checkbox" name="status" value="4" />删除</label>
             </div>
-            <a href="javascript:;" class="btn btn-orange ml-10">查询</a>
+            <a href="javascript:;" class="btn btn-orange ml-10" role="query">查询</a>
         </li>
     </ul>
 </div>
-<div class="mod-btn">
-  
+<div class="mod-btn clearfix">
+  <div class="fl">
+      <a href="javascript:void(-1);" class="btn btn-blue" role='vip-async'><i class="i-update"></i>同步</a>
+      <a href="javascript:void(-1);" class="btn btn-blue" role='vip-export'><i class="i-export"></i>导出</a>
+  </div>
+  <div class="fr">
+      当前共有<span class='c-red'>10</span>个VIP用户
+  </div>
 </div>
 
 <div class="content_main">

@@ -1,5 +1,5 @@
 <div class="bread-nav mb-20">
-    <h2><%=item_name%></h2><span class="tit"><%=item_description%></span>
+    <h2><%=itemName%></h2><span class="tit"><%=itemDescription%></span>
     <a href="javascript:;" class="btn-search-hide">查询<i class="i-down"></i></a>
 </div>
 
@@ -11,7 +11,7 @@
                 <select style="display:none" widthNo="150" name="corpId">
                     <option value="0">全部</option>
                     <% for(var i = 0; i<provinceList.length; i++) { %>
-                    <option value="<%=provinceList[i]['provinceId']%>"><%=provinceList[i]['provinceName']%></option>
+                    <option value="<%=provinceList[i]['corpId']%>"><%=provinceList[i]['corpName']%></option>
                     <% } %>
                 </select>
             </div>
@@ -22,7 +22,7 @@
                 <select style="display:none" widthNo="150" name="itemTypeId">
                     <option value="0">全部</option>
                     <% for(var i = 0; i<monitoringPoints.length; i++) { %>
-                    <option value="<%=monitoringPoints[i]['item_type_id']%>"><%=monitoringPoints[i]['item_type_name']%></option>
+                    <option value="<%=monitoringPoints[i]['itemTypeId']%>"><%=monitoringPoints[i]['itemTypeName']%></option>
                     <% } %>
                 </select>
             </div>
@@ -36,7 +36,7 @@
         <li>
             <label>排序：</label>
             <div class="module-fill w150">
-                <select style="display:none" widthNo="150" name="orderby">
+                <select style="display:none" widthNo="150" name="orderBy">
                     <option value="1">拨测次数排序</option>
                     <option value="2">失败次数排序</option>
                     <option value="3">成功率排序</option>
@@ -53,9 +53,7 @@
 
 <div class="clearfix mt-20 mb-20 toolbar">
     <div class="fl">
-        <ul class="mod-tab clearfix">
-            <li class="current"><a href="javascript:;" role="export">导出</a></li>
-        </ul>
+        <a href="javascript:;" role="export" class="btn btn-blue"><i class="i-export"></i>导出</a>
     </div>
     <div class="fr">
     </div>
@@ -63,7 +61,7 @@
 
 <div class="content_main">
     <div class="graph-tab clearfix">
-        <h2 class="quality-tit"><%=item_name%></h2>
+        <h2 class="quality-tit"><%=itemName%></h2>
     </div>
     <div class="grid-content"></div>
 </div>

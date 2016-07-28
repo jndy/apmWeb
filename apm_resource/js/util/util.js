@@ -54,7 +54,7 @@ define('util',function(require,exports,module){
          * 导出数据接口
          * @param options
          */
-        export:function(options){
+        exports:function(options){
             // 如果url不存在直接返回
             if(!options.url){
                 return;
@@ -254,8 +254,12 @@ define('util',function(require,exports,module){
             if(st == '' || et == '')
                 return true;
 
-            var sd = +new Date(st),
-                ed = +new Date(et);
+            var sd = +st,
+                ed = +et;
+            if(typeof(st) == 'string'){
+                sd = +new Date(st.replace(/-/g, "/"));
+                ed = +new Date(et.replace(/-/g, "/"));
+            }
 
             if(allowEqual === false)
                 return ed - sd > 0;
@@ -311,6 +315,7 @@ define('util',function(require,exports,module){
             }
             var d = dialog(option);
             d.showModal();
+            return d;
         },
         /**
          * 将普通的select批量转换为样式美观的下拉框
@@ -478,12 +483,29 @@ define('util',function(require,exports,module){
           return ret;
          },
         /**
+         * 生成下拉框options
+         * @param  {[type]} obj 数据对象
+         * @param  {[type]} key 对象key
+         * @param  {[type]} val 对象val
+         * @param  {[type]} all 是否显示全部
+         * @return {[type]}     [description]
+         */
+        createOptions: function(obj,key,val,all){
+            var optionHtml = "";
+            key = key ? key : "key";
+            val = val ? val : "val";
+            $.each(obj, function(index, item){
+                optionHtml += "<option value='"+item[val]+"'>"+item[key]+"</option>";
+            })
+            return optionHtml;
+        },
+        /**
          * 用于系统内部的模块跳转，支持A模块跳转到B模块B1功能的第N视图
          * @param url
          * @example uitl.jumpModule('alarm/configList?childView=addConfig')；
          */
         jumpModule:function(url){
-            window.router.navigate(url,{trigger:true});
+            window.router.navigate(url,{trigger:false});
             window.router.loadModule();
         }
     };

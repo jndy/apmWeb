@@ -47,7 +47,7 @@ define('leftNav',function(require,exports,module){
                     }
                 }
                 else{
-                    var dom = this.$el.find('a[href="{0}"]'.format(pureUrl)).parent();
+                    var dom = this.$el.find('a[href="{0}"]'.format(pureUrl.split('?')[0])).parent();
                     var childView = location.hash.split('?childView=')[1];
                     if(!childView){
                         dom.parent().removeClass('hide');

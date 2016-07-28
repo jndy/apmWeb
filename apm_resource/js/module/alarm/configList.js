@@ -12,11 +12,11 @@ define('configList',function(require,exports,module){
         initialize:function(){
             this.render();
             this.initEvents();
+            this.selectEventHandler();
         },
         render:function(){
             var html = _.template(tpl)({});
             this.$el.empty().append(html);
-            util.my_select();
             this.renderGrid();
         },
         renderGrid:function(){
@@ -82,10 +82,7 @@ define('configList',function(require,exports,module){
                 var dom = $(this).find('i');
                 me.showQueryDiv(dom);
             }).on('click','a[role=query]',function(e){
-                var param = me.getParam();
-                if(!param)
-                    return;
-                me.gridView.requestData(param,1);
+                me.onQuery();
             }).on('click','a[role=addConfig]',function(e){
                 me.onAddConfig();
             }).on('click','a[role=config-edit]',function(e){
@@ -95,6 +92,42 @@ define('configList',function(require,exports,module){
             }).on('click','a[role=config-detail]',function(e){
                 me.onDetail();
             });
+        }
+        ,
+        /**
+         * 查询下拉框事件处理
+         * @return {[type]} [description]
+         */
+        selectEventHandler:function(){
+            var me = this;
+
+            me.renderMitType();
+            me.renderMitName();
+
+            util.my_select();
+
+        },
+        //监控点类型
+        renderMitType:function(){
+            var me=this;
+            $("select[name=mitType]").empty().html(util.createOptions(gMain.monitoringType,"mitName","mitId"));
+        },
+        //监控点名称
+        renderMitName:function(){
+            var me = this;
+           $("select[name=mitType]").on("change",function(){
+                var mitId = $(this).val();
+                var mitPoints = gMain.monitoringPoints["mitId_"+mitId];
+                var mitNameHtml = '<select style="display:none" widthNo="150" name="mitName">';
+                mitNameHtml += util.createOptions(mitPoints,"itemTypeName","itemTypeId");
+                mitNameHtml += "</select>";
+                $("div[role=mitName]").empty().html(mitNameHtml);
+                util.my_select();
+           })
+        },
+        onQuery:function(){
+            var me = this;
+            me.gridView.requestData(me.getParam);
         },
         showQueryDiv:function(dom){
             var me = this;
@@ -110,38 +143,11 @@ define('configList',function(require,exports,module){
             }
         },
         getParam:function(){
-            var me = this,
-                param = {},
-                userName,realName,role,startTime,endTime;
-
-            userName = util.getVal('.retrieval-con input[name=userName]');
-            if(userName != ''){
-                param.userName = userName;
+            var param = {
+                mitType:$("select[name=mitType]").val(),
+                mitName:$("select[name=mitName]").val(),
+                status:$("select[name=status]").val()
             }
-
-            realName = util.getVal('.retrieval-con input[name=realName]');
-            if(realName != ''){
-                param.userRealName = realName;
-            }
-
-            role = util.getVal('.retrieval-con span[name=role]','select');
-            if(role != 0){
-                param.userType = role;
-            }
-
-            startTime = util.getVal('.retrieval-con input[name=startTime]');
-            if(startTime != ''){
-                param.searchStartDate = startTime;
-            }
-
-            endTime = util.getVal('.retrieval-con input[name=endTime]');
-            if(endTime != ''){
-                param.searchEndDate = endTime;
-            }
-
-            if(!util.compareTimeValid(startTime,endTime))
-                return null;
-
             return param;
         },
         //新建告警配置

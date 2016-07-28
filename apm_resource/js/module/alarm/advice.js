@@ -32,13 +32,13 @@ define('advice',function(require,exports,module){
                     name:'id',
                     text:'序号'
                 },{
-                    name:'mit_way',
+                    name:'mitWay',
                     text:'监控方式'
                 },{
-                    name:'mit_name',
+                    name:'mitName',
                     text:'监控点名称'
                 },{
-                    name:'mtype',
+                    name:'mitType',
                     text:'监控类型',
                     renderer:function(val){
                         var str = 'VIP监控';
@@ -49,16 +49,16 @@ define('advice',function(require,exports,module){
                     name:'reason',
                     text:'告警原因'
                 },{
-                    name:'provinceName',
+                    name:'province',
                     text:'省份/IP'
                 },{
-                    name:'alarm_Threshold',
+                    name:'alarmLevel',
                     text:'告警等级'
                 },{
-                    name:'last_State_Change',
+                    name:'lastStateChange',
                     text:'持续时长'
                 },{
-                    name:'last_Update',
+                    name:'updateTime',
                     text:'更新时间'
                 },{
                     name:'',
@@ -98,6 +98,8 @@ define('advice',function(require,exports,module){
                 me.onIgnore();
             }).on('click','a[role=advice-remark]',function(e){
                 me.onRemark();
+            }).on('click','a[role=advice-resume]',function(e){
+                me.onResume();
             }).on("loadChange",function(event,resp){
                 //表格数据回调
                 
@@ -109,19 +111,20 @@ define('advice',function(require,exports,module){
          */
         selectEventHandler:function(){
             var me = this;
-            var mit_way = [
-                {key:'全部',val:'0'},
+            var mitWay = [
+                {key:'全部',val:''},
                 {key:'日志',val:'1'},
-                {key:'拨测',val:'2'}
+                {key:'拨测',val:'2'},
+                {key:'归档',val:'3'}
             ];
 
-            $("select[name=mit_way]").empty().html(me.createOptions(mit_way));
+            $("select[name=mitWay]").empty().html(util.createOptions(mitWay));
 
 
-            $("select[name=mit_way]").on("change",function(e){
-                var val = $(this).val();
-                console.log('test');
-            })
+            // $("select[name=mitWay]").on("change",function(e){
+            //     var val = $(this).val();
+            //     console.log('test');
+            // })
 
             me.renderMitType();
             me.renderMitName();
@@ -132,46 +135,26 @@ define('advice',function(require,exports,module){
         },
         //监控点类型
         renderMitType:function(){
-            var me=this,
-                fnSuc = function(resp){
-                var dataList = resp["var"]["dataList"];
-                if(dataList && dataList.length>0){
-                    $("select[name=mit_type]").empty().html(me.createOptions(dataList,"typeName","id"));
-                }
-            }
-            alarmApi.getConfigType({fnSuc:fnSuc})
+            var me=this;
+            $("select[name=mitType]").empty().html(util.createOptions(gMain.monitoringType,"mitName","mitId"));
         },
         //监控点名称
         renderMitName:function(){
-           var me=this,
-             fnSuc = function(resp){
-             var dataList = resp["var"]["dataList"];
-             if(dataList && dataList.length>0){
-                $("select[name=mit_type]").empty().html(me.createOptions(dataList,"typeName","id"));
-             }
-            }
-            alarmApi.getMonitor({fnSuc:fnSuc}) 
+            var me = this;
+           $("select[name=mitType]").on("change",function(){
+                var mitId = $(this).val();
+                var mitPoints = gMain.monitoringPoints["mitId_"+mitId];
+                var mitNameHtml = '<select style="display:none" widthNo="150" name="mitName">';
+                mitNameHtml += util.createOptions(mitPoints,"itemTypeName","itemTypeId");
+                mitNameHtml += "</select>";
+                $("div[role=mitName]").empty().html(mitNameHtml);
+                util.my_select();
+           })
         },
         //省份
         renderProvince:function(){
-
-        },
-        /**
-         * 生成下拉框options
-         * @param  {[type]} obj 数据对象
-         * @param  {[type]} key 对象key
-         * @param  {[type]} val 对象val
-         * @param  {[type]} all 是否显示全部
-         * @return {[type]}     [description]
-         */
-        createOptions:function(obj,key,val,all){
-            var optionHtml = "";
-            key = key ? key : "key";
-            val = val ? val : "val";
-            $.each(obj, function(index, item){
-                optionHtml += "<option value='"+item[val]+"'>"+item[key]+"</option>";
-            })
-            return optionHtml;
+            var me = this;
+            $("select[name=corpId]").empty().html(util.createOptions(gMain.provinceList,"corpName","corpId"));
         },
         showQueryDiv:function(dom){
             var me = this;
@@ -221,10 +204,46 @@ define('advice',function(require,exports,module){
             
         },
         onIgnore:function(){
+            var content = $("#advice-ignore-tpl").html();
+                //content = util.format_advanced(content,obj);
+                util.dialog('告警通知忽略',content,function(){
+                    var fnSuc = function(resp){
+                        alert('接口请求');
+                        dialog.close().remove();                        
+                    }
+                    var ignore = $.trim($("textarea[name=ignore]").val());
 
+                    alarmApi.updateAdviceIgnore({fnSuc:fnSuc,param:{ignore:ignore}});
+                    return false;
+                });
         },
         onRemark:function(){
+            var content = $("#advice-remark-tpl").html();
+            //content = util.format_advanced(content,obj);
+            var dialog = util.dialog('告警通知备注',content,function(){
+                var fnSuc = function(resp){
+                    alert('接口请求');
+                    dialog.close().remove();                        
+                }
+                var remark = $.trim($("textarea[name=remark]").val());
 
+                alarmApi.updateAdviceRemark({fnSuc:fnSuc,param:{remark:remark}});
+                return false;
+            });
+        },
+        onResume:function(){
+            var content = $("#advice-resume-tpl").html();
+            //content = util.format_advanced(content,obj);
+            util.dialog('告警通知已恢复',content,function(){
+                var fnSuc = function(resp){
+                    alert('接口请求');
+                    dialog.close().remove();                        
+                }
+                var resume = $.trim($("textarea[name=resume]").val());
+
+                alarmApi.updateAdviceResume({fnSuc:fnSuc,param:{resume:resume}});
+                return false;
+            });
         },
         /**
          * 获取搜索表单参数
@@ -233,27 +252,27 @@ define('advice',function(require,exports,module){
         getParam: function(){
             var me = this,
                 param = {},
-                mit_way,mit_type,mit_name,province,srv_ip;
+                mitWay,mitType,mitName,province,srvIp;
 
-            mit_way = util.getVal('.retrieval-con span[name=mit_way]','select');
-            if(mit_way != ''){
-                param.mit_way = mit_way;
+            mitWay = util.getVal('.retrieval-con span[name=mitWay]','select');
+            if(mitWay != ''){
+                param.mitWay = mitWay;
             }
-            mit_type = util.getVal('.retrieval-con span[name=mit_type]','select');
-            if(mit_type != ''){
-                param.mit_type = mit_type;
+            mitType = util.getVal('.retrieval-con span[name=mitType]','select');
+            if(mitType != ''){
+                param.mitType = mitType;
             }
-            mit_name = util.getVal('.retrieval-con span[name=mit_name]','select');
-            if(mit_name != ''){
-                param.mit_name = mit_name;
+            mitName = util.getVal('.retrieval-con span[name=mitName]','select');
+            if(mitName != ''){
+                param.mitName = mitName;
             }
             province = util.getVal('.retrieval-con span[name=province]','select');
             if(province != ''){
                 param.province = province;
             }
-            srv_ip = util.getVal('.retrieval-con input[name=srv_ip]');
-            if(srv_ip != ''){
-                param.srv_ip = srv_ip;
+            srvIp = util.getVal('.retrieval-con input[name=srvIp]');
+            if(srvIp != ''){
+                param.srvIp = srvIp;
             }
             return param;
         }

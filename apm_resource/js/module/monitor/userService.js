@@ -22,7 +22,7 @@ define('userService',function(require,exports,module){
             var me = this;
             util.request({
                 url:'data.do?func=service:getUserServiceQuality',
-                param:{dataType: 0},
+                param:{dataType: 1},
                 fnSuc:function(resp){
                     var rData = resp['var'];
                     rData.fCount = 0;
@@ -31,12 +31,12 @@ define('userService',function(require,exports,module){
                         rData.dList[i] = [];                          
                     }
                     _.each(rData['dataList'], function(item){
-                        if(item.alarm_status != null && item.alarm_status > 0){
+                        if(item.alarmStatus != 5 && item.alarmStatus > 1){
                             rData.fCount++;
                         }
                         for(i=1; i<=8; i++){
-                            if(item.point_order != null && item.point_order == i){
-                                item.item_class = me.getStatusClass(item.alarm_status);
+                            if(item.pointOrder != null && item.pointOrder == i){
+                                item.itemClass = me.getStatusClass(item.alarmStatus);
                                 rData.dList[i].push(item); 
                             }                            
                         }
@@ -63,7 +63,7 @@ define('userService',function(require,exports,module){
         },
         getStatusClass: function(val){
             switch(val){
-                case 0:
+                case 5:
                     return 'btn-nothing';
                 case 1:
                     return 'btn-normal';

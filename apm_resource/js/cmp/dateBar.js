@@ -105,8 +105,8 @@ define('dateBar',function(){
                     result.et = today;
                     break;
                 case 5://自定义
-                    result.st = new Date(me.el.find('input[name=st]').val());
-                    result.et = new Date(me.el.find('input[name=et]').val());
+                    result.st = new Date(me.el.find('input[name=st]').val().replace(/-/g, "/"));
+                    result.et = new Date(me.el.find('input[name=et]').val().replace(/-/g, "/"));
                     break;
                 default :
                     break;

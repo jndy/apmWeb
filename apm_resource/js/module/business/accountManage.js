@@ -18,10 +18,10 @@ define('accountManage',function(require,exports,module){
             this.initEvents();
         },
         render:function(){
-            var data = {item_name: '拨测账户管理', 
-                        item_description: '对拨测账户进行管理。', 
-                        provinceList: provinceList,
-                        monitoringPoints: monitoringPoints
+            var data = {itemName: '拨测账户管理', 
+                        itemDescription: '对拨测账户进行管理。', 
+                        provinceList: gMain.provinceList,
+                        monitoringPoints: gMain.monitoringPoints.mitId_3
                     };
             var html = _.template(tpl)(data);
             this.$el.empty().append(html);  
@@ -36,41 +36,41 @@ define('accountManage',function(require,exports,module){
             var option = {
                 el:'.grid-content',
                 url:'data.do?func=business:getAccountManageList',
-                param: params,
+                params: params,
                 plugin:'page',
                 tableCss:'table-con mb-20',
                 columns:[{
-                    name:'account_id',
+                    name:'accountId',
                     text:'编号'
                 },{
-                    name:'user_email',
+                    name:'userEmail',
                     text:'拨测邮箱账号'
                 },{
-                    name:'corp_name',
+                    name:'corpName',
                     text: '省份'
                 },{
-                    name:'account_status',
+                    name:'accountStatus',
                     text:'运行状态'
                 },{
-                    name:'testing_frequency',
+                    name:'testingFrequency',
                     text:'拨测频次',
                     renderer:function(val){
                         return val + '分钟';
                     }
                 },{
-                    name:'testing_lasttime',
+                    name:'testingLastTime',
                     text:'最近拨测时间'
                 },{                    
                     text:'操作',
                     renderer:function(val, index, item){
                         var str = "<div class='td-fun'>";
-                        if(item.account_status_id == '0'){
-                            str += "<a href='javascript:;' role='status' aid="+item.account_id+" sid="+item.account_status_id+">暂停</a>";
+                        if(item.accountStatusId == '1'){
+                            str += "<a href='javascript:;' role='status' aid="+item.accountId+" sid="+item.accountStatusId+">暂停</a>";
                         }else{
-                            str += "<a href='javascript:;' role='status' aid="+item.account_id+" sid="+item.account_status_id+">启动</a>";
+                            str += "<a href='javascript:;' role='status' aid="+item.accountId+" sid="+item.accountStatusId+">启动</a>";
                         }                        
-                        str += "  <a href='javascript:;' role='update' aid="+item.account_id+">修改</a>";
-                        str += "  <a href='javascript:;' role='detail' aid="+item.account_id+">详情</a>";
+                        str += "  <a href='javascript:;' role='update' aid="+item.accountId+">修改</a>";
+                        str += "  <a href='javascript:;' role='detail' aid="+item.accountId+">详情</a>";
                         str += "</div>";
                         return str;
                     }
@@ -93,19 +93,19 @@ define('accountManage',function(require,exports,module){
             }).on('click','a[role=addnew]',function(e){
                 me.addnewData();
             }).on('click','a[role=update]',function(e){                
-                var account_id = $.trim($(this).attr('aid'));
-                me.getAccountInfo(account_id).then(function(result){
+                var accountId = $.trim($(this).attr('aid'));
+                me.getAccountInfo(accountId).then(function(result){
                     var item = result['var'];
                     me.updateData(item);
                 });
             }).on('click','a[role=status]',function(e){
                 var item = {};
-                item.account_id = $.trim($(this).attr('aid'));
-                item.account_status_id = $.trim($(this).attr('sid'));
+                item.accountId = $.trim($(this).attr('aid'));
+                item.accountStatusId = $.trim($(this).attr('sid'));
                 me.changeStatus(item);
             }).on('click','a[role=detail]',function(e){
-                var account_id = $.trim($(this).attr('aid'));
-                me.getAccountInfo(account_id).then(function(result){
+                var accountId = $.trim($(this).attr('aid'));
+                me.getAccountInfo(accountId).then(function(result){
                     var item = result['var'];
                     me.showDetail(item);
                 });                
@@ -136,7 +136,7 @@ define('accountManage',function(require,exports,module){
             return $.Deferred(function(defer){ 
                 util.request({
                     url:'data.do?func=business:getAccountInfo',
-                    param: {account_id: aid},
+                    param: {accountId: aid},
                     fnSuc: defer.resolve,
                     fnErr: defer.reject
                 });
@@ -144,13 +144,13 @@ define('accountManage',function(require,exports,module){
         },
         addnewData: function(){
             var me = this;
-            var content  = _.template(tplEdit)({"action": "add", provinceList: provinceList, monitoringPoints: monitoringPoints});
+            var content  = _.template(tplEdit)({"action": "add", provinceList: gMain.provinceList, monitoringPoints: gMain.monitoringPoints.mitId_3});
             util.dialog('新增拨测账户',content,function(){
                 var params = me.getWindowParam();
                 if(!params)
                     return false;
                 params.operate = 'add';
-                params.account_status_id = '0';
+                params.accountStatusId = '1';
 
                 util.request({
                     url:'data.do?func=business:editAccount',
@@ -161,19 +161,19 @@ define('accountManage',function(require,exports,module){
                     }
                 });
             });                
-            $('.ui-dialog input[name=testing_items]').attr("checked",'checked');       
-            $('.ui-dialog input[name=testing_frequency][value=30]').attr("checked",'checked');
+            $('.ui-dialog input[name=testingItems]').attr("checked",'checked');       
+            $('.ui-dialog input[name=testingFrequency][value=30]').attr("checked",'checked');
             util.my_select();
         },
         updateData: function(item){
             var me = this;
-            var content  = _.template(tplEdit)({"action": "update", provinceList: provinceList, monitoringPoints: monitoringPoints});
+            var content  = _.template(tplEdit)({"action": "update", provinceList: gMain.provinceList, monitoringPoints: gMain.monitoringPoints.mitId_3});
             util.dialog('修改拨测账户',content,function(){
                 var params = me.getWindowParam();
                 if(!params)
                     return false;
                 params.operate = 'update';
-                params.account_id = item.account_id;
+                params.accountId = item.accountId;
 
                 util.request({
                     url:'data.do?func=business:editAccount',
@@ -185,15 +185,15 @@ define('accountManage',function(require,exports,module){
                 });
             });
             util.my_select();
-            util.setVal('.ui-dialog span[name=corp_id]', item.corp_id, 'select');
-            util.setVal('.ui-dialog input[name=user_email]', item.user_email);
-            if(item.testing_items != undefined){
-                $.each(item.testing_items.split(','), function(index, value){
-                    $('.ui-dialog input[name=testing_items][value='+value+']').attr("checked",'checked');
+            util.setVal('.ui-dialog span[name=corpId]', item.corpId, 'select');
+            util.setVal('.ui-dialog input[name=userEmail]', item.userEmail);
+            if(item.testingItems != undefined){
+                $.each(item.testingItems.split(','), function(index, value){
+                    $('.ui-dialog input[name=testingItems][value='+value+']').attr("checked",'checked');
                 });
             } 
-            if(item.testing_frequency != undefined){
-                $('.ui-dialog input[name=testing_frequency][value='+item.testing_frequency+']').attr("checked",'checked'); 
+            if(item.testingFrequency != undefined){
+                $('.ui-dialog input[name=testingFrequency][value='+item.testingFrequency+']').attr("checked",'checked'); 
             }                       
         },
         changeStatus: function(item){
@@ -201,8 +201,8 @@ define('accountManage',function(require,exports,module){
                 params = {};
 
             params.operate = "status";
-            params.account_id = item.account_id;
-            params.account_status_id = (item.account_status_id == '0') ? '1' : '0';
+            params.accountId = item.accountId;
+            params.accountStatusId = (item.accountStatusId == '1') ? '2' : '1';
 
             util.request({
                 url:'data.do?func=business:editAccount',
@@ -216,17 +216,17 @@ define('accountManage',function(require,exports,module){
         showDetail: function(item){
             var me = this;
             item.action = "detail";
-            item.testing_items_name = me.getTestItemName(item.testing_items).toString();
+            item.testingItemsName = me.getTestItemName(item.testingItems).toString();
             var content  = _.template(tplEdit)(item);
             util.dialog('拨测账户详情',content,null,null,{cancelDisplay:false},function(){                
             });
         },        
-        getTestItemName: function(testing_items){
-            var arr = testing_items.split(','), rtArr = [];
+        getTestItemName: function(testingItems){
+            var arr = testingItems.split(','), rtArr = [];
             $.each(arr, function(index, value1) { 
-                for(var i = 0; i < monitoringPoints.length; i++){
-                    if(value1 == monitoringPoints[i]['item_type_id']){
-                        rtArr.push(monitoringPoints[i]['item_type_name']);
+                for(var i = 0, monitoringPoints = gMain.monitoringPoints.mitId_3; i < monitoringPoints.length; i++){
+                    if(value1 == monitoringPoints[i]['itemTypeId']){
+                        rtArr.push(monitoringPoints[i]['itemTypeName']);
                     }
                 }
             }); 
@@ -236,22 +236,22 @@ define('accountManage',function(require,exports,module){
             var dialogWindow = $('.ui-dialog'),
                 validateResult = util.validateDiv('.ui-dialog'),
                 param = {},
-                user_email = util.getVal('.ui-dialog input[name=user_email]'),    
-                corp_id = util.getVal('.ui-dialog span[name=corp_id]','select'),                
-                testing_items = [], testing_frequency;
+                userEmail = util.getVal('.ui-dialog input[name=userEmail]'),    
+                corpId = util.getVal('.ui-dialog span[name=corpId]','select'),                
+                testingItems = [], testingFrequency;
             
-            param.corp_id = corp_id;
+            param.corpId = corpId;
 
-            dialogWindow.find("input[name='testing_items']:checked").each(function(index,item){
-                testing_items.push($(this).val());
+            dialogWindow.find("input[name='testingItems']:checked").each(function(index,item){
+                testingItems.push($(this).val());
             });
-            if(testing_items.length > 0){
-                param.testing_items = testing_items.toString();
+            if(testingItems.length > 0){
+                param.testingItems = testingItems.toString();
             }
 
-            testing_frequency = dialogWindow.find("input[name='testing_frequency']:checked").val();
-            if(testing_frequency != undefined){
-                param.testing_frequency = testing_frequency;
+            testingFrequency = dialogWindow.find("input[name='testingFrequency']:checked").val();
+            if(testingFrequency != undefined){
+                param.testingFrequency = testingFrequency;
             };
 
             return param;
@@ -260,7 +260,7 @@ define('accountManage',function(require,exports,module){
             var opt = {};
             opt.url = 'exportAccountManageList.do';
             opt.param = this.getParam();
-            util.export(opt);
+            util.exports(opt);
         },
         getParam:function(){
             var me = this,
@@ -286,8 +286,8 @@ define('accountManage',function(require,exports,module){
             }                
 
             var vDate = me.dateBar.getValue();
-            param.startTime = vDate.st;
-            param.endTime = vDate.et;
+            param.startTime = vDate.st.Format('yyyy-MM-dd HH:mm');
+            param.endTime = vDate.et.Format('yyyy-MM-dd HH:mm');
             param.timeType = vDate.timeType;
 
             if(!util.compareTimeValid(param.startTime, param.endTime))

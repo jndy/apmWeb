@@ -18,7 +18,7 @@ define('userServiceDetail',function(require,exports,module){
                 this.initEvents();
             },
             render:function(){
-                var data = {item_name: options.item_name, item_description: options.item_description, provinceList: provinceList};
+                var data = {itemName: options.item_name, itemDescription: options.item_description, provinceList: gMain.provinceList};
                 var html = _.template(tpl)(data);
                 this.$el.empty().append(html);  
                 this.renderCmp();
@@ -37,8 +37,8 @@ define('userServiceDetail',function(require,exports,module){
                         var xAxis = [], seriesNums = [], seriesErrors = [], seriesRate = [], seriesTime = [];
                         for(var i=0, dl=rData['dataList']; i<dl.length; i++){                            
                             xAxis.push(dl[i].name);
-                            seriesRate.push({value: dl[i].rate, nums: dl[i].nums, errors: dl[i].error_nums});
-                            seriesTime.push({value: dl[i].averagetime, nums: dl[i].nums, errors: dl[i].error_nums});
+                            seriesRate.push({value: dl[i].rate, nums: dl[i].nums, errors: dl[i].errorNums});
+                            seriesTime.push({value: dl[i].averageTime, nums: dl[i].nums, errors: dl[i].errorNums});
                         }
 
                         // 指定图表的配置项和数据
@@ -48,7 +48,6 @@ define('userServiceDetail',function(require,exports,module){
                             var option = {
                                 tooltip: { 
                                     trigger: 'axis',
-                                    //formatter: '{b0}<br />登录次数: {c2} 次<br />失败次数: {c1} 次<br />登录成功率: {c0} %'
                                     formatter: function (params, ticket, callback) {
                                         if(idx == '1'){//成功率
                                             return params[0]['name']+ '<br />'+operate+'次数: '+params[0]['data']['nums']+' 次<br />失败次数: '+params[0]['data']['errors']+' 次<br />'+operate+'成功率: '+params[0]['value']+' %'
@@ -73,7 +72,7 @@ define('userServiceDetail',function(require,exports,module){
                                 },
                                 yAxis: [{
                                     type: 'value',
-                                    name: (idx == '1') ? '登录成功率' : '系统响应时间',
+                                    name: (idx == '1') ? operate+'成功率' : '系统响应时间',
                                     position: 'left',
                                     axisLine: {
                                         lineStyle: {
@@ -86,7 +85,7 @@ define('userServiceDetail',function(require,exports,module){
                                     }
                                 }],
                                 series: [{
-                                    name: (idx == '1') ? '登录成功率' : '系统响应时间',
+                                    name: (idx == '1') ? operate+'成功率' : '系统响应时间',
                                     type: (params.corpId > 0) ? 'line' : 'bar',
                                     data: seriesRate
                                 }]
@@ -111,7 +110,7 @@ define('userServiceDetail',function(require,exports,module){
                 var option = {
                     el:'.grid-content',
                     url:'data.do?func=service:getUserServiceDetail',
-                    param: params,
+                    params: params,
                     plugin:'page',
                     tableCss:'table-con mb-20',
                     columns:[{
@@ -124,12 +123,12 @@ define('userServiceDetail',function(require,exports,module){
                         name:'nums',
                         text: operate+'次数'
                     },{
-                        name:'error_nums',
+                        name:'errorNums',
                         text: operate+'失败次数',
                         renderer:function(val, index, item){
                             var str = "";
                             if(val > 0){
-                                str = "<a href='javascript:;' role='showError' corpId='"+item.corp_id+"' timeValue='"+item.time_value+"''>"+val+"</a>";
+                                str = "<a href='javascript:;' role='showError' corpId='"+item.corpId+"' timeValue='"+item.timeValue+"''>"+val+"</a>";
                             }else{
                                 str = val;
                             }
@@ -142,7 +141,7 @@ define('userServiceDetail',function(require,exports,module){
                             return val + '%';
                         }
                     },{
-                        name:'averagetime',
+                        name:'averageTime',
                         text:'系统平均响应时间(ms)',
                         renderer:function(val){
                             return val + 'ms';
@@ -163,7 +162,6 @@ define('userServiceDetail',function(require,exports,module){
             renderCmp:function(){
                 this.dateBar = new dateBar({el:'.toolbar .fr'});
                 util.my_select(); 
-                //util.my_radio(); 
             },
             initEvents:function(){
                 var me = this;
@@ -204,7 +202,7 @@ define('userServiceDetail',function(require,exports,module){
             showErrorDetail:function(opt){
                 var me = this;
                 var params = me.getParam();
-                delete params.orderby;
+                delete params.orderBy;
                 delete params.showStyle;
                 params.corpId = opt.corpId;
                 params.timeValue = opt.timeValue;
@@ -225,7 +223,7 @@ define('userServiceDetail',function(require,exports,module){
                 var seriesData = [], legendData = [];
                 for(var i=0; i<data.length; i++){ 
                     legendData.push(data[i]['name']);                           
-                    seriesData.push({value:data[i]['error_nums'], name:data[i]['name']});
+                    seriesData.push({value:data[i]['errorNums'], name:data[i]['name']});
                 }
                 util.dialog('失败原因分析',content,null,null,{cancelDisplay:false,onshow:function(){
                     //渲染图表
@@ -282,13 +280,13 @@ define('userServiceDetail',function(require,exports,module){
                 var opt = {};
                 opt.url = 'exportUserServiceDetail.do';
                 opt.param = this.getParam();
-                util.export(opt);
+                util.exports(opt);
             },
             changeShowStyle: function(val){
                 if(val == "2"){
-                    $('#liOrderBy').removeClass('hide');
+                    $('#liorderBy').removeClass('hide');
                 }else{
-                    $('#liOrderBy').addClass('hide');
+                    $('#liorderBy').addClass('hide');
                 }
             },
             getParam:function(){
@@ -296,17 +294,17 @@ define('userServiceDetail',function(require,exports,module){
                     param = {},
                     corpId,showStyle,startTime,endTime;
 
-                param.dataType = 0;
-                param.item_type_id = options.item_id;
+                param.dataType = 1;
+                param.itemTypeId = options.item_id;
 
                 corpId = util.getVal('.retrieval-con span[name=corpId]','select');
                 if(corpId != undefined){
                     param.corpId = corpId;
                 }
 
-                orderby = util.getVal('.retrieval-con span[name=orderby]','select');
+                orderBy = util.getVal('.retrieval-con span[name=orderBy]','select');
                 if(corpId != undefined){
-                    param.orderby = orderby;
+                    param.orderBy = orderBy;
                 }                
 
                 showStyle = util.getVal('.retrieval-con input[name=showStyle]:checked');
@@ -315,8 +313,8 @@ define('userServiceDetail',function(require,exports,module){
                 }
 
                 var vDate = me.dateBar.getValue();
-                param.startTime = vDate.st;
-                param.endTime = vDate.et;
+                param.startTime = vDate.st.Format('yyyy-MM-dd HH:mm');
+                param.endTime = vDate.et.Format('yyyy-MM-dd HH:mm');
                 param.period = vDate.timeType;
 
                 if(!util.compareTimeValid(param.startTime, param.endTime))

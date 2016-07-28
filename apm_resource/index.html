@@ -89,6 +89,7 @@
             configDetail:'js/module/alarm/configDetail.js',
             advice:'js/module/alarm/advice.js',
             history:'js/module/alarm/history.js',
+            vipApi:'js/module/vip/vipApi.js',
             vipExp:'js/module/vip/vipExp.js',
             vipQues:'js/module/vip/vipQues.js',
             vipQuality:'js/module/vip/vipQuality.js',
@@ -104,44 +105,95 @@
         }
     });
     seajs.use('init');
-
-    /*全部网省列表*/
-    var provinceList = [
-        {'provinceId': '1', 'provinceName': '北京'},
-        {'provinceId': '2', 'provinceName': '天津'},
-        {'provinceId': '3', 'provinceName': '河北'},
-        {'provinceId': '4', 'provinceName': '山东'},
-        {'provinceId': '5', 'provinceName': '江苏'},
-        {'provinceId': '6', 'provinceName': '浙江'},
-        {'provinceId': '7', 'provinceName': '山西'},
-        {'provinceId': '8', 'provinceName': '陕西'},
-        {'provinceId': '9', 'provinceName': '安徽'},
-        {'provinceId': '10', 'provinceName': '福建'},
-        {'provinceId': '11', 'provinceName': '内蒙古'},
-        {'provinceId': '12', 'provinceName': '辽宁'}
-    ];
-    /*监控点列表*/
-    var monitoringPoints = [
-        {"item_type_id" : "1", "item_type_name" : "SMTP登录"}, 
-        {"item_type_id" : "2", "item_type_name" : "SMTP发邮件"}, 
-        {"item_type_id" : "3", "item_type_name" : "POP登录"}, 
-        {"item_type_id" : "4", "item_type_name" : "POP收邮件"}, 
-        {"item_type_id" : "5", "item_type_name" : "IMAP登录"}, 
-        {"item_type_id" : "6", "item_type_name" : "IMAP收邮件"}, 
-        {"item_type_id" : "7", "item_type_name" : "通讯录加载"}, 
-        {"item_type_id" : "8", "item_type_name" : "通讯录查询"}, 
-        {"item_type_id" : "9", "item_type_name" : "邮件到达通知"}, 
-        {"item_type_id" : "10", "item_type_name" : "Web邮箱登录"}, 
-        {"item_type_id" : "11", "item_type_name" : "Web首页打开"}, 
-        {"item_type_id" : "12", "item_type_name" : "Web写信打开"}, 
-        {"item_type_id" : "13", "item_type_name" : "Web收邮件"}, 
-        {"item_type_id" : "14", "item_type_name" : "Web发邮件"}, 
-        {"item_type_id" : "15", "item_type_name" : "Web读邮件"}, 
-        {"item_type_id" : "16", "item_type_name" : "附件上传"}, 
-        {"item_type_id" : "17", "item_type_name" : "附件下载"}, 
-        {"item_type_id" : "18", "item_type_name" : "网盘上传"}, 
-        {"item_type_id" : "19", "item_type_name" : "网盘下载"}
-    ];
+    
+    var gMain = {
+        /*全部网省列表*/
+        provinceList: [
+            {'corpId': '1', 'corpName': '北京'},
+            {'corpId': '2', 'corpName': '天津'},
+            {'corpId': '3', 'corpName': '河北'},
+            {'corpId': '4', 'corpName': '山东'},
+            {'corpId': '5', 'corpName': '江苏'},
+            {'corpId': '6', 'corpName': '浙江'},
+            {'corpId': '7', 'corpName': '山西'},
+            {'corpId': '8', 'corpName': '陕西'},
+            {'corpId': '9', 'corpName': '安徽'},
+            {'corpId': '10', 'corpName': '福建'},
+            {'corpId': '11', 'corpName': '内蒙古'},
+            {'corpId': '12', 'corpName': '辽宁'}
+        ],
+        /*监控点类型*/
+        monitoringType: [
+            {"mitId": "1", "mitName": "用户服务质量","mitDesc":"用户服务质量1"},
+            {"mitId": "2", "mitName": "应用服务质量","mitDesc":"应用服务质量2"},
+            {"mitId": "3", "mitName": "业务拔测","mitDesc":"业务拔测3"},
+            {"mitId": "4", "mitName": "VIP告警配置","mitDesc":"VIP告警配置4"},
+            {"mitId": "5", "mitName": "归档用户服务质量","mitDesc":"归档用户服务质量5"}
+        ],
+        /*监控点列表*/
+        monitoringPoints: {
+            "mitId_1": [
+                {"itemTypeId" : "1", "itemTypeName" : "SMTP登录"}, 
+                {"itemTypeId" : "2", "itemTypeName" : "SMTP发邮件"}, 
+                {"itemTypeId" : "3", "itemTypeName" : "POP登录"}, 
+                {"itemTypeId" : "4", "itemTypeName" : "POP收邮件"}, 
+                {"itemTypeId" : "5", "itemTypeName" : "IMAP登录"}, 
+                {"itemTypeId" : "6", "itemTypeName" : "IMAP收邮件"}, 
+                {"itemTypeId" : "7", "itemTypeName" : "通讯录加载"}, 
+                {"itemTypeId" : "8", "itemTypeName" : "通讯录查询"}, 
+                {"itemTypeId" : "9", "itemTypeName" : "邮件到达通知"}, 
+                {"itemTypeId" : "10", "itemTypeName" : "Web邮箱登录"}, 
+                {"itemTypeId" : "11", "itemTypeName" : "Web首页打开"}, 
+                {"itemTypeId" : "12", "itemTypeName" : "Web写信打开"}, 
+                {"itemTypeId" : "13", "itemTypeName" : "Web收邮件"}, 
+                {"itemTypeId" : "14", "itemTypeName" : "Web发邮件"}, 
+                {"itemTypeId" : "15", "itemTypeName" : "Web读邮件"}, 
+                {"itemTypeId" : "16", "itemTypeName" : "附件上传"}, 
+                {"itemTypeId" : "17", "itemTypeName" : "附件下载"}, 
+                {"itemTypeId" : "18", "itemTypeName" : "网盘上传"}, 
+                {"itemTypeId" : "19", "itemTypeName" : "网盘下载"}
+            ],
+            "mitId_2": [
+                {"itemTypeId" : "21", "itemTypeName" : "SMTP登录"}, 
+                {"itemTypeId" : "22", "itemTypeName" : "SMTP发邮件"}, 
+                {"itemTypeId" : "23", "itemTypeName" : "POP登录"}, 
+                {"itemTypeId" : "24", "itemTypeName" : "POP收邮件"}
+            ],
+            "mitId_3": [
+                {"itemTypeId" : "31", "itemTypeName" : "SMTP登录"}, 
+                {"itemTypeId" : "32", "itemTypeName" : "SMTP发邮件"}, 
+                {"itemTypeId" : "33", "itemTypeName" : "POP登录"}, 
+                {"itemTypeId" : "34", "itemTypeName" : "POP收邮件"}, 
+                {"itemTypeId" : "35", "itemTypeName" : "IMAP登录"}, 
+                {"itemTypeId" : "36", "itemTypeName" : "IMAP收邮件"}, 
+                {"itemTypeId" : "37", "itemTypeName" : "通讯录加载"}, 
+                {"itemTypeId" : "38", "itemTypeName" : "通讯录查询"}, 
+                {"itemTypeId" : "39", "itemTypeName" : "邮件到达通知"}, 
+                {"itemTypeId" : "10", "itemTypeName" : "Web邮箱登录"}, 
+                {"itemTypeId" : "11", "itemTypeName" : "Web首页打开"}, 
+                {"itemTypeId" : "12", "itemTypeName" : "Web写信打开"}, 
+                {"itemTypeId" : "13", "itemTypeName" : "Web收邮件"}, 
+                {"itemTypeId" : "14", "itemTypeName" : "Web发邮件"}, 
+                {"itemTypeId" : "15", "itemTypeName" : "Web读邮件"}, 
+                {"itemTypeId" : "16", "itemTypeName" : "附件上传"}, 
+                {"itemTypeId" : "17", "itemTypeName" : "附件下载"}, 
+                {"itemTypeId" : "18", "itemTypeName" : "网盘上传"}, 
+                {"itemTypeId" : "19", "itemTypeName" : "网盘下载"}
+            ],
+            "mitId_4": [
+                {"itemTypeId" : "41", "itemTypeName" : "SMTP登录"}, 
+                {"itemTypeId" : "42", "itemTypeName" : "SMTP发邮件"}, 
+                {"itemTypeId" : "43", "itemTypeName" : "POP登录"}, 
+                {"itemTypeId" : "44", "itemTypeName" : "POP收邮件"}
+            ],
+            "mitId_5": [
+                {"itemTypeId" : "51", "itemTypeName" : "SMTP登录"}, 
+                {"itemTypeId" : "52", "itemTypeName" : "SMTP发邮件"}, 
+                {"itemTypeId" : "53", "itemTypeName" : "POP登录"}, 
+                {"itemTypeId" : "54", "itemTypeName" : "POP收邮件"}
+            ]
+        }
+    }
 </script>
 </body>
 </html>

@@ -31,7 +31,7 @@ define('net',function(require,exports,module){
                 type = me.type,
                 chart = echarts.init($('.graph-con')[0]),
                 titleArr = ['网络丢包率','网络延时'],
-                legendArr = [['总体丢包率','内网丢包率','外网丢包率'],['总体延时','内网延时','外网延时']],
+                legendArr = [['总体丢包率'],['总体延时']],
                 yArr = ['%','s'],
                 series = me.getSeries(data.yData,legendArr[type-1]);
             var option = {
@@ -74,45 +74,21 @@ define('net',function(require,exports,module){
                 name:'corpName',
                 text:'省份'
             },{
-                name:'requestCountIn',
+                name:'requestCount',
                 text:'请求数'
             },{
-                name:'failCountIn',
+                name:'failCount',
                 text:'丢包数'
             },{
-                name:'timeoutIn',
+                name:'timeout',
                 text:'延时(s)'
             },{
-                name:'failPercentIn',
-                text:'丢包率(%)'
-            },{
-                name:'requestCountOut',
-                text:'请求数'
-            },{
-                name:'failCountOut',
-                text:'丢包数'
-            },{
-                name:'timeoutOut',
-                text:'延时(s)'
-            },{
-                name:'failPercentOut',
-                text:'丢包率(%)'
-            },{
-                name:'requestCountTotal',
-                text:'请求数'
-            },{
-                name:'failCountTotal',
-                text:'丢包数'
-            },{
-                name:'timeoutTotal',
-                text:'延时(s)'
-            },{
-                name:'failPercentTotal',
+                name:'failPercent',
                 text:'丢包率(%)'
             }];
             var option = {
                 el:'.grid-content',
-                selfHeader:'<thead><tr><th rowspan="2">省份</th><th colspan="4">内网</th><th colspan="4">外网</th><th colspan="4">合计(s)</th></tr><tr><th>请求数</th><th>丢包数</th><th>延时(s)</th><th>丢包率(%)</th><th>请求数</th><th>丢包数</th><th>延时(s)</th><th>丢包率(%)</th><th>请求数</th><th>丢包数</th><th>延时(s)</th><th>丢包率(%)</th></tr></thead>',
+                //selfHeader:'<thead><tr><th rowspan="2">省份</th><th colspan="4">内网</th><th colspan="4">外网</th><th colspan="4">合计(s)</th></tr><tr><th>请求数</th><th>丢包数</th><th>延时(s)</th><th>丢包率(%)</th><th>请求数</th><th>丢包数</th><th>延时(s)</th><th>丢包率(%)</th><th>请求数</th><th>丢包数</th><th>延时(s)</th><th>丢包率(%)</th></tr></thead>',
                 url:'data.do?func=connect:getQualityAnalasyGrid',
                 plugin:'page',
                 autoLoad:false,
@@ -145,13 +121,11 @@ define('net',function(require,exports,module){
         getSeries:function(data,seriesName){
             var series = [];
 
-            for(var i = 0, l = seriesName.length; i<l; i++){
-                series.push({
-                    name:seriesName[i],
-                    type:'line',
-                    data:data[i]
-                });
-            }
+            series.push({
+                name:seriesName[0],
+                type:'line',
+                data:data
+            });
 
             return series;
         },

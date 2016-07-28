@@ -6,14 +6,14 @@
  */
 define('vipApi',function(require,exports,module){
   
-  var _fnErr = function(resp){
+  var _fnFail = function(resp){
      util.showMsg('接口请求出错',-1);
   }
 
   var _request = function(options){
     var param = options.param||{};
-    var fnErr = options.fnErr || _fnErr;
-    util.request({url:options.url,param:param,fnSuc:options.fnSuc,fnErr:fnErr});
+    var fnFail = options.fnFail || _fnFail;
+    util.request({url:options.url,param:param,fnSuc:options.fnSuc,fnFail:fnFail});
   }
 
   /**

@@ -12,12 +12,13 @@ define('vipQuality',function(require,exports,module){
         el:'.container',
         initialize:function(){
             this.render();
+            this.onRenderQueryForm();
             this.initEvents();
         },
         render:function(){
             var html = _.template(tpl)({});
             this.$el.empty().append(html);
-            util.my_select();
+            
             this.renderGrid();
         },
         renderGrid:function(){
@@ -68,9 +69,12 @@ define('vipQuality',function(require,exports,module){
         initEvents:function(){
             var me = this;
 
-            me.$el.off().on('click','.btn-search-hide',function(e){
-                var dom = $(this).find('i');
-                me.showQueryDiv(dom);
+            me.$el.off().on('click','a[role=query]',function(e){
+                me.onQuery();
+            }).on("change","select[name=statisticsCycle]", function(e){
+                me.onStatisticsWayChange($(this));
+            }).on("click","a[role=vip-export]",function(e){
+                me.onExport();
             })
         },
         showQueryDiv:function(dom){
@@ -85,6 +89,54 @@ define('vipQuality',function(require,exports,module){
                 dom.addClass('i-down');
                 me.$el.find('.retrieval-con').css('display','none');
             }
+        },
+        onExport:function(){
+            alert('导出');
+        },
+        onQuery:function(){
+            var me = this;
+            me.gridView.requestData(me.getParam);
+        },
+        getParam:function(){
+            var param = {
+                statisticsWay:$("select[name=statisticsWay]").val(),
+                province:$("select[name=province]").val(),
+                mitName:$("select[name=mitName]").val()
+            };
+            var statisticsCycleVal = $("select[name=statisticsCycle]").val();
+
+            if(0==statisticsCycleVal){
+                param["startTime"] = $("input[name=startTime]").val();
+                param["endTime"] = $("input[name=endTime]").val();
+            }else if(1 == statisticsCycleVal){
+                param["weekTime"] = $("select[name=weekTime]").val();
+                param["weekNum"] = $("select[name=weekNum]").val();
+            }else{
+                param["monthTime"] = $("select[name=monthTime]").val();                
+            }
+
+            return param;
+        },
+        onStatisticsWayChange:function(obj){
+            var me = this;
+            var val = obj.val();
+            me.onRenderQueryForm(val);            
+        },
+        onRenderQueryForm:function(val){
+            var me = this;
+            val = val ? val : 0;
+            var tplObj = {
+                "0":"vipqua-day-tpl",
+                "1":"vipqua-week-tpl",
+                "2":"vipqua-month-tpl"
+            }
+
+            var statisticsCycle = $("#" + tplObj[val]).html();
+
+            var statisticsCycleHtml = util.format_advanced($("#vipqua-query-tpl").html(),{statisticsCycle:statisticsCycle});
+            $("#vipqua-query").empty().html(statisticsCycleHtml);
+
+            util.my_select();
         }
       })
 
