@@ -203,9 +203,11 @@ define('notifier',function(require,exports,module){
 
   }
 
-  exports.init = function(){
+  exports.init = function(options){
     //设置默认选中严重级别
     currentLevel = "serious_1";
+
+    notifiers = options["notifiers"]?options["notifiers"]:notifiers;
 
     //加载表格
     _loadNotifier();

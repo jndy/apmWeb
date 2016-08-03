@@ -22,15 +22,8 @@ define('expand',function(require,exports,module){
             }
             else {
                 for (var i = 0; i < arguments.length; i++) {
-                    if(arguments[i]==undefined)
-                    {
-                        return "";
-                    }
-                    else
-                    {
-                        var reg=new RegExp ("({["+i+"]})","g");
-                        result = result.replace(reg, arguments[i]);
-                    }
+                    var reg=new RegExp ("({["+i+"]})","g");
+                    result = result.replace(reg, arguments[i]||'');
                 }
             }
             return result;
@@ -38,6 +31,16 @@ define('expand',function(require,exports,module){
         else {
             return this;
         }
+    };
+
+    /**
+     * 日期字符串格式化日期输出
+     * @param fmt
+     * @returns {*}
+     */
+    String.prototype.str2date = function(fmt){
+        var ndt = new Date(this.replace(/-/g, "/"));
+        return ndt.Format(fmt);
     };
 
     /**
@@ -148,7 +151,7 @@ define('expand',function(require,exports,module){
      * @returns {Date}
      */
     Date.prototype.Today = function(){
-        var todayStr = new Date().Format('yyyy-MM-dd');
+        var todayStr = new Date().Format('yyyy/MM/dd')+' 00:00:00';
         return new Date(todayStr);
     };
 

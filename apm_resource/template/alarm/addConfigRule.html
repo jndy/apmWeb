@@ -1,5 +1,5 @@
 <% for(var i=0; i<ruleList.length; i++){ %>
-  <div class="mod-condition-con" data-ruleid="<%=ruleList[i].ruleId%>">
+  <div class="mod-condition-con" data-ruleid="<%=ruleList[i].ruleId%>" data-unit="<%=ruleList[i].ruleCondition.unit%>">
       <span class="tit"><%=ruleList[i].ruleName%></span>
       <div class="module-fill">
           <select name="<%=ruleList[i].ruleId%>-select-serious-1" style="display:none;">
@@ -8,7 +8,7 @@
           </select>
       </div>
       <input type="text" name="<%=ruleList[i].ruleId%>-input-serious-1" class="module-input" value="<%=ruleList[i].ruleCondition.serious_1.substring(1)%>">
-      <span><%=ruleList[i].ruleCondition.serious_1.unit%>时进行严重告警</span>，
+      <span><%=ruleList[i].ruleCondition.unit%>时进行严重告警</span>，
       <div class="module-fill">
           <select name="<%=ruleList[i].ruleId%>-select-serious-2" style="display:none;">
             <option value="2" <%if(ruleList[i].ruleCondition.serious_2.indexOf("<")>=0){%> selected="selected"<%}%> >小于</option>
@@ -16,7 +16,7 @@
           </select>
       </div>
       <input type="text" name="<%=ruleList[i].ruleId%>-input-serious-2" class="module-input" value="<%=ruleList[i].ruleCondition.serious_2.substring(1)%>">
-      <span><%=ruleList[i].ruleCondition.serious_2.unit%>时进行较重告警</span>，
+      <span><%=ruleList[i].ruleCondition.unit%>时进行较重告警</span>，
       <div class="module-fill">
           <select name="<%=ruleList[i].ruleId%>-select-serious-3" style="display:none;">
             <option value="2" <%if(ruleList[i].ruleCondition.serious_3.indexOf("<")>=0){%> selected="selected"<%}%> >小于</option>
@@ -24,6 +24,6 @@
           </select>
       </div>
       <input type="text" name="<%=ruleList[i].ruleId%>-input-serious-3" class="module-input" value="<%=ruleList[i].ruleCondition.serious_3.substring(1)%>">
-      <span><%=ruleList[i].ruleCondition.serious_3.unit%>时进行一般告警</span>
+      <span><%=ruleList[i].ruleCondition.unit%>时进行一般告警</span>
   </div>
 <%}%>

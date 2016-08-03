@@ -6,6 +6,7 @@
  */
 define('configList',function(require,exports,module){
     var tpl = require('{rootPath}/template/alarm/configList.html');
+    var alarmApi = require("alarmApi");
     var grid = require('grid');
     var view = Backbone.View.extend({
         el:'.container',
@@ -23,7 +24,7 @@ define('configList',function(require,exports,module){
             $('.content_main').empty();
             var option = {
                 el:'.content_main',
-                url:'data.do?func=alarm:configList',
+                url:'data.do?func=alarm:getConfigList',
                 plugin:'page',
                 tableCss:'table-con mb-20',
                 columns:[{
@@ -66,7 +67,7 @@ define('configList',function(require,exports,module){
                     text:'操作',
                     renderer:function(val,index ,item){
                         var str = '';
-                        str = $("#list-modify").html();
+                        str = util.format_advanced($("#list-modify").html(),{index:index});
                         return str;
                     }
                 }]
@@ -86,11 +87,13 @@ define('configList',function(require,exports,module){
             }).on('click','a[role=addConfig]',function(e){
                 me.onAddConfig();
             }).on('click','a[role=config-edit]',function(e){
-                me.onEdit();
+                me.onEdit($(this).data("index"));
             }).on('click','a[role=config-pause]',function(e){
-                me.onPause();
+                me.onPause($(this),$(this).data("index"));
+            }).on('click','a[role=config-resume]',function(e){
+                me.onResume($(this),$(this).data("index"));
             }).on('click','a[role=config-detail]',function(e){
-                me.onDetail();
+                me.onDetail($(this).data("index"));
             });
         }
         ,
@@ -127,7 +130,7 @@ define('configList',function(require,exports,module){
         },
         onQuery:function(){
             var me = this;
-            me.gridView.requestData(me.getParam);
+            me.gridView.requestData(me.getParam(),1);
         },
         showQueryDiv:function(dom){
             var me = this;
@@ -155,15 +158,30 @@ define('configList',function(require,exports,module){
             var me = this;
             util.jumpModule("alarm/configList?childView=addConfig");
         },
-        onEdit:function(type){
+        onEdit:function(index){
             var me = this;
-            util.jumpModule("alarm/configList?childView=updateConfigType&type=edit&oper=edit");
+            var obj = me.gridView.data[index];
+            util.jumpModule("alarm/configList?childView=updateConfigType&type="+obj["id"]+"&itemTypeId=" + obj["mtype"]);
         },
-        onPause:function(type){
+        onPause:function(_slef,index){
             var me = this;
-            
+            var obj = me.gridView.data[index];
+            var fnSuc = function(resp){
+                _slef.css({"display":"none"});
+                _slef.siblings("a[role=config-resume]").css({"display":""});
+            }
+            alarmApi.changeRuleState({fnSuc:fnSuc,param:{alarmId:obj["alarmId"],state:0}});
         },
-        onDetail:function(type){
+        onResume:function(_slef,index){
+            var me = this;
+            var obj = me.gridView.data[index];
+            var fnSuc = function(resp){
+                _slef.css({"display":"none"});
+                _slef.siblings("a[role=config-pause]").css({"display":""});
+            }
+            alarmApi.changeRuleState({fnSuc:fnSuc,param:{alarmId:obj["alarmId"],state:1}});
+        },
+        onDetail:function(index){
             var me = this;
             util.jumpModule("alarm/configList?childView=configDetail&type=detail&oper=detail");
         },

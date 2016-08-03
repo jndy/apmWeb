@@ -18,7 +18,7 @@ define('util',function(require,exports,module){
             me.showMsg('正在请求数据，请稍后...');
             jQuery.ajax({
                 type: options.type || 'POST',
-                url: '/apm/'+options.url || "",
+                url: '/apm/'+(options.url || "")+'&sid='+gMain.sid,
                 data: JSON.stringify(options.param||{}),
                 dataType: 'json',
                 contentType: "text/javascript; charset=UTF-8",
@@ -26,10 +26,10 @@ define('util',function(require,exports,module){
                     me.hideMsg();
                     if(resp.code == 'S_OK'){
                         if(options.fnSuc){
-                            options.fnSuc(resp,1);
+                            options.fnSuc(resp);
                         }
                         else{
-                            me.showMsg(resp.msg);
+                            me.showMsg(resp.msg,1);
                         }
                     }
                     else{
@@ -37,7 +37,7 @@ define('util',function(require,exports,module){
                             options.fnFail(resp);
                         }
                         else if(options.defaultFail === false){
-                            var msg = resp.msg || options.url + '接口出错';
+                            var msg = resp.msg || options.url.replace('data.do?func=','') + '接口出错';
                             me.showMsg(msg,-1);
                         }
                     }
@@ -46,7 +46,7 @@ define('util',function(require,exports,module){
                     if(!!options.fnErr)
                         options.fnErr(resp);
                     else
-                        me.showMsg(options.url + '接口出错',-1);
+                        me.showMsg(options.url.replace('data.do?func=','') + '接口出错',-1);
                 }
             });
         },
@@ -60,10 +60,11 @@ define('util',function(require,exports,module){
                 return;
             }
             else{
-                var openUrl = '/apm/'+options.url;
+                var openUrl = '/apm/'+options.url+'?';
                 for(var key in options.param){
-                   openUrl = openUrl + "&" + key + "=" + options.param[key];
+                   openUrl = openUrl + key + "=" + options.param[key] + "&";
                 }
+                openUrl = openUrl.substr(0, openUrl.length-1)+'&sid='+gMain.sid;
                 return window.open(openUrl);
             }
         },

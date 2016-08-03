@@ -52,7 +52,7 @@ $(function(){
                 }),
                 success:function(data){
                     if(data['code'] == 'S_OK'){
-                        window.location = 'home.do';
+                        window.location = 'home.do?sid='+data['var'];
                     }
                     else{
                         me.showErrorMsg(data['msg']);

@@ -59,7 +59,10 @@ define('accountManage',function(require,exports,module){
                     }
                 },{
                     name:'testingLastTime',
-                    text:'最近拨测时间'
+                    text:'最近拨测时间',
+                    renderer:function(val){
+                        return val.str2date('yyyy-MM-dd HH:mm');
+                    }
                 },{                    
                     text:'操作',
                     renderer:function(val, index, item){
@@ -290,8 +293,9 @@ define('accountManage',function(require,exports,module){
             param.endTime = vDate.et.Format('yyyy-MM-dd HH:mm');
             param.timeType = vDate.timeType;
 
-            if(!util.compareTimeValid(param.startTime, param.endTime))
+            if(!util.compareTimeValid(param.startTime, param.endTime)){
                 return null;
+            } 
 
             return param;
         }

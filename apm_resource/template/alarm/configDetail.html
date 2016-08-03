@@ -21,7 +21,7 @@
                     <p>普通时段：00：00~24:00</p>
                     <dl>
                         <dt>当页面5分钟平均</dt>
-                        <dd id="config-rule">
+                        <dd id="config-rule" style="margin-left: 50px;">
                             {alarmCondition}
                         </dd>
                     </dl>
@@ -36,16 +36,16 @@
                 <label for="" class="mod-label">告警方式：<span>*</span></label>
                 <div class="mod-form mod-form-select">
                     <dl class="clearfix">
-                        <dt><label for=""><input name="smsF" type="checkbox" disabled="true">短信告警</label></dt>
-                        <dd><label for=""><input type="checkbox" name="smsF_1" disabled="true" >严重</label></dd>
-                        <dd><label for=""><input name="smsF_2" type="checkbox" disabled="true">较重</label></dd>
-                        <dd><label for=""><input name="smsF_3" type="checkbox" disabled="true">一般</label></dd>
+                        <dt><label for=""><input name="smsF" type="checkbox" onclick="return false;">短信告警</label></dt>
+                        <dd><label for=""><input type="checkbox" name="smsF_1" onclick="return false;" >严重</label></dd>
+                        <dd><label for=""><input name="smsF_2" type="checkbox" onclick="return false;">较重</label></dd>
+                        <dd><label for=""><input name="smsF_3" type="checkbox" onclick="return false;">一般</label></dd>
                     </dl>
                     <dl class="clearfix">
-                        <dt><label for=""><input name="mailF" type="checkbox" disabled="true">邮件告警</label></dt>
-                        <dd><label for=""><input name="mailF_1" type="checkbox" disabled="true">严重</label></dd>
-                        <dd><label for=""><input name="mailF_2" type="checkbox" disabled="true">较重</label></dd>
-                        <dd><label for=""><input name="mailF_3" type="checkbox" disabled="true">一般</label></dd>
+                        <dt><label for=""><input name="mailF" type="checkbox" onclick="return false;">邮件告警</label></dt>
+                        <dd><label for=""><input name="mailF_1" type="checkbox" onclick="return false;">严重</label></dd>
+                        <dd><label for=""><input name="mailF_2" type="checkbox" onclick="return false;">较重</label></dd>
+                        <dd><label for=""><input name="mailF_3" type="checkbox" onclick="return false;">一般</label></dd>
                     </dl>
                 </div>
             </li>

@@ -32,17 +32,14 @@ define('operLog',function(require,exports,module){
                 params:{actionType:me.actionType},
                 tableCss:'table-con mb-20',
                 columns:[{
-                    name:'operDesc',
+                    name:'actionDesc',
                     text:'操作描述'
                 },{
-                    name:'operName',
+                    name:'actionUserName',
                     text:'操作人'
                 },{
-                    name:'operTime',
-                    text:'操作时间',
-                    renderer:function(val){
-                        return new Date(val).Format('yyyy-MM-dd HH:mm:ss');
-                    }
+                    name:'createTime',
+                    text:'操作时间'
                 }],
                 plugin:'page'
             };

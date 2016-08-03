@@ -25,8 +25,11 @@ define('advice',function(require,exports,module){
             $('.content_main').empty();
             var option = {
                 el:'.content_main',
-                url:'data.do?func=alarm:advice',
+                url:'data.do?func=alarm:getAdvice',
                 plugin:'page',
+                params:{
+                    noticeType:1
+                },
                 tableCss:'table-con mb-20',
                 columns:[{
                     name:'id',
@@ -180,6 +183,13 @@ define('advice',function(require,exports,module){
             if(!param){
                 return ;
             }
+
+            var pattern = /^(0|[1-9]?|1\d\d?|2[0-4]\d|25[0-5])\.(0|[1-9]?|1\d\d?|2[0-4]\d|25[0-5])\.(0|[1-9]?|1\d\d?|2[0-4]\d|25[0-5])\.(0|[1-9]?|1\d\d?|2[0-4]\d|25[0-5])$/;
+            //判断IP
+            if(param.srvIp && !param.srvIp.match(pattern)){
+                util.showMsg("请输入正确的IP地址");
+                return false;
+            }
             if(status){
                 param.status = status;
             }
@@ -204,12 +214,14 @@ define('advice',function(require,exports,module){
             
         },
         onIgnore:function(){
+            var me = this;
             var content = $("#advice-ignore-tpl").html();
                 //content = util.format_advanced(content,obj);
-                util.dialog('告警通知忽略',content,function(){
+                var dialog = util.dialog('告警通知忽略',content,function(){
                     var fnSuc = function(resp){
-                        alert('接口请求');
-                        dialog.close().remove();                        
+                        dialog.close().remove();
+                        util.showMsg("该告警已忽略",1);
+                        me.onQuery();                   
                     }
                     var ignore = $.trim($("textarea[name=ignore]").val());
 
@@ -222,8 +234,8 @@ define('advice',function(require,exports,module){
             //content = util.format_advanced(content,obj);
             var dialog = util.dialog('告警通知备注',content,function(){
                 var fnSuc = function(resp){
-                    alert('接口请求');
-                    dialog.close().remove();                        
+                    dialog.close().remove();
+                    util.showMsg("备注添加成功",1);                     
                 }
                 var remark = $.trim($("textarea[name=remark]").val());
 
@@ -232,12 +244,14 @@ define('advice',function(require,exports,module){
             });
         },
         onResume:function(){
+            var me = this;
             var content = $("#advice-resume-tpl").html();
             //content = util.format_advanced(content,obj);
-            util.dialog('告警通知已恢复',content,function(){
+            var dialog = util.dialog('告警通知已恢复',content,function(){
                 var fnSuc = function(resp){
-                    alert('接口请求');
-                    dialog.close().remove();                        
+                    dialog.close().remove();
+                    util.showMsg("该告警已恢复",1);
+                    me.onQuery();       
                 }
                 var resume = $.trim($("textarea[name=resume]").val());
 
@@ -251,29 +265,15 @@ define('advice',function(require,exports,module){
          */
         getParam: function(){
             var me = this,
-                param = {},
-                mitWay,mitType,mitName,province,srvIp;
-
-            mitWay = util.getVal('.retrieval-con span[name=mitWay]','select');
-            if(mitWay != ''){
-                param.mitWay = mitWay;
-            }
-            mitType = util.getVal('.retrieval-con span[name=mitType]','select');
-            if(mitType != ''){
-                param.mitType = mitType;
-            }
-            mitName = util.getVal('.retrieval-con span[name=mitName]','select');
-            if(mitName != ''){
-                param.mitName = mitName;
-            }
-            province = util.getVal('.retrieval-con span[name=province]','select');
-            if(province != ''){
-                param.province = province;
-            }
-            srvIp = util.getVal('.retrieval-con input[name=srvIp]');
-            if(srvIp != ''){
-                param.srvIp = srvIp;
-            }
+                param = {
+                    noticeType:1,
+                    mitWay: $("select[name=mitWay]").val(),
+                    mitType: $("select[name=mitType]").val(),
+                    mitName: $("select[name=mitName]").val(),
+                    corpId: $("select[name=corpId]").val()
+                };
+            var srvIp = $.trim($("input[name=srvIp]").val());
+            param["srvIp"] = srvIp;
             return param;
         }
     });

@@ -47,7 +47,10 @@ define('actionTrace',function(require,exports,module){
                     text: '省份'
                 },{
                     name:'testingTime',
-                    text:'拨测时间'
+                    text:'拨测时间',
+                    renderer:function(val){
+                        return val.str2date('yyyy-MM-dd HH:mm');
+                    }
                 },{
                     name:'itemTypeName',
                     text:'监控点名称'
@@ -58,7 +61,7 @@ define('actionTrace',function(require,exports,module){
                     name:'responseTime',
                     text:'响应时间(ms)',
                     renderer:function(val){
-                        return val + 'ms';
+                        return val.toFixed(2) + 'ms';
                     }
                 },{
                     name:'errorCode',
@@ -148,8 +151,9 @@ define('actionTrace',function(require,exports,module){
                 param.endTime = endTime;
             }
 
-            if(!util.compareTimeValid(param.startTime, param.endTime))
+            if(!util.compareTimeValid(param.startTime, param.endTime)){
                 return null;
+            } 
 
             return param;
         }

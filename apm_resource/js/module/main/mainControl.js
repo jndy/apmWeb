@@ -66,6 +66,9 @@ define('mainControl',function(require,exports,module){
                 me.$el.find('#serverDate').text(newTime.Format('yyyy-MM-dd HH:mm:ss'));
             },1000);
             window.autoRequestMain = setInterval(function(){
+                //如果试图不是停留在当前main视图，不进行数据查询
+                if(location.hash.indexOf('main') < 0)
+                    return;
                 me.queryData();
             },1000*60*5);
         },

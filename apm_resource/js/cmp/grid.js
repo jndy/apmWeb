@@ -211,8 +211,9 @@ define('grid',function(require,exports,module){
             me.data = data || [];
             //根据data构造tbody
             for(var i =0,len =data.length;i<len;i++){
-                var item = data[i];
-                tbody += '<tr>';
+                var item = data[i],
+                    trCss = i%2 == 1?' class="tr-even"':'';
+                tbody += '<tr '+ trCss +'>';
                 for(var j =0,len2 =columns.length;j<len2;j++){
                     var fun = columns[j].renderer,
                         td = item[columns[j].name];

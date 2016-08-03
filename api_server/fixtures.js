@@ -48,8 +48,8 @@ exports.userServiceDetail = {
   "itemDescription" : "对通过SMTP协议登录邮箱的质量进行监控，包括SMTP登录成功率、登录用时",
   "listCount" : 25,
   "dataList" : [
-    {"corpId" : 11,"name" : "北京","timeValue" : "2016-07-13 08:00","rate" : 100.0,"nums" : 89.0,"errorNums" : 2,"averageTime" : 401.2,"createTime" : null,"respTime" : 21.0,"fileSize" : 0.0,"probeRate" : 0.0, "probeRespTime" : 0.0}, 
-    {"corpId" : 12,"name" : "天津","timeValue" : "2016-07-13 08:00","rate" : 100.0,"nums" : 176.0,"errorNums" : 0.0,"averageTime" : 40.09,"createTime" : null,"respTime" : 25.0,"fileSize" : 0.0,"probeRate" : 0.0,"probeRespTime" : 0.0}, 
+    {"corpId" : 11,"name" : "北京","timeValue" : "2016-07-13 08:00","rate" : 100.0,"nums" : 89.0,"errorNums" : 2,"averageTime" : 401.21212,"createTime" : null,"respTime" : 21.0,"fileSize" : 0.0,"probeRate" : 0.0, "probeRespTime" : 0.0}, 
+    {"corpId" : 12,"name" : "天津","timeValue" : "2016-07-13 08:00","rate" : 100.0,"nums" : 176.0,"errorNums" : 0.0,"averageTime" : 40.091,"createTime" : null,"respTime" : 25.0,"fileSize" : 0.0,"probeRate" : 0.0,"probeRespTime" : 0.0}, 
     {"corpId" : 13,"name" : "上海","timeValue" : "2016-07-13 08:00","rate" : 95.0,"nums" : 176.0,"errorNums" : 42,"averageTime" : 89.09,"createTime" : null,"respTime" : 25.0,"fileSize" : 0.0,"probeRate" : 0.0,"probeRespTime" : 0.0}, 
     {"corpId" : 14,"name" : "江苏","timeValue" : "2016-07-13 08:00","rate" : 89.0,"nums" : 176.0,"errorNums" : 0.0,"averageTime" : 42.09,"createTime" : null,"respTime" : 25.0,"fileSize" : 0.0,"probeRate" : 0.0,"probeRespTime" : 0.0}, 
     {"corpId" : 15,"name" : "浙江","timeValue" : "2016-07-13 08:00","rate" : 87.0,"nums" : 17.0,"errorNums" : 0.0,"averageTime" : 223.09,"createTime" : null,"respTime" : 25.0,"fileSize" : 0.0,"probeRate" : 0.0,"probeRespTime" : 0.0},

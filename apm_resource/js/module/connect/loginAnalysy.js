@@ -213,7 +213,7 @@ define('loginAnalysy',function(require,exports,module){
                 loginIP = util.getVal('.retrieval-con input[name=loginIP]'),
                 validateResult = util.validate(loginIP,'ip'),
                 time = me.dateBar.getValue('yyyy-MM-dd HH:mm'),
-                result = true;;
+                result = true;
 
             if(loginIP != '' && !validateResult.flag){
                 util.showMsg(validateResult.msg);

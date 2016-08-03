@@ -113,9 +113,9 @@ i{display: inline-block;vertical-align: middle;}
 .module-time .module-input{width: 120px;}
 
 .table-con{width: 100%;background: #fff;}
-.table-con tr th{height: 48px;border-bottom: #ebebeb 1px dashed;color: #666666;font-weight: bold;text-align: center;}
+.table-con tr th{height: 42px;border-bottom: #ebebeb 1px dashed;color: #666666;font-weight: bold;text-align: center;background: #f0f0f0;}
 .table-con tr td{height: 42px;text-align: center;border-bottom: 1px solid #f7f7f7;}
-.table-con tbody tr:hover{background: #edf7f8;}
+.table-con tbody tr:hover{background: #f3f9fa;}
 .table-con tr td .td-fun a{color: #00a796;margin-right: 5px;}
 .table-con tr td .td-fun a:hover{text-decoration: underline;}
 
@@ -135,7 +135,7 @@ i{display: inline-block;vertical-align: middle;}
 .right-sides-con{margin: 20px 10px;}
 .right-sides-con table{width: 100%;border-collapse: collapse; border-spacing: 0;}
 .right-sides-con table tr th{height: 30px;background: #ededed;text-align: left;text-indent: 3em;}
-.right-sides-con table tr td{height: 39px;border-bottom: #ededed 1px solid;text-indent: 3em;cursor: pointer;}
+.right-sides-con table tr td{height: 36px;text-indent: 3em;cursor: pointer;text-align: left;}
 .right-sides-con table tbody tr:hover{background: #edf7f8;}
 .left-sides .head{padding: 8px 10px 0 20px;height: 54px;}
 .left-sides .head p{color: #fff;line-height: 24px;font-size: 14px;}
@@ -449,8 +449,13 @@ a.btn-normal{background: #98ca69;}
 .srv_ip{vertical-align: middle;margin: 0 2px;}
 .retrieval-con ul.auto-label label{width: auto;}
 .no-info{background: url("../images/500x300.png");width: 500px; height: 300px; margin: 20px auto;}
-.detailGrid{min-height: 400px;}
-
+.detailGrid{min-height: 300px;}
+.control-alert{min-width: 400px;}
+.control-alert .tit{font-size: 26px;text-align: center;}
+.control-alert .con{text-align: center;margin-bottom: 20px;}
+.control-alert .table-con{margin-top: 10px;border: #ededed 1px solid;}
+.control-alert .table-con tr th{background: #ededed;height: 30px;}
+.control-alert .table-con tr td{height: 30px;}
 
 
 @media only screen and (-webkit-min-device-pixel-ratio: 1.25), only screen and (min-resolution: 120dpi), only screen and (min-resolution: 1.25dppx)

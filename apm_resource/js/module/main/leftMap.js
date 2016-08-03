@@ -24,7 +24,6 @@ define('leftMap',function(require,exports,module){
             getMapOptions:function(type,data){
                 var me = this,
                     options = {},
-                    maxArr = [4,1],
                     legendArr = [['严重','较重','一般','正常','无数据'],['有数据','无数据']],
                     colorArr = [['#f47c7d','#f9ab00','#f0dc2d','#98ca69','#b2b2b2'],['#98ca69','#b2b2b2']],
                     series = this.getSeries(type,data);
@@ -53,13 +52,13 @@ define('leftMap',function(require,exports,module){
                     },
                     dataRange: {
                         show:false,
-                        min: 0,
-                        max: maxArr[type-1],
+                        min: 1,
+                        max: 5,
                         left: 'left',
                         top: 'bottom',
                         text: ['高','低'],           // 文本，默认为数值文本
                         calculable: true,
-                        color:colorArr[type-1]
+                        color:colorArr[0]
                     },
                     series:series
                 };

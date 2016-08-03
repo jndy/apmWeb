@@ -54,7 +54,7 @@ define('dateBar',function(){
                 var dom = jQuery(this);
                 var timeType = parseInt(dom.attr('timeType'));
                 me.timeType = timeType;
-                var time = me.getValue(timeType);
+                var time = me.getValue();
                 dom.parent().addClass('current').siblings().removeClass('current');
                 if(timeType != 5){
                     me.el.find('.search-range').css('display','none');
@@ -65,9 +65,10 @@ define('dateBar',function(){
                     me.el.find('.search-range').css('display','');
                 }
             }).on('click','.btn',function(e){
-                var time = me.getValue(me.timeType);
-                if(me.timeType == 5 && !me.isValid(time.st,time.et)){
-                    util.showMsg('结束时间不能小于开始时间');
+                var time = me.getValue(me.timeType),
+                    result = me.isDirty();
+                if(me.timeType == 5 && result.flag == true){
+                    util.showMsg(result.msg);
                     return;
                 }
                 me.el.trigger('timeChange',time);
@@ -78,7 +79,7 @@ define('dateBar',function(){
             var dom = this.el.find('a[timeType={0}]'.format(timeType));
             dom.trigger('click',true);
         },
-        getValue:function(tt,dateFormat){
+        getValue:function(dateFormat){
             var me = this;
             var timeType = me.timeType;
             var result = {
@@ -118,6 +119,26 @@ define('dateBar',function(){
             }
             me.value = result;
             return result;
+        },
+        isDirty:function(){
+            var me = this,
+                timeValue = me.getValue(),
+                result = {flag:false,msg:''};
+            if(me.timeType == 5){
+                if(!me.isValid(timeValue.st,timeValue.et)){
+                    result.flag = true;
+                    result.msg = '结束时间不能小于开始时间';
+                }
+                else if(me.exceedPeriod(timeValue.st,timeValue.et)){
+                    result.flag = true;
+                    result.msg = '自定义时间的最大跨度为一个月';
+                }
+            }
+
+            return result;
+        },
+        exceedPeriod:function(st,et){
+            return et.add(-1,'M') - st > 0;
         },
         isValid:function(st,et){
             return et-st > 0;

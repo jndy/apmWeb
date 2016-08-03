@@ -14,6 +14,7 @@ define('vipQuality',function(require,exports,module){
             this.render();
             this.onRenderQueryForm();
             this.initEvents();
+            this.selectEventHandler();
         },
         render:function(){
             var html = _.template(tpl)({});
@@ -73,8 +74,33 @@ define('vipQuality',function(require,exports,module){
                 me.onQuery();
             }).on("change","select[name=statisticsCycle]", function(e){
                 me.onStatisticsWayChange($(this));
+                me.selectEventHandler();
             }).on("click","a[role=vip-export]",function(e){
                 me.onExport();
+            })
+        },
+        selectEventHandler:function(){
+            var me = this;
+            me.renderProvince();
+            me.renderMitName();
+            util.my_select();
+        },
+        renderMitName:function(){
+            $("select[name=mitName]").empty().html(util.createOptions(gMain.monitoringPoints["mitId_4"],"itemTypeName","itemTypeId"));
+        },
+        renderProvince:function(){
+            var me = this;
+            $("select[name=statisticsWay]").on("change", function(){
+                var val = $(this).val();
+                 var selectHtml = '<select style="display:none;" widthNo="150" name="corpId">';
+                if(1 == val){
+                    selectHtml += util.createOptions(gMain.provinceList,"corpName","corpId");
+                }else{
+                    selectHtml += "<option value=''>全部</option>";
+                }
+                selectHtml += "</select>";
+                $("div[role=corpId]").empty().html(selectHtml);
+                util.my_select();
             })
         },
         showQueryDiv:function(dom){
@@ -95,25 +121,17 @@ define('vipQuality',function(require,exports,module){
         },
         onQuery:function(){
             var me = this;
-            me.gridView.requestData(me.getParam);
+            me.gridView.requestData(me.getParam(),1);
         },
         getParam:function(){
             var param = {
                 statisticsWay:$("select[name=statisticsWay]").val(),
-                province:$("select[name=province]").val(),
+                corpId:$("select[name=corpId]").val(),
                 mitName:$("select[name=mitName]").val()
             };
             var statisticsCycleVal = $("select[name=statisticsCycle]").val();
 
-            if(0==statisticsCycleVal){
-                param["startTime"] = $("input[name=startTime]").val();
-                param["endTime"] = $("input[name=endTime]").val();
-            }else if(1 == statisticsCycleVal){
-                param["weekTime"] = $("select[name=weekTime]").val();
-                param["weekNum"] = $("select[name=weekNum]").val();
-            }else{
-                param["monthTime"] = $("select[name=monthTime]").val();                
-            }
+            param["startTime"] = $("input[name=startTime]").val();
 
             return param;
         },
@@ -133,10 +151,29 @@ define('vipQuality',function(require,exports,module){
 
             var statisticsCycle = $("#" + tplObj[val]).html();
 
-            var statisticsCycleHtml = util.format_advanced($("#vipqua-query-tpl").html(),{statisticsCycle:statisticsCycle});
-            $("#vipqua-query").empty().html(statisticsCycleHtml);
+            $("li[role=vip-time-container]").empty().html(statisticsCycle);
 
-            util.my_select();
+            if(val == 2){                                
+                $("#monthTime").on("click",function(){
+                    var $this = $(this);
+                    laydate({
+                        elem:"#monthTime",
+                        istime: false, 
+                        format: 'YYYY-MM-DD',
+                        max:laydate.now(),
+                        choose:function(date){
+                            //return date.replace(/\-\d+$/,"");
+                            $this.val(date.replace(/\-\d+$/,""));
+                        }
+                    });
+                    $this.val($(this).val().replace(/\-\d+$/,""));
+                    $("#laydate_table").css({display:"none"});
+                })
+
+            }else{
+                $("#laydate_table").css({display:"block"});
+            }
+
         }
       })
 

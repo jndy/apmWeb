@@ -112,12 +112,12 @@ define('vipQues',function(require,exports,module){
         },
         onQuery:function(){
             var me = this;
-            me.gridView.requestData(me.getParam);
+            me.gridView.requestData(me.getParam(),1);
         },
         getParam:function(){
             var param = {
-                startTime:$("select[name=startTime]").val(),
-                endTime:$("select[name=endTime]").val(),
+                startTime:$("input[name=startTime]").val(),
+                endTime:$("input[name=endTime]").val(),
                 province:$("select[name=province]").val(),
                 mitName:$("select[name=mitName]").val(),
                 vipLevel:$("select[name=vipLevel]").val()

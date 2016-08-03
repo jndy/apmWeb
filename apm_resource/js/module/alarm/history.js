@@ -25,8 +25,11 @@ define('history',function(require,exports,module){
             $('.content_main').empty();
             var option = {
                 el:'.content_main',
-                url:'data.do?func=alarm:history',
+                url:'data.do?func=alarm:getAdvice',
                 plugin:'page',
+                params:{
+                    noticeType:2
+                },
                 tableCss:'table-con mb-20',
                 columns:[{
                     name:'id',
@@ -130,10 +133,11 @@ define('history',function(require,exports,module){
         },
         onQuery:function(){
             var me = this;
-            me.gridView.requestData(me.getParam);
+            me.gridView.requestData(me.getParam(),1);
         },
         getParam:function(){
             var param = {
+                noticeType:2,
                 mitWay:$("select[name=mitWay]").val(),
                 mitType:$("select[name=mitType]").val(),
                 mitName:$("select[name=mitName]").val(),

@@ -187,8 +187,8 @@ define('receiveAnalysy',function(require,exports,module){
             var me = this;
             util.dialog('  ','<div class="failPieChart" style="width: 600px;height: 300px;"></div>',null,null,{id:'peiFail',cancelDisplay:false,onshow:function(){
                 util.request({
-                    url:'data.do?func=service:analyseServerFail',
-                    param:{email:email},
+                    url:'data.do?func=connect:getMailFailAnalasy',
+                    param:{type:me.type,email:email},
                     fnSuc:function(res){
                         var data = res['var'];
                         me.drawPieChart(data);

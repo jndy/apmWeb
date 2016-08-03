@@ -79,13 +79,13 @@ define('dataAnalasy',function(require,exports,module){
                     name:'avgSendTime',
                     text:'平均响应时间(ms)',
                     renderer:function(val){
-                        return val + 'ms';
+                        return val.toFixed(2) + 'ms';
                     }
                 },{
                     name:'maxSendTime',
                     text:'拨测最大时延(ms)',
                     renderer:function(val){
-                        return val + 'ms';
+                        return val.toFixed(2) + 'ms';
                     }
                 }]
             };
@@ -166,26 +166,30 @@ define('dataAnalasy',function(require,exports,module){
         /*失败原因分析弹出框*/
         showErrorDetailDialog: function(data){
             var me = this, data = data,
-                content = _.template('<div class="graph-con" style="height: 400px; width:600px;" id="errorDetail"></div>')({});  
+                content = _.template('<div class="graph-con" style="height: 300px; width:600px;" id="errorDetail"></div>')({});
 
             var seriesData = [], legendData = [];
             for(var i=0; i<data.length; i++){ 
                 legendData.push(data[i]['name']);                           
                 seriesData.push({value:data[i]['errorNums'], name:data[i]['name']});
             }
-            util.dialog('失败原因分析',content,null,null,{cancelDisplay:false,onshow:function(){
+            util.dialog('  ',content,null,null,{cancelDisplay:false,onshow:function(){
                 //渲染图表
                 var errorDetail = echarts.init(document.getElementById('errorDetail'));      
                 var option = {
-                    title : { },
+                    title : {
+                        text: '失败原因分析',
+                        x:'center'
+                    },
                     tooltip : {
                         trigger: 'item',
                         formatter: "{a} <br/>{b} : {c}次 ({d}%)"
                     },
                     legend: {
                         orient: 'vertical',
-                        left: 'left',
-                        bottom: 'bottom',
+                        left: 'right',
+                        align:'left',
+                        y:'middle',
                         data: legendData,
                         formatter: function (name) {
                             var idx = legendData.indexOf(name);
@@ -196,10 +200,15 @@ define('dataAnalasy',function(require,exports,module){
                         {
                             name: '错误来源',
                             type: 'pie',
-                            radius : '55%',
-                            center: ['50%', '50%'],
+                            radius : '65%',
+                            center: ['20%', '50%'],
                             data: seriesData,
                             itemStyle: {
+                                normal:{
+                                    label:{
+                                        show:false
+                                    }
+                                },
                                 emphasis: {
                                     shadowBlur: 10,
                                     shadowOffsetX: 0,
@@ -242,8 +251,9 @@ define('dataAnalasy',function(require,exports,module){
             param.endTime = vDate.et.Format('yyyy-MM-dd HH:mm');
             param.timeType = vDate.timeType;
 
-            if(!util.compareTimeValid(param.startTime, param.endTime))
+            if(!util.compareTimeValid(param.startTime, param.endTime)){
                 return null;
+            } 
 
             return param;
         }

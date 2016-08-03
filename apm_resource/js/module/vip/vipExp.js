@@ -114,8 +114,8 @@ define('vipExp',function(require,exports,module){
         getParam:function(){
           var param = {
             domain:$("select[name=domain]").val(),
-            startTime:$("select[name=startTime]").val(),
-            endTime:$("select[name=endTime]").val(),
+            startTime:$("input[name=startTime]").val(),
+            endTime:$("input[name=endTime]").val(),
             status:$("select[name=status]").val()
           };
           var account = $.trim($('input[name=account]').val());

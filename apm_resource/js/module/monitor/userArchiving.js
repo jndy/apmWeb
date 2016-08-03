@@ -25,6 +25,8 @@ define('userArchiving',function(require,exports,module){
                 param:{dataType: 0},
                 fnSuc:function(resp){
                     var rData = resp['var'];
+                    rData.startTime = rData.startTime.str2date('MM月dd日 HH:mm:ss');
+                    rData.endTime = rData.endTime.str2date('HH:mm:ss');
                     rData.fCount = 0;
                     rData.dList = [];
                     _.each(rData['dataList'], function(item){

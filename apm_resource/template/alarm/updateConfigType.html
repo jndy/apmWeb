@@ -37,7 +37,7 @@
                 <div class="mod-form mod-form-select">
                     <dl class="clearfix">
                         <dt><label for=""><input name="smsF" type="checkbox">短信告警</label></dt>
-                        <dd><label for=""><input type="checkbox" name="smsF_1" >严重</label></dd>
+                        <dd><label for=""><input name="smsF_1" type="checkbox">严重</label></dd>
                         <dd><label for=""><input name="smsF_2" type="checkbox">较重</label></dd>
                         <dd><label for=""><input name="smsF_3" type="checkbox">一般</label></dd>
                     </dl>
@@ -122,4 +122,61 @@
     <option value="22:00">22:00</option>
     <option value="23:00">23:00</option>
     <option value="24:00">24:00</option>
+</script>
+<script type="text/template" id="notifier-tpl">
+<div class="ui-dialog-body">
+    <div class="select-notier">
+        <h3>请选择告警通知人<span>每次可选择通知多个人，并支持按告警级别设置通知人</span></h3>
+        <dl class="add-alerter">
+            <dt>严重：</dt>
+            <dd class="current">
+                <a href="javascript:;" data-level="serious_1" class="icon-add">+</a>
+                <span class="serious_1">
+                    
+                </span>
+            </dd>
+        </dl>
+        <dl class="add-alerter">
+            <dt>较重：</dt>
+            <dd>
+                <a href="javascript:;" data-level="serious_2" class="icon-add">+</a>
+                <span class="serious_2">
+                    
+                </span>
+            </dd>
+        </dl>
+        <dl class="add-alerter">
+            <dt>一般：</dt>
+            <dd>
+                <a href="javascript:;" data-level="serious_3" class="icon-add">+</a>
+                <span class="serious_3">
+                    
+                </span>
+            </dd>
+        </dl>
+
+
+        <div class="form-notier clearfix">
+            <ul>
+                <li>
+                    <label>姓名： </label>
+                    <div class="module-fill w150">
+                        <input type="text" class="module-input">
+                    </div>
+                </li>
+                <li>
+                    <label>邮箱地址：</label>
+                    <div class="module-fill w150">
+                        <input type="text" class="module-input">
+                    </div>
+                </li>
+                <li>
+                    <a href="javascript:;" role="notifier-query" class="btn btn-orange">查询</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="notofier-table"></div>
+    </div>
+</div>
 </script>

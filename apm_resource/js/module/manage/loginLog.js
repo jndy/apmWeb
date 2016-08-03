@@ -33,20 +33,17 @@ define('loginLog',function(require,exports,module){
                 params:{actionType:me.actionType},
                 tableCss:'table-con mb-20',
                 columns:[{
-                    name:'userName',
+                    name:'actionUserId',
                     text:'账号'
                 },{
-                    name:'realName',
+                    name:'actionUserName',
                     text:'姓名'
                 },{
-                    name:'ip',
+                    name:'actionUserIp',
                     text:'IP地址'
                 },{
-                    name:'loginTime',
-                    text:'登陆时间',
-                    renderer:function(val){
-                        return new Date(val).Format('yyyy-MM-dd HH:mm:ss');
-                    }
+                    name:'createTime',
+                    text:'登陆时间'
                 }],
                 plugin:'page'
             };

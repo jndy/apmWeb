@@ -48,7 +48,9 @@ define('configDetail',function(require,exports,module){
             me.setNotifiers(ruleObj, detailObj);
             
             //告警时间
-            me.setNotifiers(ruleObj, detailObj);
+            me.setSmsAlarmTime(ruleObj, detailObj);
+
+            detailObj["remark"] = ruleObj["descp"] || "";
 
 
             $("div.content_main").append(util.format_advanced($("#config-detail-tpl").html(), detailObj));
@@ -66,7 +68,6 @@ define('configDetail',function(require,exports,module){
         setAlarmWay:function(ruleObj){
           var smsF = ruleObj["smsF"] || "",
               mailF = ruleObj["mailF"] || "";
-          console.log(smsF, mailF);
           if(smsF != "0|0|0"){
             $("input[name=smsF]").prop({checked:true});
             var smsFs = smsF.split("|");
@@ -82,7 +83,7 @@ define('configDetail',function(require,exports,module){
           }
 
           if(mailF != "0|0|0"){
-            $("input[name=smsF]").prop({checked:true});
+            $("input[name=mailF]").prop({checked:true});
             var mailFs = mailF.split("|");
             if(1 == mailFs[0]){
               $("input[name=mailF_1]").prop({checked:true});
@@ -102,8 +103,8 @@ define('configDetail',function(require,exports,module){
          */
         setSmsAlarmTime:function(ruleObj, detailObj){
           var smsAlarmTime = ruleObj["smsAlarmTime"];
-          var time1 = smsAlarmTime.substring(2,13);
-          var time2 = smsAlarmTime.substring(16);
+          var time1 = smsAlarmTime.substring(3,14);
+          var time2 = smsAlarmTime.substring(17);
           detailObj["time_1"] = time1.split("-")[0];
           detailObj["time_2"] = time1.split("-")[1];
           detailObj["time_3"] = time2.split("-")[0];
@@ -141,9 +142,9 @@ define('configDetail',function(require,exports,module){
          */
         setRule:function(ruleObj, detailObj){
           if(ruleObj["alarmCondition"].length>0){
-            var ruleHtml = '<div class="mod-condition-con">';
-
+            var ruleHtml = '';
             $.each(ruleObj["alarmCondition"],function(index, obj){
+              ruleHtml += '<div class="mod-condition-con">';
               ruleHtml += obj["ruleName"];
               var item = obj["ruleCondition"];
               if(item["serious_1"] && item["serious_1"].indexOf(">")>=0){
@@ -163,10 +164,9 @@ define('configDetail',function(require,exports,module){
               }else{
                 ruleHtml += "小于" + item["serious_3"].substring(1) + item["unit"]+"时进行一般告警";
               }
-
+              ruleHtml += '</div>';
             });
-            ruleHtml = '</div>';
-
+            
             detailObj["alarmCondition"] = ruleHtml;
           }else{
             detailObj["alarmCondition"] = "<div class='config-rule-tip'>该监控项下，没有配置相关指标</div>";

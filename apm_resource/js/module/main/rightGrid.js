@@ -36,20 +36,21 @@ define('rightGrid',function(require,exports,module){
                     dom.parent().addClass('current').siblings().removeClass('current');
                     var funcId = parseInt(dom.attr('funcId'));
                     me.$el.find('.right-grid').empty();
-                    var options = {
+                    var option = {
                         el:'.right-grid',
                         columns:me.menuData[funcId - 1].columns,
                         tableCss:'table-con mb-20',
+                        params:{dataType:options},
                         url:'data.do?func=service:getUserServiceQuality',
                         param:{}
                     };
-                    me.gridView = new grid(options);
+                    me.gridView = new grid(option);
                 }).on('click','.right-grid tbody tr',function(e){
                     var index = $(this).index(),
                         data = me.gridView.data[index],
-                        itemId = data.item_type_id,
-                        itemName = data.item_type_name,
-                        itemDesc = data.item_description;
+                        itemId = data.itemTypeId,
+                        itemName = data.itemTypeName,
+                        itemDesc = data.itemDescription;
 
                     util.jumpModule('monitor/userService?childView=userServiceDetail&item_id={0}&item_name={1}&item_description={2}'.format(itemId,itemName,itemDesc))
                 });
@@ -66,33 +67,33 @@ define('rightGrid',function(require,exports,module){
             },
             menuData:[{
                 title:'成功率',type:1,func:1,columns:[{
-                    text:'监测点名称',name:'item_type_name'
+                    text:'监测点名称',name:'itemTypeName'
                 },{
-                    text:'平均成功率(%)',name:'success_rates'
+                    text:'平均成功率(%)',name:'successRates'
                 }]
             },{
                 title:'系统时延',type:1,func:2,columns:[{
-                    text:'监测点名称',name:'item_type_name'
+                    text:'监测点名称',name:'itemTypeName'
                 },{
-                    text:'平均响应时间(ms)',name:'avgsendtime',
+                    text:'平均响应时间(ms)',name:'avgSendTime',
                     renderer:function(val,index ,item){
                         var cssArr = ['','','c-commonly','c-heavier','c-serious'],
-                            css = cssArr[item.alarm_status];
+                            css = cssArr[item.alarmStatus];
 
                         return '<span class="{1}">{0}</span>'.format(val,css);
                     }
                 }]
             },{
                 title:'成功率',type:2,func:3,columns:[{
-                    text:'监测点名称',name:'item_type_name'
+                    text:'监测点名称',name:'itemTypeName'
                 },{
-                    text:'平均成功率(%)',name:'success_rates'
+                    text:'平均成功率(%)',name:'successRates'
                 }]
             },{
                 title:'系统时延',type:2,func:4,columns:[{
-                    text:'监测点名称',name:'item_type_name'
+                    text:'监测点名称',name:'itemTypeName'
                 },{
-                    text:'平均响应时间(ms)',name:'avgsendtime'
+                    text:'平均响应时间(ms)',name:'avgSendTime'
                 }]
             }]
         });

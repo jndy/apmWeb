@@ -101,7 +101,7 @@ app.post('/apm/data.do', function (req, res) {
             response = {'code': 'S_OK', 'errorCode': '', 'msg': '公司列表', "var": {'listCount': 5, 'companyList': fixtures.companyList}};
             break;
         case 'service:getUserServiceQuality':
-            response = {'code': 'S_OK', 'errorCode': '', 'msg': '用户服务质量', "var": {'startTime': '07月12日17:00:00', 'endTime': '17:04:59', 'dataList': fixtures.userServiceQuality}};
+            response = {'code': 'S_OK', 'errorCode': '', 'msg': '用户服务质量', "var": {'startTime': '2016-07-29 00:00:00', 'endTime': '2016-07-29 23:59:58', 'dataList': fixtures.userServiceQuality}};
             break;
         case 'service:getUserServiceDetail':
             response = {'code': 'S_OK', 'errorCode': '', 'msg': '用户服务质量明细', "var": fixtures.userServiceDetail};
@@ -125,16 +125,22 @@ app.post('/apm/data.do', function (req, res) {
             response = {'code': 'S_OK', 'errorCode': '', 'msg': '操作成功', "var": ""};
             break;
         case 'service:getUserArchivingQuality':
-            response = {'code': 'S_OK', 'errorCode': '', 'msg': '用户服务质量', "var": {'startTime': '07月12日17:00:00', 'endTime': '17:04:59', 'dataList': fixtures.userArchivingQuality}};
+            response = {'code': 'S_OK', 'errorCode': '', 'msg': '用户服务质量', "var": {'startTime': '2016-07-29 00:00:00', 'endTime': '2016-07-29 23:59:58', 'dataList': fixtures.userArchivingQuality}};
             break;
-        case 'alarm:configList':
+        case 'alarm:getConfigList':
             response = {'code': 'S_OK', 'errorCode': '', 'msg': '告警配置', "var": {'startTime': '07月12日17:00:00', 'endTime': '17:04:59', "current": 0, "retCode": 0, "listCount": 82, 'dataList': fixtures.configList}};
+            break;
+        case 'alarm:changeRuleState':
+            response = {'code': 'S_OK', 'errorCode': '', 'msg': '', "var": null};
             break;
         case 'alarm:getConfigType':
             response = {'code': 'S_OK', 'errorCode': '', 'msg': '添加告警配置', "var": {'startTime': '07月12日17:00:00', 'endTime': '17:04:59', "current": 0, "retCode": 0, 'dataList': fixtures.addConfigList}};
             break;
-        case 'alarm:advice':
+        case 'alarm:getAdvice':
             response = {'code': 'S_OK', 'errorCode': '', 'msg': '', "var": { "listCount": 82, 'dataList': fixtures.adviceList}};
+            break;
+        case 'alarm:alarmOperation':
+            response = {'code': 'S_OK', 'errorCode': '', 'msg': '', "var": {}};
             break;
         case 'alarm:getAdviceDetail':
             response = {'code': 'S_OK', 'errorCode': '', 'msg':'', "var": fixtures.getAdviceDetail};
@@ -149,7 +155,7 @@ app.post('/apm/data.do', function (req, res) {
             response = {'code': 'S_OK', 'errorCode': '', 'msg': '', "var": {'dataList': fixtures.monitorList}};
             break;
         case 'alarm:getConfigRule':
-            response = {'code': 'S_OK', 'errorCode': '', 'msg': '', "var": {"id": 19, "mit_name": "WebAPI服务", "mit_type": 2, 'alarmCondition': fixtures.configRuleList}};
+            response = {'code': 'S_OK', 'errorCode': '', 'msg': '', "var": {"id": 19, "mit_name": "WebAPI服务", "mit_type": 2, 'alarmCondition': fixtures.configRuleList,"alarmUser":{ "serious_1":[{"userName":"aaa"}, {"userName":"bbb"}], "serious_2":[{"userName":"ddd"}, {"userName":"eee"}], "serious_3":[{"userName":"ccc"}, {"userName":"aaa"}] } ,"smsF":"1|0|0","mailF":"1|2|3" ,"smsAlarmTime":" 0|09:00-11:00|1|11:00-12:00"}};
             break;
         case 'service:getAllServiceQuality':
             response = {"code": "S_OK", "errorCode": "", "msg": "", "var": appService.appAllServiceList}

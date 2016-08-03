@@ -126,7 +126,7 @@ define('vipUserMgr',function(require,exports,module){
         },
         onQuery:function(){
             var me = this;
-            me.gridView.requestData(me.getParam);
+            me.gridView.requestData(me.getParam(),1);
         },
         getParam:function(){
             var param = {

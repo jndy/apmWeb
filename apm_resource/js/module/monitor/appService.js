@@ -44,7 +44,7 @@ define('appService',function(require,exports,module){
                 fnSuc:function(resp){
                     var data = resp['var'];
                     me.cacheData = data;
-                    var cssArr = ['btn-nothing','btn-normal','btn-commonly','btn-heavier','btn-serious'];
+                    var cssArr = ['btn-nothing','btn-normal','btn-commonly','btn-heavier','btn-serious','btn-nothing'];
                     for(var i = 0,len = data.length;i<len;i++){
                         var serviceName = data[i].serviceName;
                         var level = data[i].level;
